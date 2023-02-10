@@ -4,7 +4,12 @@ module.exports = {
     "./src/**/*.{html,ts}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        "Montserrat-VariableFont_wght": ["Montserrat-VariableFont_wght"],
+        "Sacramento-Regular":["Sacramento-Regular"]
+      },
+    },
   },
   plugins: [],
 }
