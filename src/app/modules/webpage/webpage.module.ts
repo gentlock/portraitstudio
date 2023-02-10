@@ -7,7 +7,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { FaqComponent } from './pages/faq/faq.component';
 import { PrintsComponent } from './pages/prints/prints.component';
 import { AboutMeComponent } from './pages/about-me/about-me.component';
-
+import { ContactComponent} from "./pages/contact/contact.component";
+import { StudioComponent} from "./pages/studio/studio.component";
 
 @NgModule({
   declarations: [
@@ -15,7 +16,9 @@ import { AboutMeComponent } from './pages/about-me/about-me.component';
     FooterComponent,
     FaqComponent,
     PrintsComponent,
-    AboutMeComponent
+    AboutMeComponent,
+    ContactComponent,
+    StudioComponent
   ],
   imports: [
     CommonModule,

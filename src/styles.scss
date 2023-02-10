@@ -4,5 +4,23 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+//html, body { height: 100%; }
+//body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+@layer base {
+  * {
+    font-family: "Montserrat-VariableFont_wght", serif;
+    font-size: 16px;
+    max-width: 1536px;
+  }
+
+  body {
+    margin: 0;
+  }
+
+  html, body {height: 100%;}
+
+  body::after {
+    display: none;
+  }
+}
