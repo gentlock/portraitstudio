@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-
 @Component({
   selector: 'studio-admin-entry-point',
   templateUrl: './admin-entry-point.component.html',

@@ -1,0 +1,17 @@
+@use "../../../../../assets/styles/base/variables" as var;
+@use "../../../../../assets/styles/utils/mixins" as mix;
+
+article {
+  @include mix.media-query-screen--small {
+    margin-left: var.$navbar-thickness;
+  }
+
+  @include mix.media-query-screen--middle {
+    margin-left: var.$navbar-thickness;
+  }
+
+  @include mix.media-query-screen--big {
+    margin-left: 0;
+    margin-top: var.$navbar-thickness;
+  }
+}

@@ -5,20 +5,20 @@ import { WebpageRoutingModule } from './webpage-routing.module';
 import {NavbarComponent} from "./components/navbar/navbar.component";
 import { FooterComponent } from './components/footer/footer.component';
 import { FaqComponent } from './pages/faq/faq.component';
-import { PrintsComponent } from './pages/prints/prints.component';
 import { AboutMeComponent } from './pages/about-me/about-me.component';
 import { ContactComponent} from "./pages/contact/contact.component";
-import { StudioComponent} from "./pages/studio/studio.component";
+import { AlbumsComponent } from './pages/albums/albums.component';
+import { WebpageEntryPointComponent } from "./components/webpage-entry-point/webpage-entry-point.component";
 
 @NgModule({
   declarations: [
     NavbarComponent,
     FooterComponent,
     FaqComponent,
-    PrintsComponent,
     AboutMeComponent,
     ContactComponent,
-    StudioComponent
+    AlbumsComponent,
+    WebpageEntryPointComponent
   ],
   imports: [
     CommonModule,

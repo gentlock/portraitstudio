@@ -1,4 +1,3 @@
-/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
     "./src/**/*.{html,ts}",
@@ -7,7 +6,7 @@ module.exports = {
     extend: {
       fontFamily: {
         "Montserrat-VariableFont_wght": ["Montserrat-VariableFont_wght"],
-        "Sacramento-Regular":["Sacramento-Regular"]
+        "Sacramento-Regular": ["Sacramento-Regular"]
       },
     },
   },

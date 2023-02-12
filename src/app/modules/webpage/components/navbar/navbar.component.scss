@@ -1,0 +1,128 @@
+@use "../../../../../assets/styles/base/variables" as var;
+@use "../../../../../assets/styles/utils/mixins" as mix;
+
+@mixin tab-raised($bg-color, $shadow) {
+  background-color: $bg-color;
+  box-shadow: $shadow;
+}
+
+@mixin link-underlined($transform, $transition) {
+  transform: $transform;
+  transition: $transition;
+}
+
+.active {
+    background-color: var.$navbar-tab-raised-color;
+    box-shadow: var.$shadow-dark;
+
+    @include mix.media-query-screen--big {
+        @include tab-raised(transparent, none);
+        span::before {
+          transform: scaleX(1) !important;
+          transition: none !important;
+        }
+    }
+}
+
+.navbar {
+  position: fixed;
+  display: flex;
+  font-size: var.$navbar-font-size;
+  background-color: var.$navbar-bg-color;
+  box-shadow: var.$shadow-dark;
+
+  &>div { padding: var.$navbar-section-padding; }
+
+  // wartosc dla pionowego paska
+  height: 100%;
+  width: var.$navbar-thickness;
+  top: 0;
+  left: 0;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  svg {
+    width: var.$navbar-icons-width;
+    height: auto;
+    color: var.$navbar-svg-color;
+    fill: currentColor;
+  }
+
+  .navbar-tabgroup--logo {
+    svg { display: block; width: var.$navbar-logo-width; }
+  }
+
+  .navbar-tabgroup--menu {
+    display: flex;
+    flex-direction: inherit;
+
+    &>a.tab {
+      display: block;
+      padding: var.$navbar-icons-padding;
+      border-radius: 4px;
+      transition: all 250ms;
+
+      & + a.tab {margin-top: 5px;}
+      &:hover {@include tab-raised(var.$navbar-tab-raised-color, var.$shadow-dark);}
+    };
+
+    svg {display: block;}
+    span {
+      display: none;
+      position: relative;
+      white-space: nowrap;
+      font-variant: small-caps;
+
+      &::before {
+        content: "";
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 2px;
+        bottom: 2px;
+        left: 0;
+        background-color: var.$secondary-color;
+
+        @include link-underlined(scaleX(0), transform 0.3s ease);
+      }
+
+      &:hover::before {
+        transform: scaleX(1);
+      }
+    }
+  }
+
+  .navbar-tabgroup--social-media {
+    display: flex;
+    flex-direction: inherit;
+
+    a {
+      display: block;
+      padding: 10px;
+      svg {display: block;}
+    }
+  }
+
+  @include mix.media-query-screen--big {
+    height: var.$navbar-thickness;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    .navbar-tabgroup--menu {
+      &>a.tab {
+        border-radius: 0;
+        transition: none;
+        color: white;
+
+        & + a.tab {margin-top: 0;}
+        &:hover {@include tab-raised(transparent, none);}
+      };
+
+      svg {display: none;}
+      span { display: block;}
+    }
+  }
+}
