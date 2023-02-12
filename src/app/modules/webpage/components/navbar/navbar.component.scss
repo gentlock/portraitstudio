@@ -1,5 +1,4 @@
-@use "../../../../../assets/styles/base/variables" as var;
-@use "../../../../../assets/styles/utils/mixins" as mix;
+@use "../../../../../assets/styles/main" as m;
 
 @mixin tab-raised($bg-color, $shadow) {
   background-color: $bg-color;
@@ -12,10 +11,10 @@
 }
 
 .active {
-    background-color: var.$navbar-tab-raised-color;
-    box-shadow: var.$shadow-dark;
+    background-color: m.$navbar-tab-raised-color;
+    box-shadow: m.$shadow-dark;
 
-    @include mix.media-query-screen--big {
+    @include m.media-query-screen--big {
         @include tab-raised(transparent, none);
         span::before {
           transform: scaleX(1) !important;
@@ -27,15 +26,15 @@
 .navbar {
   position: fixed;
   display: flex;
-  font-size: var.$navbar-font-size;
-  background-color: var.$navbar-bg-color;
-  box-shadow: var.$shadow-dark;
+  font-size: m.$color-dark;
+  background-color: m.$navbar-bg-color;
+  box-shadow: m.$shadow-dark;
 
-  &>div { padding: var.$navbar-section-padding; }
+  &>div { padding: m.$navbar-section-padding; }
 
   // wartosc dla pionowego paska
   height: 100%;
-  width: var.$navbar-thickness;
+  width: m.$navbar-thickness;
   top: 0;
   left: 0;
   flex-direction: column;
@@ -43,14 +42,14 @@
   align-items: center;
 
   svg {
-    width: var.$navbar-icons-width;
+    width: m.$navbar-icons-width;
     height: auto;
-    color: var.$navbar-svg-color;
+    color: m.$navbar-svg-color;
     fill: currentColor;
   }
 
   .navbar-tabgroup--logo {
-    svg { display: block; width: var.$navbar-logo-width; }
+    svg { display: block; width: m.$navbar-logo-width; }
   }
 
   .navbar-tabgroup--menu {
@@ -59,12 +58,12 @@
 
     &>a.tab {
       display: block;
-      padding: var.$navbar-icons-padding;
+      padding: m.$navbar-icons-padding;
       border-radius: 4px;
       transition: all 250ms;
 
       & + a.tab {margin-top: 5px;}
-      &:hover {@include tab-raised(var.$navbar-tab-raised-color, var.$shadow-dark);}
+      &:hover {@include tab-raised(m.$navbar-tab-raised-color, m.$shadow-dark);}
     };
 
     svg {display: block;}
@@ -82,7 +81,7 @@
         height: 2px;
         bottom: 2px;
         left: 0;
-        background-color: var.$secondary-color;
+        background-color: m.$color-light;
 
         @include link-underlined(scaleX(0), transform 0.3s ease);
       }
@@ -104,8 +103,8 @@
     }
   }
 
-  @include mix.media-query-screen--big {
-    height: var.$navbar-thickness;
+  @include m.media-query-screen--big {
+    height: m.$navbar-thickness;
     width: 100%;
     flex-direction: row;
     justify-content: space-between;

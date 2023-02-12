@@ -9,6 +9,8 @@ import { AboutMeComponent } from './pages/about-me/about-me.component';
 import { ContactComponent} from "./pages/contact/contact.component";
 import { AlbumsComponent } from './pages/albums/albums.component';
 import { WebpageEntryPointComponent } from "./components/webpage-entry-point/webpage-entry-point.component";
+import { CarouselComponent } from './components/carousel/carousel.component';
+import { HomepageComponent} from "./pages/homepage/homepage.component";
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { WebpageEntryPointComponent } from "./components/webpage-entry-point/web
     AboutMeComponent,
     ContactComponent,
     AlbumsComponent,
-    WebpageEntryPointComponent
+    WebpageEntryPointComponent,
+    CarouselComponent,
+    HomepageComponent,
   ],
   imports: [
     CommonModule,
