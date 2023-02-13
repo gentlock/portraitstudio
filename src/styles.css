@@ -1,0 +1,98 @@
+article {
+  flex-grow: 1;
+  min-height: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+article main {
+  flex-grow: 1;
+  color: white;
+}
+article main .basic-grid {
+  display: grid;
+  width: 100%;
+  padding: 1em;
+  gap: 1em;
+  grid-template-rows: auto;
+  justify-content: center;
+  align-items: center;
+}
+@media screen and (max-width: 767px) {
+  article main .basic-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  article main .basic-grid {
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+  }
+}
+@media screen and (min-width: 1024px) {
+  article main .basic-grid {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+}
+article footer {
+  flex-shrink: 0;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@font-face {
+  font-family: "Montserrat-VariableFont_wght";
+  src: url("assets/fonts/Montserrat-VariableFont_wght.ttf") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Sacramento-Regular";
+  src: url("assets/fonts/Sacramento-Regular.ttf") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "OpenSans-VariableFont";
+  src: url("assets/fonts/OpenSans-VariableFont_wdth,wght.ttf") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "SourceSansPro-Regular";
+  src: url("assets/fonts/Source_Sans_Pro/SourceSansPro-Regular.ttf") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "SourceSansPro-SemiBold";
+  src: url("assets/fonts/Source_Sans_Pro/SourceSansPro-SemiBold.ttf") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "SourceSansPro-Italic";
+  src: url("assets/fonts/Source_Sans_Pro/SourceSansPro-Italic.ttf") format("woff2");
+  font-weight: normal;
+  font-style: italic;
+}
+@layer base {
+  * {
+    font-family: "Montserrat-VariableFont_wght", serif;
+    font-size: 16px;
+    line-height: 1.75em;
+    max-width: 1536px;
+  }
+  body {
+    margin: 0;
+  }
+  body::after {
+    display: none;
+  }
+  html, body {
+    height: 100%;
+  }
+}
+
+/*# sourceMappingURL=styles.css.map */

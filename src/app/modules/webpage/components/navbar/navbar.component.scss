@@ -24,6 +24,7 @@
 }
 
 .navbar {
+  z-index: 1000;
   position: fixed;
   display: flex;
   font-size: m.$color-dark;

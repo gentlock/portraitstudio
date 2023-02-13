@@ -59,6 +59,7 @@ export function highlightNavTab(route: Router, render: Renderer2, tabsList: Node
         }
       }
     });
+  }
 
     route.events.pipe(
       filter((e): e is NavigationEnd => e instanceof NavigationEnd))
@@ -79,5 +80,4 @@ export function highlightNavTab(route: Router, render: Renderer2, tabsList: Node
           }
         });
       });
-  }
 }

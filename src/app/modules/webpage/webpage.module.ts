@@ -11,6 +11,8 @@ import { AlbumsComponent } from './pages/albums/albums.component';
 import { WebpageEntryPointComponent } from "./components/webpage-entry-point/webpage-entry-point.component";
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { HomepageComponent} from "./pages/homepage/homepage.component";
+import {MatProgressBarModule} from "@angular/material/progress-bar";
+import { SharedModule } from "../../libs/shared.module";
 
 @NgModule({
   declarations: [
@@ -24,9 +26,14 @@ import { HomepageComponent} from "./pages/homepage/homepage.component";
     CarouselComponent,
     HomepageComponent,
   ],
-  imports: [
-    CommonModule,
-    WebpageRoutingModule
+    imports: [
+        CommonModule,
+        WebpageRoutingModule,
+        MatProgressBarModule,
+        SharedModule,
+    ],
+  exports: [
+    SharedModule
   ]
 })
 export class WebpageModule { }

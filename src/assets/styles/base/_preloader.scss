@@ -1,0 +1,62 @@
+.bars {
+  z-index: 10;
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 50px;
+  width: 50px;
+  margin: -25px 0 0 -25px;
+  //visibility: visible;
+
+  &.js-hidden {
+    display: none;
+  }
+
+  span {
+    position: absolute;
+    display: block;
+    bottom: 10px;
+    width: 9px;
+    height: 15px;
+    background: rgba(255, 255, 255, 0.25);
+    animation: bars 2s  infinite ease-in;
+  }
+
+  span:nth-child(2) {
+    left: 11px;
+    animation-delay: 0.2s;
+  }
+
+  span:nth-child(3) {
+    left: 22px;
+    animation-delay: 0.4s;
+  }
+
+  span:nth-child(4) {
+    left: 33px;
+    animation-delay: 0.6s;
+  }
+
+  span:nth-child(5) {
+    left: 44px;
+    animation-delay: 0.8s;
+  }
+}
+
+
+
+@keyframes bars {
+  0% {
+    background: rgba(255, 255, 255, 0.25);
+  }
+  25% {
+    background: #000000;
+  }
+  50% {
+    background: rgba(255, 255, 255, 0.25);
+  }
+  100% {
+    background: rgba(255, 255, 255, 0.25);
+  }
+}

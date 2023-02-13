@@ -1,1 +1,80 @@
-//@use "../../../../../assets/styles/main" as m;
+@use "../../../../../assets/styles/main" as m;
+
+.carousel {
+  position: relative;
+  font-size: 2.5vmin;
+  overflow: hidden;
+  filter: opacity(1);
+  transition: 10000ms;
+
+  .js_not-visible {
+    filter: opacity(0);
+  }
+
+  &-slider {
+    display: flex;
+    //filter: opacity(0);
+    //transition: opacity 0.3s;
+    //
+    //.js_is-hidden {
+    //  filter: opacity(1);
+    //}
+  }
+
+  &-slide {
+    flex: 1 0 100%;
+
+    img {
+      display: block;
+      width: 100%;
+      height: 30em;
+      object-fit: cover;
+    }
+  }
+
+  button {
+    font-size: inherit;
+    z-index: 10;
+  }
+
+  &-prev,
+  &-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 1em;
+    border: none;
+    cursor: pointer;
+  }
+
+  &-prev {
+    left: 2em;
+  }
+
+  &-next {
+    right: 2em;
+  }
+
+  &-navigation {
+    position: absolute;
+    bottom: 1em;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+  }
+
+  &-bullet {
+    width: 1em;
+    height: 1em;
+    border: none;
+    background: #fff;
+    cursor: pointer;
+    border-radius: 50%;
+
+    &.is-active {
+      background: #1c69d3;
+    }
+  }
+}

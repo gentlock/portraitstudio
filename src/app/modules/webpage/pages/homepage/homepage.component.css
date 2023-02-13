@@ -1,0 +1,46 @@
+article {
+  flex-grow: 1;
+  min-height: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+article main {
+  flex-grow: 1;
+  color: white;
+}
+article main .basic-grid {
+  display: grid;
+  width: 100%;
+  padding: 1em;
+  gap: 1em;
+  grid-template-rows: auto;
+  justify-content: center;
+  align-items: center;
+}
+@media screen and (max-width: 767px) {
+  article main .basic-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  article main .basic-grid {
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+  }
+}
+@media screen and (min-width: 1024px) {
+  article main .basic-grid {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+}
+article footer {
+  flex-shrink: 0;
+}
+
+.basic-grid .cell-center {
+  grid-row: 1/-1;
+  grid-column: 1/-1;
+}
+
+/*# sourceMappingURL=homepage.component.css.map */
