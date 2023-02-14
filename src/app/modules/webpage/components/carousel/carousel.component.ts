@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, ViewEncapsulation} from '@angular/core';
-import {DataLoadersService} from "../../../../libs/utlis/data-loaders.service";
+import {DataLoadersService} from "../../../../core/services/utlis/data-loaders.service";
 
 @Component({
   selector: 'studio-carousel',
@@ -146,17 +146,16 @@ export class CarouselComponent implements AfterViewInit {
     let carousel  = this.dataLoader.conf.carousel;
     let slider    = document.querySelector('.carousel-slider')!;
 
-   await this.preloadAll(carousel.item.map(item=>item.name))
+    await this.preloadAll(carousel.item.map(item=>item.name))
       .then((value) => {
 
         // dodaj zdjecia do karuzeli
         value.forEach(item=> {
-          let li = document.createElement('li');
-          li.classList.add('carousel-slide');
-          let img = new Image();
-          img.src = item as string;
-          li.append(img);
-          slider.append(li);
+          const elLi = this.elNew("li", {className: "carousel-slide"});
+          const elImg = this.elNew("img", {src: item as string});
+
+          elLi.append(elImg);
+          slider.append(elLi);
         });
 
         // uruchom karuzele
@@ -169,35 +168,9 @@ export class CarouselComponent implements AfterViewInit {
   }
   ngAfterViewInit() {
     this.prealoadAllPhotos().then(item=>{
-      document.querySelector('#bars')!.classList.add('js-hidden');
-      document.querySelector('.carousel')!.classList.remove('js_not-visible');
+      // document.querySelector('#bars')!.classList.add('js-hidden');
+      // document.querySelector('.carousel')!.classList.remove('js_not-visible');
     });
-    // Object.values(carousel).forEach( (file) => {
 
-    // let carousel          = this.dataLoader.conf.carousel;
-    // let totalToLoad       = carousel.item.length;
-    // // let loaded            = 0;
-    // let slider            = document.querySelector('.carousel-slider')!;
-    //
-    // const headerDict = {'Access-Control-Allow-Origin':"*"}
-    //
-    // const requestOptions = {
-    //   headers: new Headers(headerDict),
-    // };
-    //
-    // carousel.item.map(item=> {
-    //   this.http.get(item.name, {headers: 'Access-Control-Allow-Origin: *', reportProgress: true, observe: 'events'}).subscribe(
-    //     {
-    //       next: (event) => {
-    //         if (event.type === HttpEventType.DownloadProgress) {
-    //           this.progressValue = Math.round(event.loaded / totalToLoad * 100);
-    //         } else if (event.type === HttpEventType.Response) {
-    //         }
-    //       },
-    //       error: (err) => {
-    //       }
-    //     })
-    //   // Allows to use multiple carousels on the same page:
-    // })
   }
 }

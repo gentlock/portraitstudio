@@ -11,8 +11,11 @@ import { AlbumsComponent } from './pages/albums/albums.component';
 import { WebpageEntryPointComponent } from "./components/webpage-entry-point/webpage-entry-point.component";
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { HomepageComponent} from "./pages/homepage/homepage.component";
-import {MatProgressBarModule} from "@angular/material/progress-bar";
-import { SharedModule } from "../../libs/shared.module";
+import { SharedModule } from "../../core/shared.module";
+import { LoaderComponent } from './components/loader/loader.component';
+// import {HTTP_INTERCEPTORS} from '@angular/common/http';
+// import {LoaderInterceptor} from "../../core/interceptors/loader.interceptor";
+// import { LoaderService } from "../../core/services/loader/loader.service";
 
 @NgModule({
   declarations: [
@@ -25,15 +28,19 @@ import { SharedModule } from "../../libs/shared.module";
     WebpageEntryPointComponent,
     CarouselComponent,
     HomepageComponent,
+    LoaderComponent,
   ],
     imports: [
         CommonModule,
         WebpageRoutingModule,
-        MatProgressBarModule,
-        SharedModule,
+        SharedModule
     ],
-  exports: [
-    SharedModule
-  ]
+  // providers: [
+  //   {
+  //     provide: HTTP_INTERCEPTORS,
+  //     useClass: LoaderInterceptor,
+  //     multi: true
+  //   },
+  // ],
 })
 export class WebpageModule { }

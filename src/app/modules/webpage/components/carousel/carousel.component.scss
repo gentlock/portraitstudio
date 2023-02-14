@@ -4,21 +4,9 @@
   position: relative;
   font-size: 2.5vmin;
   overflow: hidden;
-  filter: opacity(1);
-  transition: 10000ms;
-
-  .js_not-visible {
-    filter: opacity(0);
-  }
 
   &-slider {
     display: flex;
-    //filter: opacity(0);
-    //transition: opacity 0.3s;
-    //
-    //.js_is-hidden {
-    //  filter: opacity(1);
-    //}
   }
 
   &-slide {

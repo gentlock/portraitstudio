@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpErrorResponse} from "@angular/common/http";
-import * as configuration from '../../../conf/config.json';
+// import {HttpClient, HttpErrorResponse} from "@angular/common/http";
+import * as configuration from '../../../../conf/config.json';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +8,6 @@ import * as configuration from '../../../conf/config.json';
 export class DataLoadersService {
   public conf = configuration;
   constructor(
-    private http: HttpClient
+    // private http: HttpClient
   ) {}
 }
