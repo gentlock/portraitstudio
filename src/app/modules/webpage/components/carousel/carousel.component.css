@@ -48,6 +48,9 @@ article footer {
   width: 50px;
   margin: -25px 0 0 -25px;
 }
+.bars.is-hidden {
+  visibility: hidden;
+}
 .bars span {
   position: absolute;
   display: block;
@@ -92,12 +95,31 @@ article footer {
   position: relative;
   font-size: 2.5vmin;
   overflow: hidden;
+  margin: 2em;
 }
 .carousel-slider {
   display: flex;
 }
 .carousel-slide {
   flex: 1 0 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 1em;
+}
+@media screen and (max-width: 767px) {
+  .carousel-slide {
+    flex-direction: column;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .carousel-slide {
+    flex-direction: row;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .carousel-slide {
+    flex-direction: row;
+  }
 }
 .carousel-slide img {
   display: block;
@@ -113,9 +135,17 @@ article footer {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  padding: 1em;
+  padding: 0.8em;
   border: none;
   cursor: pointer;
+  outline: 1px solid hsl(4deg, 32%, 46%);
+  background-color: rgba(155, 85, 80, 0.1);
+}
+.carousel-prev svg, .carousel-next svg {
+  fill: currentColor;
+  width: 2em;
+  height: auto;
+  filter: opacity(50%);
 }
 .carousel-prev {
   left: 2em;

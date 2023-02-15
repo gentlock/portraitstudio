@@ -1,17 +1,10 @@
-<!--<div  class="overlay">-->
-<!--    <div class="bars">-->
-<!--      <span></span>-->
-<!--      <span></span>-->
-<!--      <span></span>-->
-<!--      <span></span>-->
-<!--      <span></span>-->
-<!--    </div>-->
-<!--</div>-->
-  <div class="bars">
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
+<div *ngIf="isLoading | async" class="overlay">
+    <div class="bars">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+</div>
 <!--<div *ngIf="isLoading | async" class="overlay">-->

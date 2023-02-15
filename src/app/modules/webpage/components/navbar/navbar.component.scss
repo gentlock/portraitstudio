@@ -60,7 +60,7 @@
     &>a.tab {
       display: block;
       padding: m.$navbar-icons-padding;
-      border-radius: 4px;
+      border-radius: 3px;
       transition: all 250ms;
 
       & + a.tab {margin-top: 5px;}
@@ -82,7 +82,7 @@
         height: 2px;
         bottom: 2px;
         left: 0;
-        background-color: m.$color-light;
+        background-color: m.$color-light2;
 
         @include link-underlined(scaleX(0), transform 0.3s ease);
       }

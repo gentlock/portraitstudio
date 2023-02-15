@@ -7,12 +7,12 @@
     "carousel": {
       "dir": "/assets/images/carousel/",
       "item": [
-        { "name": "https://via.placeholder.com/800x350/0bf?text=image1", "desc": ""},
-        { "name": "https://via.placeholder.com/800x350/fb0?text=image2", "desc": ""},
-        { "name": "https://via.placeholder.com/800x350/b0f?text=image3", "desc": ""},
-        { "name": "https://via.placeholder.com/800x350/0bf?text=image4", "desc": ""},
-        { "name": "https://via.placeholder.com/800x350/0fb?text=image5", "desc": ""},
-        { "name": "https://via.placeholder.com/800x350/f0b?text=image6", "desc": ""}
+        { "url": "https://via.placeholder.com/800x350/0bf?text=image1", "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing."},
+        { "url": "https://via.placeholder.com/800x350/fb0?text=image2", "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing."},
+        { "url": "https://via.placeholder.com/800x350/b0f?text=image3", "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing."},
+        { "url": "https://via.placeholder.com/800x350/0bf?text=image4", "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing."},
+        { "url": "https://via.placeholder.com/800x350/0fb?text=image5", "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing."},
+        { "url": "https://via.placeholder.com/800x350/f0b?text=image6", "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing."}
       ]
     }
 }

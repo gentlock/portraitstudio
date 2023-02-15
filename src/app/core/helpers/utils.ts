@@ -4,6 +4,42 @@ import {NavigationEnd, Router} from '@angular/router';
 import { Renderer2 } from '@angular/core';
 import {filter} from "rxjs";
 
+export const imgPreloader = {
+  _preload: (src: string) => new Promise((resolve, reject) => {
+    const img = new Image()
+    img.onload = () => resolve(src);
+    img.onerror = () => reject(src);
+    img.src = src;
+  }),
+  preloadAll: (srcs: string[]) => Promise.all(srcs.map(imgPreloader._preload)),
+}
+
+// async prealoadAllPhotos() {
+//   let carousel  = this.dataLoader.conf.carousel;
+//   let slider    = document.querySelector('.carousel-slider')!;
+//
+//   await this.preloadAll(carousel.item.map(item=>item.name))
+//     .then((value) => {
+//
+//       // dodaj zdjecia do karuzeli
+//       value.forEach(item=> {
+//         const elLi = this.elNew("li", {className: "carousel-slide"});
+//         const elImg = this.elNew("img", {src: item as string});
+//
+//         elLi.append(elImg);
+//         slider.append(elLi);
+//       });
+//
+//       // uruchom karuzele
+//       this.els(".carousel").forEach(this.carousel);
+//
+//     })
+//     .catch((err) => {
+//       console.error(err);
+//     });
+// }
+
+
 export function elapsedTime(date: Date) {
   moment.locale("pl");
   return moment(moment(date).format('X'), 'X').subtract('minutes').fromNow();

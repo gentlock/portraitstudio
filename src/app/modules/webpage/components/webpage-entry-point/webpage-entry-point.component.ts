@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import {AfterViewInit, Component} from '@angular/core';
 import { fadeAnimation } from "../../../../core/helpers/route_animation";
-import {RouterOutlet} from "@angular/router";
+// import {RouterOutlet} from "@angular/router";
+import {LoaderService} from "../../../../core/services/loader/loader.service";
 
 @Component({
   selector: 'studio-webpage-entry-point',
@@ -8,7 +9,14 @@ import {RouterOutlet} from "@angular/router";
   styleUrls: ['./webpage-entry-point.component.scss'],
   animations: [fadeAnimation]
 })
-export class WebpageEntryPointComponent {
+export class WebpageEntryPointComponent implements  AfterViewInit {
+  constructor(
+    private loaderService: LoaderService
+  ) {}
+
+  ngAfterViewInit() {
+    //this.loaderService.show();
+  }
   // prepareRoute(outlet: RouterOutlet) {
   //
   //   if(outlet.isActivated) {

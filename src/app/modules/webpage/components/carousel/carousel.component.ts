@@ -1,5 +1,7 @@
-import {AfterViewInit, Component, ViewEncapsulation} from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, Output, ViewEncapsulation} from '@angular/core';
 import {DataLoadersService} from "../../../../core/services/utlis/data-loaders.service";
+import { imgPreloader } from "../../../../core/helpers/utils";
+import {LoaderService} from "../../../../core/services/loader/loader.service";
 
 @Component({
   selector: 'studio-carousel',
@@ -9,6 +11,10 @@ import {DataLoadersService} from "../../../../core/services/utlis/data-loaders.s
 
 })
 export class CarouselComponent implements AfterViewInit {
+  @Output() loadingComplete: EventEmitter<any> = new EventEmitter();
+  private photosArray = this.dataLoader.conf.carousel;
+  private imagePreloader = imgPreloader;
+
   // DOM utility functions:
   private el = (sel: string, par: Element) => (par || document).querySelector(sel);
   private els = (sel: string, par?: Element | null) => (par || document).querySelectorAll(sel);
@@ -74,14 +80,14 @@ export class CarouselComponent implements AfterViewInit {
     const elPrev = this.elNew("button", {
       type: "button",
       className: "carousel-prev",
-      innerHTML: "<span>Prev</span>",
+      innerHTML: "<svg viewBox=\"0 0 1024 1024\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M768 903.232l-50.432 56.768L256 512l461.568-448 50.432 56.768L364.928 512z\"/></svg>",
       onclick: () => prev(),
     });
 
     const elNext = this.elNew("button", {
       type: "button",
       className: "carousel-next",
-      innerHTML: "<span>Next</span>",
+      innerHTML: "<svg viewBox=\"0 0 1024 1024\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M256 120.768L306.432 64 768 512l-461.568 448L256 903.232 659.072 512z\" /></svg>",
       onclick: () => next(),
     });
 
@@ -114,7 +120,7 @@ export class CarouselComponent implements AfterViewInit {
     // Init:
 
     // Insert UI elements:
-    elNavigation.append(...elsBtns);
+    // elNavigation.append(...elsBtns);
     elCarousel.append(elPrev, elNext, elNavigation);
 
     // Clone first and last slides (for "infinite" slider effect)
@@ -130,47 +136,54 @@ export class CarouselComponent implements AfterViewInit {
 
   constructor(
     private dataLoader: DataLoadersService,
+    private loaderService: LoaderService
   ) {
     // Object.values(dataLoader.conf.carousel).forEach((item)=> {
   }
 
-  preload = (src: string) => new Promise((resolve, reject) => {
-    const img = new Image()
-    img.onload = () => resolve(src);
-    img.onerror = () => reject(src);
-    img.src = src;
-  });
-  preloadAll = (srcs: string[]) => Promise.all(srcs.map(this.preload))
 
-  async prealoadAllPhotos() {
-    let carousel  = this.dataLoader.conf.carousel;
-    let slider    = document.querySelector('.carousel-slider')!;
 
-    await this.preloadAll(carousel.item.map(item=>item.name))
-      .then((value) => {
+  async ngAfterViewInit() {
+    this.loaderService.show();
 
-        // dodaj zdjecia do karuzeli
-        value.forEach(item=> {
+    await this.imagePreloader.preloadAll(this.photosArray.item.map(el=>el.url))
+      .then(()=> {
+        this.photosArray.item.forEach((item) => {
+          const elImg = this.elNew("img", {src: item.url});
           const elLi = this.elNew("li", {className: "carousel-slide"});
-          const elImg = this.elNew("img", {src: item as string});
-
+          const elDiv = this.elNew("div", {className: "desc", innerHTML: item.desc});
           elLi.append(elImg);
-          slider.append(elLi);
-        });
+          elLi.append(elDiv);
+          document.querySelector('.carousel-slider')!.append(elLi);
+        })
 
-        // uruchom karuzele
-        this.els(".carousel").forEach(this.carousel);
+        this.loaderService.hide();
 
+        // setTimeout(
+        //   ()=>{
+        //     this.loaderService.hide();
+        //   }, 5000
+        // )
       })
-      .catch((err) => {
-        console.error(err);
-      });
-  }
-  ngAfterViewInit() {
-    this.prealoadAllPhotos().then(item=>{
-      // document.querySelector('#bars')!.classList.add('js-hidden');
-      // document.querySelector('.carousel')!.classList.remove('js_not-visible');
-    });
+    ;
+    // this.imagePreloader.preloadAll(this.photosArray.item.map(item=>item.url))
+    //   .then((imgUrl)=> {
+    //     imgUrl.forEach((item) => {
+    //       const elImg = this.elNew("img", {src: item});
+    //       const elLi = this.elNew("li", {className: "carousel-slide"});
 
+    // const elDiv = this.elNew("div", {innerHTML: ""});
+
+    // elLi.append(elelDiv);
+    //       elLi.append(elImg);
+    //       document.querySelector('.carousel-slider')!.append(elLi);
+    //     });
+    //   })
+    //   .then(() => {
+    //     // uruchom karuzele
+    //     this.els(".carousel").forEach(this.carousel);
+    // });
+
+    this.els(".carousel").forEach(this.carousel);
   }
 }

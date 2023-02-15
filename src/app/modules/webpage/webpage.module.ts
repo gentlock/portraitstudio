@@ -15,7 +15,7 @@ import { SharedModule } from "../../core/shared.module";
 import { LoaderComponent } from './components/loader/loader.component';
 // import {HTTP_INTERCEPTORS} from '@angular/common/http';
 // import {LoaderInterceptor} from "../../core/interceptors/loader.interceptor";
-// import { LoaderService } from "../../core/services/loader/loader.service";
+import { LoaderService } from "../../core/services/loader/loader.service";
 
 @NgModule({
   declarations: [
@@ -35,6 +35,8 @@ import { LoaderComponent } from './components/loader/loader.component';
         WebpageRoutingModule,
         SharedModule
     ],
+  providers: [
+  ]
   // providers: [
   //   {
   //     provide: HTTP_INTERCEPTORS,

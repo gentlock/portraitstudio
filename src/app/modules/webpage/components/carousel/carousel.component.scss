@@ -1,9 +1,9 @@
 @use "../../../../../assets/styles/main" as m;
-
 .carousel {
   position: relative;
   font-size: 2.5vmin;
   overflow: hidden;
+  margin: 2em;
 
   &-slider {
     display: flex;
@@ -11,12 +11,29 @@
 
   &-slide {
     flex: 1 0 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 1em;
+
+    @include m.media-query-screen--small {
+      flex-direction: column;
+    }
+    @include m.media-query-screen--middle {
+      flex-direction: row;
+    }
+    @include m.media-query-screen--big {
+      flex-direction: row;
+    }
 
     img {
       display: block;
       width: 100%;
       height: 30em;
       object-fit: cover;
+    }
+
+    .desc {
+      //padding: 2em;
     }
   }
 
@@ -30,9 +47,18 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    padding: 1em;
+    padding: .8em;
     border: none;
     cursor: pointer;
+    outline: 1px solid m.$color-light2;
+    background-color: rgba(m.$color-light2, 0.1);
+
+    svg {
+      fill: currentColor;
+      width: 2em;
+      height: auto;
+      filter: opacity(50%);
+    }
   }
 
   &-prev {

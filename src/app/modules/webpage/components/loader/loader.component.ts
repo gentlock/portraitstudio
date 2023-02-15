@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Output} from '@angular/core';
 import { Subject } from 'rxjs';
-// import {LoaderService} from "../../../../core/services/loader/loader.service";
+import {LoaderService} from "../../../../core/services/loader/loader.service";
 
 @Component({
   selector: 'loader',
@@ -9,10 +9,10 @@ import { Subject } from 'rxjs';
 })
 export class LoaderComponent {
   // @Output() loadingComplete: EventEmitter<any> = new EventEmitter();
-  // isLoading: Subject<boolean> = this.loaderService.isLoading;
+  isLoading: Subject<boolean> = this.loaderService.isLoading;
 
   constructor(
-    // private loaderService: LoaderService
+    private loaderService: LoaderService
   ) {
   }
 

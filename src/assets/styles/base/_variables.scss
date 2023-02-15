@@ -8,15 +8,15 @@ $color-dark: hsl(0, 0%, 13%);
 $color-dark2: lighten($color-dark, 3%);
 
 // shadows
-$shadow-dark: rgba(0, 0, 0, 1)  0px 1px 4px;
+$shadow-dark: rgba(0, 0, 0, .6)  0px 1px 4px;
 
 // navigation bar only
 $navbar-thickness: 3.5em;
 $navbar-font-size: 1em;
 $navbar-bg-color: $color-dark;
-$navbar-svg-color: $color-light;
-$navbar-icons-padding: .5em;
-$navbar-tab-raised-color: lighten($navbar-bg-color, 8%);
+$navbar-svg-color: $color-light2;
+$navbar-icons-padding: .6em;
+$navbar-tab-raised-color: lighten($navbar-bg-color, 1%);
 $navbar-section-padding: .5em;
 $navbar-logo-width: 2em;
 $navbar-icons-width: 1.2em;
