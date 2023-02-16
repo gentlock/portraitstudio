@@ -5,14 +5,44 @@
     "database": "fotohub"
   },
     "carousel": {
-      "dir": "/assets/images/carousel/",
+      "dir": "/assets/images/carousel/istockphoto-1157700666-1024x1024.jpg",
       "item": [
-        { "url": "https://via.placeholder.com/800x350/0bf?text=image1", "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing."},
-        { "url": "https://via.placeholder.com/800x350/fb0?text=image2", "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing."},
-        { "url": "https://via.placeholder.com/800x350/b0f?text=image3", "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing."},
-        { "url": "https://via.placeholder.com/800x350/0bf?text=image4", "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing."},
-        { "url": "https://via.placeholder.com/800x350/0fb?text=image5", "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing."},
-        { "url": "https://via.placeholder.com/800x350/f0b?text=image6", "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing."}
+        {
+          "url": "/assets/images/carousel/istockphoto-1281508668-1024x1024.jpg",
+          "title": "tytul 1",
+          "subtitle": "Lorem ipsum dolor",
+          "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing. Lorem ipsum dolor sit amet, consectetur adipisicing. Lorem ipsum dolor sit amet, consectetur adipisicing."
+        },
+        {
+          "url": "/assets/images/carousel/istockphoto-1338740162-1024x1024.jpg",
+          "title": "tytul 2",
+          "subtitle": "Lorem ipsum dolor",
+          "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing."
+        },
+        {
+          "url": "/assets/images/carousel/istockphoto-1344306219-1024x1024.jpg",
+          "title": "tytul 3",
+          "subtitle": "Lorem ipsum dolor",
+          "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing."
+        },
+        {
+          "url": "/assets/images/carousel/istockphoto-1347653184-1024x1024.jpg",
+          "title": "tytul 4",
+          "subtitle": "Lorem ipsum dolor",
+          "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing."
+        },
+        {
+          "url": "/assets/images/carousel/istockphoto-1367631464-1024x1024.jpg",
+          "title": "tytul 5",
+          "subtitle": "Lorem ipsum dolor",
+          "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing."
+        },
+        {
+          "url": "/assets/images/carousel/istockphoto-1371896666-1024x1024.jpg",
+          "title": "tytul 6",
+          "subtitle": "Lorem ipsum dolor",
+          "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing."
+        }
       ]
     }
 }

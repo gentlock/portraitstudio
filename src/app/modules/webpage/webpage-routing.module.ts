@@ -5,10 +5,14 @@ import {AboutMeComponent} from "./pages/about-me/about-me.component";
 import {FaqComponent} from "./pages/faq/faq.component";
 import {AlbumsComponent} from "./pages/albums/albums.component";
 import {ContactComponent} from "./pages/contact/contact.component";
+import {MyservicesComponent} from "./pages/myservices/myservices.component";
 
 const routes: Routes = [
   {
     path: "", component: HomepageComponent
+  },
+  {
+    path: "myservices", component: MyservicesComponent
   },
   {
     path: "aboutme", component: AboutMeComponent

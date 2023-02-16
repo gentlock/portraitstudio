@@ -6,7 +6,7 @@ import {
   query,
 } from '@angular/animations';
 
-const FADDING_EFFECT = '0.2s';
+const DURATION = '0.3s';
 export const fadeAnimation = trigger('fadeAnimation', [
   transition('* => *', [
     query(':enter', [style({ opacity: 0, position: 'absolute' })], {
@@ -16,7 +16,7 @@ export const fadeAnimation = trigger('fadeAnimation', [
       ':leave',
       [
         style({ opacity: 1 }),
-        animate(FADDING_EFFECT, style({ opacity: 0, position: 'absolute' })),
+        animate(DURATION, style({ opacity: 0, position: 'absolute' })),
       ],
       { optional: true }
     ),
@@ -24,7 +24,7 @@ export const fadeAnimation = trigger('fadeAnimation', [
       ':enter',
       [
         style({ opacity: 0 }),
-        animate(FADDING_EFFECT, style({ opacity: 1, position: 'relative' })),
+        animate(DURATION, style({ opacity: 1, position: 'relative' })),
       ],
       { optional: true }
     ),

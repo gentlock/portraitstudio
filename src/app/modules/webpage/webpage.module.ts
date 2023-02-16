@@ -16,6 +16,8 @@ import { LoaderComponent } from './components/loader/loader.component';
 // import {HTTP_INTERCEPTORS} from '@angular/common/http';
 // import {LoaderInterceptor} from "../../core/interceptors/loader.interceptor";
 import { LoaderService } from "../../core/services/loader/loader.service";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { MyservicesComponent } from './pages/myservices/myservices.component';
 
 @NgModule({
   declarations: [
@@ -29,11 +31,14 @@ import { LoaderService } from "../../core/services/loader/loader.service";
     CarouselComponent,
     HomepageComponent,
     LoaderComponent,
+    MyservicesComponent,
   ],
     imports: [
         CommonModule,
         WebpageRoutingModule,
-        SharedModule
+        SharedModule,
+        FormsModule,
+        ReactiveFormsModule
     ],
   providers: [
   ]

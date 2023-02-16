@@ -1,6 +1,7 @@
 @use  "../utils/mixins" as mix ;
 @use  "variables" as var;
 
+
 article {
      flex-grow: 1;
      min-height: 100%;
@@ -11,17 +12,17 @@ article {
 
      main {
        flex-grow: 1;
-       color: white;
 
        .basic-grid {
          display: grid;
          width: 100%;
          padding: var.$main-grid-padding;
          gap: var.$main-grid-gap;
-         grid-template-rows: auto;
+         row-gap: var.$main-grid-row-gap;
+         //grid-template-rows: auto;
          justify-content: center;
          align-items: center;
-         //grid-template-rows: repeat(6, minmax(min-content, max-content));
+         grid-template-rows: repeat(auto-fill, auto);
 
          @include mix.media-query-screen--small {
            grid-template-columns: repeat(4,  minmax(0, 1fr));
@@ -37,5 +38,6 @@ article {
 
      footer {
        flex-shrink: 0;
+       background-color: #1c69d3;
      }
  }

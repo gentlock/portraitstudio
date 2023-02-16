@@ -1,19 +1,26 @@
-@use "../../../../../assets/styles/base/variables" as var;
-@use "../../../../../assets/styles/utils/mixins" as mix;
+@use "../../../../../assets/styles/main" as m;
 
 article {
-  background-color: var.$color-dark;
+  transition: margin-top 250ms;
 
-  @include mix.media-query-screen--small {
-    margin-left: var.$navbar-thickness;
+  main {
+    background-color: m.$color-dark;
   }
 
-  @include mix.media-query-screen--middle {
-    margin-left: var.$navbar-thickness;
+  @include m.media-query-screen--small {
+    margin-left: m.$navbar-thickness;
   }
 
-  @include mix.media-query-screen--big {
+  @include m.media-query-screen--middle {
+    margin-left: m.$navbar-thickness;
+  }
+
+  @include m.media-query-screen--big {
     margin-left: 0;
-    margin-top: var.$navbar-thickness;
+    margin-top: m.$navbar-thickness;
+
+    &.adjust-thickness {
+      margin-top: m.$navbar-extra-thickness;
+    }
   }
 }

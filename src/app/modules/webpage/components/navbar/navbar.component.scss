@@ -30,12 +30,14 @@
   font-size: m.$color-dark;
   background-color: m.$navbar-bg-color;
   box-shadow: m.$shadow-dark;
+  width: m.$navbar-thickness;
+  padding: 1em 0 1em 0;
 
   &>div { padding: m.$navbar-section-padding; }
 
   // wartosc dla pionowego paska
   height: 100%;
-  width: m.$navbar-thickness;
+
   top: 0;
   left: 0;
   flex-direction: column;
@@ -105,11 +107,20 @@
   }
 
   @include m.media-query-screen--big {
-    height: m.$navbar-thickness;
+
+    &.shrink {
+      box-shadow: m.$shadow-dark;
+      height: m.$navbar-thickness;
+    }
+
+    box-shadow: none;
+    height: m.$navbar-extra-thickness;
+    transition: all 250ms;
     width: 100%;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    padding: 0 1em 0 1em;
 
     .navbar-tabgroup--menu {
       &>a.tab {

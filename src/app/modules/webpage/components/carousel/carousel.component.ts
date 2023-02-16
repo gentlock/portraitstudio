@@ -141,8 +141,6 @@ export class CarouselComponent implements AfterViewInit {
     // Object.values(dataLoader.conf.carousel).forEach((item)=> {
   }
 
-
-
   async ngAfterViewInit() {
     this.loaderService.show();
 
@@ -150,20 +148,24 @@ export class CarouselComponent implements AfterViewInit {
       .then(()=> {
         this.photosArray.item.forEach((item) => {
           const elImg = this.elNew("img", {src: item.url});
-          const elLi = this.elNew("li", {className: "carousel-slide"});
-          const elDiv = this.elNew("div", {className: "desc", innerHTML: item.desc});
-          elLi.append(elImg);
+          const elLi  = this.elNew("li", {className: "carousel-slide"});
+
+          const elDivImg        = this.elNew("div", {className: "img-container"});
+          const elDiv           = this.elNew("div", {className: "content"});
+          const elSpanTitle     = this.elNew("div", {className: "title", innerHTML: item.title});
+          const elSpanSubtitle  = this.elNew("div", {className: "subtitle", innerHTML: item.subtitle});
+          const elSpanDesc      = this.elNew("div", {className: "desc", innerHTML: item.desc});
+          elDiv.append(elSpanTitle);
+          elDiv.append(elSpanSubtitle);
+          elDiv.append(elSpanDesc);
+          elDivImg.append(elImg);
+
+          elLi.append(elDivImg);
           elLi.append(elDiv);
           document.querySelector('.carousel-slider')!.append(elLi);
         })
 
-        this.loaderService.hide();
-
-        // setTimeout(
-        //   ()=>{
-        //     this.loaderService.hide();
-        //   }, 5000
-        // )
+        // this.loaderService.hide();
       })
     ;
     // this.imagePreloader.preloadAll(this.photosArray.item.map(item=>item.url))

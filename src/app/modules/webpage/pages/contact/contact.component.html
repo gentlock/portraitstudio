@@ -1,1 +1,53 @@
-<p>contact works!</p>
+<div class="basic-grid">
+  <div class="cell-header text-center">
+    <span class="text-color-light2 text-4xl">Contact Me</span>
+  </div>
+      <div class="cell-desc space-y-3 p-2">
+        <p class="text-color-light2 text-xl font-SourceSansPro-SemiBold">Pozo Photography</p>
+        <p class="text-left text-color-light3 text-md font-SourceSansPro-Regular">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid at corporis est illo labore minima nesciunt numquam quas quasi quidem, reprehenderit rerum velit veniam. Ad culpa deleniti deserunt excepturi, neque pariatur rerum sint totam voluptatem voluptatibus! Dignissimos doloremque facere ipsam maiores neque nesciunt quis repellendus.
+        </p>
+      </div>
+
+      <div class="cell-contact p-2">
+        <ul class="flex flex-col">
+          <li class="text-color-light2 text-xl font-SourceSansPro-SemiBold">Phone</li>
+          <li class="text-left text-color-light3 text-md font-SourceSansPro-Regular">+1 650-333-0000</li>
+
+          <li class="mt-2 text-color-light2 text-xl font-SourceSansPro-SemiBold">Email</li>
+          <li class="text-left text-color-light3 text-md font-SourceSansPro-Regular">photography@pozo.com</li>
+
+          <li class="mt-2 text-color-light2 text-xl font-SourceSansPro-SemiBold">Address</li>
+          <li class="text-left text-color-light3 text-md font-SourceSansPro-Regular">340 North First Street, San Jose, CA 95112, US.</li>
+        </ul>
+      </div>
+
+      <div class="cell-contact-form space-y-3 p-2">
+        <p class="text-color-light2 text-xl font-SourceSansPro-SemiBold">Drop a line</p>
+          <form #contactForm [formGroup]="cntFormModel"  class="flex flex-col space-y-5">
+            <div>
+              <input placeholder="Name*" class="w-full block" type="text" formControlName="name" name="name" value=""/>
+              <span class="text-xs text-red-400" *ngIf="isFieldValid('name')">* wpis swoje imie</span>
+            </div>
+
+            <div>
+              <input placeholder="Email*"  class="w-full block" type="text" formControlName="email" name="email" value=""/>
+              <span class="text-xs text-red-400"  *ngIf="isFieldValid('email')">* wpis poprawny adres email</span>
+            </div>
+
+            <div>
+              <input placeholder="Subject*"  class="w-full block" type="text" formControlName="subject" name="subject" value=""/>
+              <span class="text-xs text-red-400"  *ngIf="isFieldValid('subject')">* wpis temat wiadomości</span>
+            </div>
+
+            <div>
+              <textarea placeholder="Message*"  class="w-full block" rows="4" formControlName="message" name="message"></textarea>
+              <span class="text-xs text-red-400"  *ngIf="isFieldValid('message')">* wpis treść wiadomości</span>
+            </div>
+
+            <div class="self-center">
+              <button (click)="ngOnSubmit($event)" class="button-3" role="button">Send Message</button>
+            </div>
+          </form>
+      </div>
+</div>

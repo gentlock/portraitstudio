@@ -1,6 +1,7 @@
-<loader></loader>
+<!--<loader></loader>-->
 <webpage-navbar></webpage-navbar>
-  <article>
+  <article #article>
+    <div class="pixelToWatch" style="visibility: hidden"></div>
     <main role="main" [@fadeAnimation]="outlet.isActivated ? outlet.activatedRoute : ''">
       <router-outlet  #outlet="outlet"></router-outlet>
     </main>

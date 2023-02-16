@@ -2,27 +2,32 @@
 $color-light: hsl(36, 92%, 76%);
 $color-light1: hsl(37, 57%, 69%);
 $color-light2: hsl(4, 32%, 46%);
+$color-light3: hsl(0, 0%, 60%);
+$color-light4: hsl(11, 73%, 97%);
 
 // dark colors
-$color-dark: hsl(0, 0%, 13%);
+$color-dark: hsl(0, 0%, 10%);
 $color-dark2: lighten($color-dark, 3%);
+$color-dark3: hsl(202, 30%, 26%);
 
 // shadows
-$shadow-dark: rgba(0, 0, 0, .6)  0px 1px 4px;
+$shadow-dark: 9px 7px 31px -10px rgba(0, 0, 0, .6);
 
 // navigation bar only
-$navbar-thickness: 3.5em;
+$navbar-thickness: 4em;
+$navbar-extra-thickness: 6em;
 $navbar-font-size: 1em;
 $navbar-bg-color: $color-dark;
 $navbar-svg-color: $color-light2;
 $navbar-icons-padding: .6em;
 $navbar-tab-raised-color: lighten($navbar-bg-color, 1%);
 $navbar-section-padding: .5em;
-$navbar-logo-width: 2em;
+$navbar-logo-width: 2.8em;
 $navbar-icons-width: 1.2em;
 
 
 
 // main grip
 $main-grid-gap: 1em;
-$main-grid-padding: 1em
+$main-grid-padding: 1em;
+$main-grid-row-gap: 3em;

@@ -6,6 +6,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { AdminEntryPointComponent } from './components/admin-entry-point/admin-entry-point.component';
 import { HomepageComponent} from "./pages/homepage/homepage.component";
 import { AlbumsComponent } from './pages/albums/albums.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -16,7 +17,9 @@ import { AlbumsComponent } from './pages/albums/albums.component';
   ],
   imports: [
     CommonModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class AdminModule { }

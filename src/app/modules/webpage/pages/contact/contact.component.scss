@@ -1,0 +1,55 @@
+@use "../../../../../assets/styles/main" as m;
+
+.basic-grid {
+  align-items: start;
+
+  .cell-header {
+    grid-column: 1 / -1;
+    grid-row: 1 / 2;
+  }
+
+  @include m.media-query-screen--small {
+    .cell-desc{
+      grid-column: 1 / -1;
+      grid-row: 2 / 3;
+    }
+    .cell-contact {
+      grid-column: 1 / -1;
+      grid-row: 3 / 4;
+    }
+    .cell-contact-form {
+      grid-column: 1 / -1;
+      grid-row: 4 / 5;
+    }
+  }
+
+  @include m.media-query-screen--middle {
+    .cell-desc{
+      grid-column: 1 / -1;
+      grid-row: 2 / 3;
+    }
+    .cell-contact {
+      grid-column: 1 / -1;
+      grid-row: 3 / 4;
+    }
+    .cell-contact-form {
+      grid-column: 1 / -1;
+      grid-row: 4 / 5;
+    }
+  }
+
+  @include m.media-query-screen--big {
+    .cell-desc{
+      grid-column: 1 / 5;
+      grid-row: 2 / 3;
+    }
+    .cell-contact {
+      grid-column: 5 / 9;
+      grid-row: 2 / 3;
+    }
+    .cell-contact-form {
+      grid-column: 9 / -1;
+      grid-row: 2 / 3;
+    }
+  }
+}
