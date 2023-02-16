@@ -1,4 +1,5 @@
 import {
+  AfterViewInit,
   Directive,
   Input,
   TemplateRef,
@@ -8,22 +9,26 @@ import {
 @Directive({
   selector: '[ngIfAnimation]'
 })
-export class TabmenuAnimationDirective {
+export class TabmenuAnimationDirective implements AfterViewInit {
   private value: any;
   private hasView = false;
 
   constructor(
     private view: ViewContainerRef,
-    private tmpl: TemplateRef<any>
   ) { }
 
-  @Input() set ngIfAnimation(val: any) {
+  ngAfterViewInit() {
+
+  }
+
+  @Input() set ngIfAnimation(val: TemplateRef<any>) {
+
     if (!this.hasView) {
-      this.view.createEmbeddedView(this.tmpl);
+      this.view.createEmbeddedView(val);
       this.hasView = true;
     } else if (val !== this.value) {
       this.view.clear();
-      this.view.createEmbeddedView(this.tmpl);
+      this.view.createEmbeddedView(val);
       this.value = val;
     }
   }

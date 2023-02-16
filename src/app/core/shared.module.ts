@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-// import { TabmenuAnimationDirective } from './directives/tabmenu-animation.directive';
+import { TabmenuAnimationDirective } from './directives/tabmenu-animation.directive';
 //import { DataLoadersService } from "./services/utlis/data-loaders.service";
 // import { ErrorsHandlerService } from "./services/errors/errors-handler.service";
 // import { MailHandlerService } from "./services/mailing/mail-handler.service";
@@ -18,13 +18,13 @@ import { CommonModule } from '@angular/common';
     // DataLoadersService,
     // ErrorsHandlerService
 
-    // TabmenuAnimationDirective
+    TabmenuAnimationDirective
   ],
   imports: [
     CommonModule,
   ],
   exports: [
-    // TabmenuAnimationDirective
+    TabmenuAnimationDirective
   ]
 })
 export class SharedModule {

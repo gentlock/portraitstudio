@@ -213,7 +213,23 @@ textarea:focus, input:focus {
   grid-column: 1/-1;
   grid-row: 1/2;
 }
+.basic-grid .cell-tabs {
+  grid-column: 1/-1;
+  grid-row: 2/3;
+}
 .basic-grid .cell-box {
+  grid-column: 1/-1;
+  grid-row: 3/4;
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-template-rows: auto;
+  gap: 0;
+}
+.basic-grid .cell-box .cell-box-sub--tabs {
+  grid-column: 1/-1;
+  grid-row: 1/2;
+}
+.basic-grid .cell-box .cell-box-sub--content {
   grid-column: 1/-1;
   grid-row: 2/3;
   display: grid;
@@ -222,25 +238,22 @@ textarea:focus, input:focus {
   grid-auto-flow: row dense;
   gap: 0;
 }
-.basic-grid .cell-box div:nth-child(n+3) {
-  padding: var(--cards-padding);
-}
-.basic-grid .cell-box .tabsgroup {
+.basic-grid .cell-box .cell-box-sub--content .topic {
   grid-column: 1/-1;
   grid-row: 1/2;
 }
-.basic-grid .cell-box .topic {
-  grid-column: 1/-1;
-  grid-row: 2/3;
+.basic-grid .cell-box .cell-box-sub--content div:nth-child(n+2) {
+  padding: var(--cards-padding);
 }
-.basic-grid ul.tabsgroup li.tab {
+
+ul.cell-box-sub--tabs li.tab {
   padding: 0 0.4em 0 0.4em;
 }
-.basic-grid ul.tabsgroup li.tab.active {
+ul.cell-box-sub--tabs li.tab.active {
   background-color: hsl(33deg, 100%, 96%);
   border-bottom: 1px solid #212121;
 }
-.basic-grid ul.tabsgroup li.tab a {
+ul.cell-box-sub--tabs li.tab a {
   width: 100%;
   height: 100%;
   display: block;
@@ -249,32 +262,33 @@ textarea:focus, input:focus {
   font-size: small;
   padding: 0.5em;
 }
+
 @media screen and (max-width: 767px) {
-  .basic-grid div:nth-child(n+3) {
+  .cell-box-sub--content div:nth-child(n+2) {
     grid-column: 1/-1;
     grid-row: span 1;
   }
 }
 @media screen and (min-width: 768px) and (max-width: 1023px) {
-  .basic-grid div:nth-child(n+3) {
+  .cell-box-sub--content div:nth-child(n+2) {
     grid-column: 1/5;
     grid-row: span 1;
   }
-  .basic-grid div:nth-child(2n+3) {
+  .cell-box-sub--content div:nth-child(2n+2) {
     grid-column: 5/9;
     grid-row: span 1;
   }
 }
 @media screen and (min-width: 1024px) {
-  .basic-grid .cell-box div:nth-child(n+3) {
+  .cell-box-sub--content div:nth-child(n+2) {
     grid-column: 1/5;
     grid-row: span 1;
   }
-  .basic-grid .cell-box div:nth-child(2n+3) {
+  .cell-box-sub--content div:nth-child(2n+2) {
     grid-column: 5/9;
     grid-row: span 1;
   }
-  .basic-grid .cell-box div:nth-child(3n+3) {
+  .cell-box-sub--content div:nth-child(3n+2) {
     grid-column: 9/-1;
     grid-row: span 1;
   }

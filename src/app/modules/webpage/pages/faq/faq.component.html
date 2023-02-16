@@ -2,35 +2,34 @@
   <div class="cell-header text-center">
     <span class="text-color-light2 text-4xl">Faq</span>
   </div>
-        <!-- subgrid -->
-        <div class="cell-box p-6">
 
-          <ul #navTabs class=" bg-color-light6  tabsgroup flex max-sm:flex-col  flex-nowrap">
-            <li class="tab active" data-anchor="booking">
-              <a href="#">booking</a>
-            </li>
-            <li class="tab" data-anchor="photoshots">
-              <a href="#">photoshots</a>
-            </li>
-            <li class="tab" data-anchor="follow_up">
-              <a href="#">follow-up</a>
-            </li>
-            <li class="tab" data-anchor="changes">
-              <a  href="#">changes</a>
-            </li>
-          </ul>
-          <ng-container  #viewcontainer [ngTemplateOutlet]="changes" class="content-wrapper"></ng-container>
-
-<!--          <div [@div]="triggerme" *ngIfAnimation="changes" ></div>-->
-        </div>
-        <!-- subgrid -->
+  <!-- subgrid -->
+  <div class="cell-box">
+    <ul #navTabs class="cell-box-sub--tabs bg-color-light6  flex max-sm:flex-col  flex-nowrap">
+      <li class="tab active" data-anchor="booking">
+        <a href="#">booking</a>
+      </li>
+      <li class="tab" data-anchor="photoshots">
+        <a href="#">photoshots</a>
+      </li>
+      <li class="tab" data-anchor="follow_up">
+        <a href="#">follow-up</a>
+      </li>
+      <li class="tab" data-anchor="changes">
+        <a  href="#">changes</a>
+      </li>
+    </ul>
+    <ng-container *ngIfAnimation="object"></ng-container>
+  </div>
+  <!-- subgrid -->
 </div>
 
 <ng-template #booking>
+  <div class="cell-box-sub--content bg-color-light5 " @myAnimation>
   <span class="topic text-xl font-bold pb-7 pt-5 pl-5 bg-color-light5 ">Booking</span>
 
   <!-- card -->
-  <div class="flex flex-col space-y-3 bg-color-light5 ">
+  <div class="flex flex-col space-y-3 ">
     <span class="font-SourceSansPro-SemiBold text-md font-bold">Lorem ipsum dolor sit amet.</span>
     <span class="leading-5 font-SourceSansPro-SemiBold text-md text-color-light3">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam at consectetur cum, cumque harum iste iusto neque omnis quisquam, ratione reiciendis sapiente sint unde, velit voluptatibus? Consequatur odio quo repudiandae!
@@ -39,7 +38,7 @@
   <!-- card -->
 
   <!-- card -->
-  <div class="flex flex-col space-y-3 bg-color-light5 ">
+  <div class="flex flex-col space-y-3 ">
     <span class="font-SourceSansPro-SemiBold text-md font-bold">Lorem ipsum dolor sit amet.</span>
     <span class="leading-5 font-SourceSansPro-SemiBold text-md text-color-light3">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam at consectetur cum, cumque harum iste iusto neque omnis quisquam, ratione reiciendis sapiente sint unde, velit voluptatibus? Consequatur odio quo repudiandae!
@@ -48,7 +47,7 @@
   <!-- card -->
 
   <!-- card -->
-  <div class="flex flex-col space-y-3 bg-color-light5 ">
+  <div class="flex flex-col space-y-3 ">
     <span class="font-SourceSansPro-SemiBold text-md font-bold">Lorem ipsum dolor sit amet.</span>
     <span class="leading-5 font-SourceSansPro-SemiBold text-md text-color-light3">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam at consectetur cum, cumque harum iste iusto neque omnis quisquam, ratione reiciendis sapiente sint unde, velit voluptatibus? Consequatur odio quo repudiandae!
@@ -57,7 +56,7 @@
   <!-- card -->
 
   <!-- card -->
-  <div class="flex flex-col space-y-3 bg-color-light5 ">
+  <div class="flex flex-col space-y-3 ">
     <span class="font-SourceSansPro-SemiBold text-md font-bold">Lorem ipsum dolor sit amet.</span>
     <span class="leading-5 font-SourceSansPro-SemiBold text-md text-color-light3">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam at consectetur cum, cumque harum iste iusto neque omnis quisquam, ratione reiciendis sapiente sint unde, velit voluptatibus? Consequatur odio quo repudiandae!
@@ -66,7 +65,7 @@
   <!-- card -->
 
   <!-- card -->
-  <div class="flex flex-col space-y-3 bg-color-light5 ">
+  <div class="flex flex-col space-y-3 ">
     <span class="font-SourceSansPro-SemiBold text-md font-bold">Lorem ipsum dolor sit amet.</span>
     <span class="leading-5 font-SourceSansPro-SemiBold text-md text-color-light3">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam at consectetur cum, cumque harum iste iusto neque omnis quisquam, ratione reiciendis sapiente sint unde, velit voluptatibus? Consequatur odio quo repudiandae!
@@ -75,20 +74,22 @@
   <!-- card -->
 
   <!-- card -->
-  <div class="flex flex-col space-y-3 bg-color-light5 ">
+  <div class="flex flex-col space-y-3 ">
     <span class="font-SourceSansPro-SemiBold text-md font-bold">Lorem ipsum dolor sit amet.</span>
     <span class="leading-5 font-SourceSansPro-SemiBold text-md text-color-light3">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam at consectetur cum, cumque harum iste iusto neque omnis quisquam, ratione reiciendis sapiente sint unde, velit voluptatibus? Consequatur odio quo repudiandae!
             </span>
   </div>
   <!-- card -->
+  </div>
 </ng-template>
 
 <ng-template #photoshots>
-  <span class="topic text-xl font-bold pb-7 pt-5 pl-5 bg-color-light5 ">Photoshots</span>
+  <div class="cell-box-sub--content bg-color-light5 "  @myAnimation>
+  <span class="topic text-xl font-bold pb-7 pt-5 pl-5">Photoshots</span>
 
   <!-- card -->
-  <div class="flex flex-col space-y-3 bg-color-light5 ">
+  <div class="flex flex-col space-y-3">
     <span class="font-SourceSansPro-SemiBold text-md font-bold">Lorem ipsum dolor sit amet.</span>
     <span class="leading-5 font-SourceSansPro-SemiBold text-md text-color-light3">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam at consectetur cum, cumque harum iste iusto neque omnis quisquam, ratione reiciendis sapiente sint unde, velit voluptatibus? Consequatur odio quo repudiandae!
@@ -97,7 +98,7 @@
   <!-- card -->
 
   <!-- card -->
-  <div class="flex flex-col space-y-3 bg-color-light5 ">
+  <div class="flex flex-col space-y-3">
     <span class="font-SourceSansPro-SemiBold text-md font-bold">Lorem ipsum dolor sit amet.</span>
     <span class="leading-5 font-SourceSansPro-SemiBold text-md text-color-light3">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam at consectetur cum, cumque harum iste iusto neque omnis quisquam, ratione reiciendis sapiente sint unde, velit voluptatibus? Consequatur odio quo repudiandae!
@@ -106,7 +107,7 @@
   <!-- card -->
 
   <!-- card -->
-  <div class="flex flex-col space-y-3 bg-color-light5 ">
+  <div class="flex flex-col space-y-3">
     <span class="font-SourceSansPro-SemiBold text-md font-bold">Lorem ipsum dolor sit amet.</span>
     <span class="leading-5 font-SourceSansPro-SemiBold text-md text-color-light3">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam at consectetur cum, cumque harum iste iusto neque omnis quisquam, ratione reiciendis sapiente sint unde, velit voluptatibus? Consequatur odio quo repudiandae!
@@ -115,7 +116,7 @@
   <!-- card -->
 
   <!-- card -->
-  <div class="flex flex-col space-y-3 bg-color-light5 ">
+  <div class="flex flex-col space-y-3">
     <span class="font-SourceSansPro-SemiBold text-md font-bold">Lorem ipsum dolor sit amet.</span>
     <span class="leading-5 font-SourceSansPro-SemiBold text-md text-color-light3">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam at consectetur cum, cumque harum iste iusto neque omnis quisquam, ratione reiciendis sapiente sint unde, velit voluptatibus? Consequatur odio quo repudiandae!
@@ -124,7 +125,7 @@
   <!-- card -->
 
   <!-- card -->
-  <div class="flex flex-col space-y-3 bg-color-light5 ">
+  <div class="flex flex-col space-y-3">
     <span class="font-SourceSansPro-SemiBold text-md font-bold">Lorem ipsum dolor sit amet.</span>
     <span class="leading-5 font-SourceSansPro-SemiBold text-md text-color-light3">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam at consectetur cum, cumque harum iste iusto neque omnis quisquam, ratione reiciendis sapiente sint unde, velit voluptatibus? Consequatur odio quo repudiandae!
@@ -133,20 +134,23 @@
   <!-- card -->
 
   <!-- card -->
-  <div class="flex flex-col space-y-3 bg-color-light5 ">
+  <div class="flex flex-col space-y-3">
     <span class="font-SourceSansPro-SemiBold text-md font-bold">Lorem ipsum dolor sit amet.</span>
     <span class="leading-5 font-SourceSansPro-SemiBold text-md text-color-light3">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam at consectetur cum, cumque harum iste iusto neque omnis quisquam, ratione reiciendis sapiente sint unde, velit voluptatibus? Consequatur odio quo repudiandae!
             </span>
   </div>
   <!-- card -->
+  </div>
 </ng-template>
 
+
 <ng-template #follow_up>
+  <div class="cell-box-sub--content bg-color-light5 "  @myAnimation >
   <span class="topic text-xl font-bold pb-7 pt-5 pl-5 bg-color-light5 ">Follow up</span>
 
   <!-- card -->
-  <div class="flex flex-col space-y-3 bg-color-light5 ">
+  <div class="flex flex-col space-y-3">
     <span class="font-SourceSansPro-SemiBold text-md font-bold">Lorem ipsum dolor sit amet.</span>
     <span class="leading-5 font-SourceSansPro-SemiBold text-md text-color-light3">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam at consectetur cum, cumque harum iste iusto neque omnis quisquam, ratione reiciendis sapiente sint unde, velit voluptatibus? Consequatur odio quo repudiandae!
@@ -155,7 +159,7 @@
   <!-- card -->
 
   <!-- card -->
-  <div class="flex flex-col space-y-3 bg-color-light5 ">
+  <div class="flex flex-col space-y-3">
     <span class="font-SourceSansPro-SemiBold text-md font-bold">Lorem ipsum dolor sit amet.</span>
     <span class="leading-5 font-SourceSansPro-SemiBold text-md text-color-light3">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam at consectetur cum, cumque harum iste iusto neque omnis quisquam, ratione reiciendis sapiente sint unde, velit voluptatibus? Consequatur odio quo repudiandae!
@@ -164,7 +168,7 @@
   <!-- card -->
 
   <!-- card -->
-  <div class="flex flex-col space-y-3 bg-color-light5 ">
+  <div class="flex flex-col space-y-3">
     <span class="font-SourceSansPro-SemiBold text-md font-bold">Lorem ipsum dolor sit amet.</span>
     <span class="leading-5 font-SourceSansPro-SemiBold text-md text-color-light3">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam at consectetur cum, cumque harum iste iusto neque omnis quisquam, ratione reiciendis sapiente sint unde, velit voluptatibus? Consequatur odio quo repudiandae!
@@ -173,7 +177,7 @@
   <!-- card -->
 
   <!-- card -->
-  <div class="flex flex-col space-y-3 bg-color-light5 ">
+  <div class="flex flex-col space-y-3">
     <span class="font-SourceSansPro-SemiBold text-md font-bold">Lorem ipsum dolor sit amet.</span>
     <span class="leading-5 font-SourceSansPro-SemiBold text-md text-color-light3">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam at consectetur cum, cumque harum iste iusto neque omnis quisquam, ratione reiciendis sapiente sint unde, velit voluptatibus? Consequatur odio quo repudiandae!
@@ -182,7 +186,7 @@
   <!-- card -->
 
   <!-- card -->
-  <div class="flex flex-col space-y-3 bg-color-light5 ">
+  <div class="flex flex-col space-y-3">
     <span class="font-SourceSansPro-SemiBold text-md font-bold">Lorem ipsum dolor sit amet.</span>
     <span class="leading-5 font-SourceSansPro-SemiBold text-md text-color-light3">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam at consectetur cum, cumque harum iste iusto neque omnis quisquam, ratione reiciendis sapiente sint unde, velit voluptatibus? Consequatur odio quo repudiandae!
@@ -191,21 +195,25 @@
   <!-- card -->
 
   <!-- card -->
-  <div class="flex flex-col space-y-3 bg-color-light5 ">
+  <div class="flex flex-col space-y-3">
     <span class="font-SourceSansPro-SemiBold text-md font-bold">Lorem ipsum dolor sit amet.</span>
     <span class="leading-5 font-SourceSansPro-SemiBold text-md text-color-light3">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam at consectetur cum, cumque harum iste iusto neque omnis quisquam, ratione reiciendis sapiente sint unde, velit voluptatibus? Consequatur odio quo repudiandae!
             </span>
   </div>
   <!-- card -->
+</div>
 </ng-template>
 
+
+
 <ng-template #changes>
+  <div class="cell-box-sub--content bg-color-light5 "  @myAnimation >
   <span class="topic text-xl font-bold pb-7 pt-5 pl-5 bg-color-light5 ">Changes</span>
 
   <!-- card -->
-  <div class="flex flex-col space-y-3 bg-color-light5 ">
-    <span class="font-SourceSansPro-SemiBold text-md font-bold">Lorem ipsum dolor sit amet.</span>
+  <div class="flex flex-col space-y-3">
+    <span class="font-SourceSansPro-SemiBold text-md font-bold">Lorem ipsum dolor sit amet. 1</span>
     <span class="leading-5 font-SourceSansPro-SemiBold text-md text-color-light3">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam at consectetur cum, cumque harum iste iusto neque omnis quisquam, ratione reiciendis sapiente sint unde, velit voluptatibus? Consequatur odio quo repudiandae!
             </span>
@@ -213,8 +221,8 @@
   <!-- card -->
 
   <!-- card -->
-  <div class="flex flex-col space-y-3 bg-color-light5 ">
-    <span class="font-SourceSansPro-SemiBold text-md font-bold">Lorem ipsum dolor sit amet.</span>
+  <div class="flex flex-col space-y-3">
+    <span class="font-SourceSansPro-SemiBold text-md font-bold">Lorem ipsum dolor sit amet . 2</span>
     <span class="leading-5 font-SourceSansPro-SemiBold text-md text-color-light3">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam at consectetur cum, cumque harum iste iusto neque omnis quisquam, ratione reiciendis sapiente sint unde, velit voluptatibus? Consequatur odio quo repudiandae!
             </span>
@@ -222,8 +230,8 @@
   <!-- card -->
 
   <!-- card -->
-  <div class="flex flex-col space-y-3 bg-color-light5 ">
-    <span class="font-SourceSansPro-SemiBold text-md font-bold">Lorem ipsum dolor sit amet.</span>
+  <div class="flex flex-col space-y-3">
+    <span class="font-SourceSansPro-SemiBold text-md font-bold">Lorem ipsum dolor sit amet. 3</span>
     <span class="leading-5 font-SourceSansPro-SemiBold text-md text-color-light3">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam at consectetur cum, cumque harum iste iusto neque omnis quisquam, ratione reiciendis sapiente sint unde, velit voluptatibus? Consequatur odio quo repudiandae!
             </span>
@@ -231,8 +239,8 @@
   <!-- card -->
 
   <!-- card -->
-  <div class="flex flex-col space-y-3 bg-color-light5 ">
-    <span class="font-SourceSansPro-SemiBold text-md font-bold">Lorem ipsum dolor sit amet.</span>
+  <div class="flex flex-col space-y-3">
+    <span class="font-SourceSansPro-SemiBold text-md font-bold">Lorem ipsum dolor sit amet. 4 </span>
     <span class="leading-5 font-SourceSansPro-SemiBold text-md text-color-light3">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam at consectetur cum, cumque harum iste iusto neque omnis quisquam, ratione reiciendis sapiente sint unde, velit voluptatibus? Consequatur odio quo repudiandae!
             </span>
@@ -240,8 +248,8 @@
   <!-- card -->
 
   <!-- card -->
-  <div class="flex flex-col space-y-3 bg-color-light5 ">
-    <span class="font-SourceSansPro-SemiBold text-md font-bold">Lorem ipsum dolor sit amet.</span>
+  <div class="flex flex-col space-y-3">
+    <span class="font-SourceSansPro-SemiBold text-md font-bold">Lorem ipsum dolor sit amet. 5</span>
     <span class="leading-5 font-SourceSansPro-SemiBold text-md text-color-light3">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam at consectetur cum, cumque harum iste iusto neque omnis quisquam, ratione reiciendis sapiente sint unde, velit voluptatibus? Consequatur odio quo repudiandae!
             </span>
@@ -249,11 +257,12 @@
   <!-- card -->
 
   <!-- card -->
-  <div class="flex flex-col space-y-3 bg-color-light5 ">
-    <span class="font-SourceSansPro-SemiBold text-md font-bold">Lorem ipsum dolor sit amet.</span>
+  <div class="flex flex-col space-y-3">
+    <span class="font-SourceSansPro-SemiBold text-md font-bold">Lorem ipsum dolor sit amet. 6</span>
     <span class="leading-5 font-SourceSansPro-SemiBold text-md text-color-light3">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam at consectetur cum, cumque harum iste iusto neque omnis quisquam, ratione reiciendis sapiente sint unde, velit voluptatibus? Consequatur odio quo repudiandae!
             </span>
   </div>
   <!-- card -->
+  </div>
 </ng-template>
