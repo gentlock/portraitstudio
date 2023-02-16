@@ -27,22 +27,22 @@
           <form #contactForm [formGroup]="cntFormModel"  class="flex flex-col space-y-5">
             <div>
               <input placeholder="Name*" class="w-full block" type="text" formControlName="name" name="name" value=""/>
-              <span class="text-xs text-red-400" *ngIf="isFieldValid('name')">* wpis swoje imie</span>
+              <span class="text-xs text-red-400" *ngIf="isFieldValid('name')">wpis swoje imie</span>
             </div>
 
             <div>
               <input placeholder="Email*"  class="w-full block" type="text" formControlName="email" name="email" value=""/>
-              <span class="text-xs text-red-400"  *ngIf="isFieldValid('email')">* wpis poprawny adres email</span>
+              <span class="text-xs text-red-400"  *ngIf="isFieldValid('email')">wpis poprawny adres email</span>
             </div>
 
             <div>
               <input placeholder="Subject*"  class="w-full block" type="text" formControlName="subject" name="subject" value=""/>
-              <span class="text-xs text-red-400"  *ngIf="isFieldValid('subject')">* wpis temat wiadomości</span>
+              <span class="text-xs text-red-400"  *ngIf="isFieldValid('subject')">wpis temat wiadomości</span>
             </div>
 
             <div>
               <textarea placeholder="Message*"  class="w-full block" rows="4" formControlName="message" name="message"></textarea>
-              <span class="text-xs text-red-400"  *ngIf="isFieldValid('message')">* wpis treść wiadomości</span>
+              <span class="text-xs text-red-400"  *ngIf="isFieldValid('message')">wpis treść wiadomości</span>
             </div>
 
             <div class="self-center">
