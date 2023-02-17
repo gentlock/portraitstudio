@@ -1,1 +1,10 @@
-@use "../../../../../assets/styles/main";
+@use "../../../../../assets/styles/main" as m;
+
+.basic-grid {
+  --cards-padding: 1.2em;
+
+  .cell-header {
+    grid-column: 1 / -1;
+    grid-row: 1 / 2;
+  }
+}

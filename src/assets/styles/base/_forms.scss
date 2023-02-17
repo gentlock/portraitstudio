@@ -1,6 +1,26 @@
 @use "variables" as var;
 
-textarea, input {
+input[type='button'] {
+  font-size: small;
+  text-transform: uppercase;
+  padding: .3em 1.2em .3em 1.2em;
+  color: white;
+  border: 1px solid var.$color-light2;
+  background-color: var.$color-light7;
+  font-family: 'SourceSansPro-Regular', serif;
+  box-shadow: 5px 5px 23px -11px rgba(184, 184, 184, 1);
+  cursor: pointer;
+
+  &.gray {
+    background-color: black;
+  }
+
+  &:active {
+    box-shadow: none;
+  }
+}
+
+textarea, input:not([type='button']) {
   background-color: transparent;
   font-family: 'font-SourceSansPro-SemiBold', sans-serif;
   font-size: small;
@@ -24,53 +44,53 @@ textarea, input {
 
 
 /* CSS */
-.button-3 {
-  appearance: none;
-  background-color: var.$color-light2;
-  border: 1px solid darken(var.$color-light2, 50%);
-  border-radius: 6px;
-  box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
-  box-sizing: border-box;
-  color: #fff;
-  cursor: pointer;
-  display: inline-block;
-  font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 20px;
-  padding: 9px 19px;
-  position: relative;
-  text-align: center;
-  text-decoration: none;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  vertical-align: middle;
-  white-space: nowrap;
-}
-
-.button-3:focus:not(:focus-visible):not(.focus-visible) {
-  box-shadow: none;
-  outline: none;
-}
-
-.button-3:hover {
-  background-color: lighten(var.$color-light2, 1%);
-}
-
-.button-3:focus {
-  box-shadow: rgba(46, 164, 79, .4) 0 0 0 3px;
-  outline: none;
-}
-
-.button-3:disabled {
-  background-color: #94d3a2;
-  border-color: rgba(27, 31, 35, .1);
-  color: rgba(255, 255, 255, .8);
-  cursor: default;
-}
-
-.button-3:active {
-  background-color: lighten(var.$color-light2, 1%);
-  box-shadow: rgba(20, 70, 32, .2) 0 1px 0 inset;
-}
+//.button-3 {
+//  appearance: none;
+//  background-color: var.$color-light2;
+//  border: 1px solid darken(var.$color-light2, 50%);
+//  border-radius: 6px;
+//  box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+//  box-sizing: border-box;
+//  color: #fff;
+//  cursor: pointer;
+//  display: inline-block;
+//  font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+//  font-size: 14px;
+//  font-weight: 600;
+//  line-height: 20px;
+//  padding: 9px 19px;
+//  position: relative;
+//  text-align: center;
+//  text-decoration: none;
+//  user-select: none;
+//  -webkit-user-select: none;
+//  touch-action: manipulation;
+//  vertical-align: middle;
+//  white-space: nowrap;
+//}
+//
+//.button-3:focus:not(:focus-visible):not(.focus-visible) {
+//  box-shadow: none;
+//  outline: none;
+//}
+//
+//.button-3:hover {
+//  background-color: lighten(var.$color-light2, 1%);
+//}
+//
+//.button-3:focus {
+//  box-shadow: rgba(46, 164, 79, .4) 0 0 0 3px;
+//  outline: none;
+//}
+//
+//.button-3:disabled {
+//  background-color: #94d3a2;
+//  border-color: rgba(27, 31, 35, .1);
+//  color: rgba(255, 255, 255, .8);
+//  cursor: default;
+//}
+//
+//.button-3:active {
+//  background-color: lighten(var.$color-light2, 1%);
+//  box-shadow: rgba(20, 70, 32, .2) 0 1px 0 inset;
+//}

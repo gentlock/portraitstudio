@@ -36,7 +36,6 @@ article main .basic-grid {
 }
 article footer {
   flex-shrink: 0;
-  background-color: #1c69d3;
 }
 
 .bars {
@@ -117,8 +116,20 @@ article footer {
   font-style: normal;
 }
 @font-face {
+  font-family: "SourceSansPro-Light";
+  src: url("../../../assets/fonts/Source_Sans_Pro/SourceSansPro-Light.ttf") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
   font-family: "SourceSansPro-Italic";
   src: url("../../../assets/fonts/Source_Sans_Pro/SourceSansPro-Italic.ttf") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "SourceSansPro-Regular";
+  src: url("../../../assets/fonts/Source_Sans_Pro/SourceSansPro-Regular.ttf") format("woff2");
   font-weight: normal;
   font-style: italic;
 }
@@ -134,7 +145,25 @@ article footer {
   font-weight: normal;
   font-style: normal;
 }
-textarea, input {
+input[type=button] {
+  font-size: small;
+  text-transform: uppercase;
+  padding: 0.3em 1.2em 0.3em 1.2em;
+  color: white;
+  border: 1px solid hsl(4deg, 32%, 46%);
+  background-color: hsl(14deg, 49%, 49%);
+  font-family: "SourceSansPro-Regular", serif;
+  box-shadow: 5px 5px 23px -11px rgb(184, 184, 184);
+  cursor: pointer;
+}
+input[type=button].gray {
+  background-color: black;
+}
+input[type=button]:active {
+  box-shadow: none;
+}
+
+textarea, input:not([type=button]) {
   background-color: transparent;
   font-family: "font-SourceSansPro-SemiBold", sans-serif;
   font-size: small;
@@ -145,67 +174,16 @@ textarea, input {
   padding: 0.5em;
   letter-spacing: 0.1em;
 }
-textarea::placeholder, input::placeholder {
+textarea::placeholder, input:not([type=button])::placeholder {
   color: hsl(0deg, 0%, 60%);
   opacity: 0.4;
 }
-textarea:focus, input:focus {
+textarea:focus, input:not([type=button]):focus {
   outline: none;
   border-color: hsl(4deg, 32%, 46%);
 }
 
 /* CSS */
-.button-3 {
-  appearance: none;
-  background-color: hsl(4deg, 32%, 46%);
-  border: 1px solid black;
-  border-radius: 6px;
-  box-shadow: rgba(27, 31, 35, 0.1) 0 1px 0;
-  box-sizing: border-box;
-  color: #fff;
-  cursor: pointer;
-  display: inline-block;
-  font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 20px;
-  padding: 9px 19px;
-  position: relative;
-  text-align: center;
-  text-decoration: none;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  vertical-align: middle;
-  white-space: nowrap;
-}
-
-.button-3:focus:not(:focus-visible):not(.focus-visible) {
-  box-shadow: none;
-  outline: none;
-}
-
-.button-3:hover {
-  background-color: #9e5751;
-}
-
-.button-3:focus {
-  box-shadow: rgba(46, 164, 79, 0.4) 0 0 0 3px;
-  outline: none;
-}
-
-.button-3:disabled {
-  background-color: #94d3a2;
-  border-color: rgba(27, 31, 35, 0.1);
-  color: rgba(255, 255, 255, 0.8);
-  cursor: default;
-}
-
-.button-3:active {
-  background-color: #9e5751;
-  box-shadow: rgba(20, 70, 32, 0.2) 0 1px 0 inset;
-}
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

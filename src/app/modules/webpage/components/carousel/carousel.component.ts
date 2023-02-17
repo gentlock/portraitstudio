@@ -120,7 +120,7 @@ export class CarouselComponent implements AfterViewInit {
     // Init:
 
     // Insert UI elements:
-    // elNavigation.append(...elsBtns);
+    elNavigation.append(...elsBtns);
     elCarousel.append(elPrev, elNext, elNavigation);
 
     // Clone first and last slides (for "infinite" slider effect)

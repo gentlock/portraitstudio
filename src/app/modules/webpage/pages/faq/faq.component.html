@@ -19,7 +19,7 @@
         <a  href="#">changes</a>
       </li>
     </ul>
-    <ng-container *ngIfAnimation="object"></ng-container>
+    <ng-container [ngIfAnimation]="object" [viewsReadyTrigger]='viewsReady'></ng-container>
   </div>
   <!-- subgrid -->
 </div>

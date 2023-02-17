@@ -32,6 +32,8 @@ export class FaqComponent implements  AfterViewInit{
 
   object!: TemplateRef<any>;
 
+  viewsReady = false;
+
   resetTabs() {
     this.navTabs.nativeElement.querySelectorAll('li').forEach((item) =>{
       item.classList.remove('active');
@@ -39,6 +41,7 @@ export class FaqComponent implements  AfterViewInit{
   }
 
   ngAfterViewInit() {
+    this.viewsReady = true;
     this.object = this.booking;
 
     this.navTabs.nativeElement.querySelectorAll('a').forEach((item) => {

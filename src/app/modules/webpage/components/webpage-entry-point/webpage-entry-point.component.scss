@@ -6,6 +6,9 @@ article {
   main {
     background-color: m.$color-dark;
   }
+  //main, footer {
+  //  background-color: m.$color-dark;
+  //}
 
   @include m.media-query-screen--small {
     margin-left: m.$navbar-thickness;

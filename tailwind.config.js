@@ -40,6 +40,7 @@ module.exports = {
         "SourceSansPro-Regular" : ["SourceSansPro-Regular"],
         "SourceSansPro-SemiBold":["SourceSansPro-SemiBold"],
         "SourceSansPro-Italic":["SourceSansPro-Italic"],
+        "SourceSansPro-Light":["SourceSansPro-Light"],
         "April-June":["April June"],
         "PlayfairDisplay-VariableFont_wght":["PlayfairDisplay-VariableFont_wght"]
       },

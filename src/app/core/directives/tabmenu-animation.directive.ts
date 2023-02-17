@@ -1,7 +1,6 @@
 import {
-  AfterViewInit,
   Directive,
-  Input,
+  Input, OnChanges, SimpleChanges,
   TemplateRef,
   ViewContainerRef
 } from '@angular/core';
@@ -9,20 +8,28 @@ import {
 @Directive({
   selector: '[ngIfAnimation]'
 })
-export class TabmenuAnimationDirective implements AfterViewInit {
+export class TabmenuAnimationDirective implements OnChanges {
   private value: any;
   private hasView = false;
 
   constructor(
     private view: ViewContainerRef,
   ) { }
+  @Input('viewsReadyTrigger') viewsReady: boolean = false;
+  @Input('ngIfAnimation') object!: TemplateRef<any>;
 
-  ngAfterViewInit() {
-
+  // @Input() set ngIfAnimation(val: TemplateRef<any>) {
+  //   if(this.viewsReady) {
+  //     this.switchTemplates(val);
+  //   }
+  // }
+  ngOnChanges() {
+    if(this.viewsReady) {
+      this.switchTemplates(this.object)
+    }
   }
 
-  @Input() set ngIfAnimation(val: TemplateRef<any>) {
-
+  switchTemplates(val: TemplateRef<any>) {
     if (!this.hasView) {
       this.view.createEmbeddedView(val);
       this.hasView = true;
@@ -32,5 +39,7 @@ export class TabmenuAnimationDirective implements AfterViewInit {
       this.value = val;
     }
   }
+
+
 
 }

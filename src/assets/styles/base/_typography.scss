@@ -18,17 +18,27 @@
   font-weight: normal;
   font-style: normal;
 }
-
 @font-face {
   font-family: 'SourceSansPro-SemiBold';
   src: url('../../../assets/fonts/Source_Sans_Pro/SourceSansPro-SemiBold.ttf') format('woff2');
   font-weight: normal;
   font-style: normal;
 }
-
+@font-face {
+  font-family: 'SourceSansPro-Light';
+  src: url('../../../assets/fonts/Source_Sans_Pro/SourceSansPro-Light.ttf') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
 @font-face {
   font-family: 'SourceSansPro-Italic';
   src: url('../../../assets/fonts/Source_Sans_Pro/SourceSansPro-Italic.ttf') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'SourceSansPro-Regular';
+  src: url('../../../assets/fonts/Source_Sans_Pro/SourceSansPro-Regular.ttf') format('woff2');
   font-weight: normal;
   font-style: italic;
 }
