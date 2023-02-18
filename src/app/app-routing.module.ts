@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {AdminEntryPointComponent} from "./modules/admin/components/admin-entry-point/admin-entry-point.component";
+import {AdminEntryPointComponent} from "./modules/admin/pages/admin-entry-point/admin-entry-point.component";
 import {WebpageEntryPointComponent} from "./modules/webpage/components/webpage-entry-point/webpage-entry-point.component";
 
 const routes: Routes = [
@@ -20,11 +20,11 @@ const routes: Routes = [
       }
     ]
   },
-  { path: '**', redirectTo: '', pathMatch: 'full' }
+  //{ path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {useHash: true})],
+  imports: [RouterModule.forRoot(routes, { useHash: true, anchorScrolling: 'enabled'})],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

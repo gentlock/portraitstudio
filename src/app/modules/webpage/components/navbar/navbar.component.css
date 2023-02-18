@@ -163,7 +163,7 @@ input[type=button]:active {
   box-shadow: none;
 }
 
-textarea, input:not([type=button]) {
+textarea[class^=myinput], input[class^=myinput]:not([type=button]) {
   background-color: transparent;
   font-family: "font-SourceSansPro-SemiBold", sans-serif;
   font-size: small;
@@ -174,11 +174,11 @@ textarea, input:not([type=button]) {
   padding: 0.5em;
   letter-spacing: 0.1em;
 }
-textarea::placeholder, input:not([type=button])::placeholder {
+textarea[class^=myinput]::placeholder, input[class^=myinput]:not([type=button])::placeholder {
   color: hsl(0deg, 0%, 60%);
   opacity: 0.4;
 }
-textarea:focus, input:not([type=button]):focus {
+textarea[class^=myinput]:focus, input[class^=myinput]:not([type=button]):focus {
   outline: none;
   border-color: hsl(4deg, 32%, 46%);
 }
@@ -203,7 +203,7 @@ textarea:focus, input:not([type=button]):focus {
   z-index: 1000;
   position: fixed;
   display: flex;
-  font-size: hsl(0deg, 0%, 10%);
+  font-size: 1em;
   background-color: hsl(0deg, 0%, 10%);
   box-shadow: 9px 7px 31px -10px rgba(0, 0, 0, 0.6);
   width: 4em;

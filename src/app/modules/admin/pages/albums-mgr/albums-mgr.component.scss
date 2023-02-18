@@ -1,0 +1,16 @@
+@use "../../../../../assets/styles/main" as m;
+
+.basic-grid {
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-template-rows: repeat(auto-fit, minmax(0, 1fr));
+
+  .cell-table {
+    grid-column: 2 / 13;
+    grid-row: 1 / 2;
+  }
+
+  .cell-tabs {
+    grid-column: 1 / -1;
+    grid-row: 2 / 3;
+  }
+}

@@ -1,1 +1,36 @@
-<p>navbar works!</p>
+<nav class="navbar fixed z-10 bg-color-dark1 top-0 left-0 h-full shadow-xl shadow-color-dark1 bg-color-dark">
+<ul class="flex flex-col h-full px-4">
+  <li [routerLinkActive]="['is-active']">
+    <a class="p-2 flex gap-3" [routerLink]="['/admin/albums']" href="#">
+      <svg class="fill-current w-5 h-auto"  xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M4.502 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+        <path d="M14.002 13a2 2 0 0 1-2 2h-10a2 2 0 0 1-2-2V5A2 2 0 0 1 2 3a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v8a2 2 0 0 1-1.998 2zM14 2H4a1 1 0 0 0-1 1h9.002a2 2 0 0 1 2 2v7A1 1 0 0 0 15 11V3a1 1 0 0 0-1-1zM2.002 4a1 1 0 0 0-1 1v8l2.646-2.354a.5.5 0 0 1 .63-.062l2.66 1.773 3.71-3.71a.5.5 0 0 1 .577-.094l1.777 1.947V5a1 1 0 0 0-1-1h-10z"/>
+      </svg>
+      <span class="font-SourceSansPro-SemiBold uppercase">albumy</span>
+    </a>
+  </li>
+  <li [routerLinkActive]="['is-active']">
+    <a class="p-2 inline-flex  gap-3" [routerLink]="['/admin/myservices']" href="#">
+      <svg class="fill-current w-5 h-auto"  xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M10.5 8.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+        <path d="M2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2zm.5 2a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm9 2.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0z"/>
+      </svg>
+      <span class="font-SourceSansPro-SemiBold uppercase">moje usłógi</span>
+    </a>
+  </li>
+  <li [routerLinkActive]="['is-active']">
+    <a class="p-2 inline-flex  gap-3" [routerLink]="['/admin/carousel']" href="#">
+      <svg  class="fill-current w-5 h-auto"  viewBox="0 0 32 32" id="icon" xmlns="http://www.w3.org/2000/svg"><defs><style>.cls-1{fill:none;}</style></defs><title>carousel--horizontal</title><path d="M22,26H10a2,2,0,0,1-2-2V8a2,2,0,0,1,2-2H22a2,2,0,0,1,2,2V24A2,2,0,0,1,22,26ZM10,8V24H22V8Z"/><path d="M4,24H0V22H4V10H0V8H4a2,2,0,0,1,2,2V22A2,2,0,0,1,4,24Z"/><path d="M32,24H28a2,2,0,0,1-2-2V10a2,2,0,0,1,2-2h4v2H28V22h4Z"/><rect id="_Transparent_Rectangle_" data-name="&lt;Transparent Rectangle&gt;" class="cls-1" width="32" height="32"/></svg>
+      <span class="font-SourceSansPro-SemiBold uppercase">karuzela</span>
+    </a>
+  </li>
+  <li class="mt-auto" [routerLinkActive]="['is-active']">
+    <a class="p-2 flex gap-3" [routerLink]="['/admin/settings']" href="#">
+      <svg class="fill-current w-5 h-auto"  fill="currentColor" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3h9.05zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8h2.05zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1h9.05z"/>
+      </svg>
+      <span class="font-SourceSansPro-SemiBold uppercase">ustawienia</span>
+    </a>
+  </li>
+</ul>
+</nav>

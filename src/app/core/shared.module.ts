@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TabmenuAnimationDirective } from './directives/tabmenu-animation.directive';
-//import { DataLoadersService } from "./services/utlis/data-loaders.service";
-// import { ErrorsHandlerService } from "./services/errors/errors-handler.service";
-// import { MailHandlerService } from "./services/mailing/mail-handler.service";
-// import { SessionHandlerService } from "./services/session/session-handler.service";
-// import { LoaderService } from "./services/loader/loader.service";
+//import { DataLoadersService } from "./myservices/utlis/data-loaders.service";
+// import { ErrorsHandlerService } from "./myservices/errors/errors-handler.service";
+// import { MailHandlerService } from "./myservices/mailing/mail-handler.service";
+// import { SessionHandlerService } from "./myservices/session/session-handler.service";
+// import { LoaderService } from "./myservices/loader/loader.service";
 // import { LoaderInterceptor } from "./interceptors/loader.interceptor";
 
 /*imports:      [ CommonModule ],

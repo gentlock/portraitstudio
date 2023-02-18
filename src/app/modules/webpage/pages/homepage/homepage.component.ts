@@ -1,9 +1,9 @@
 import {AfterViewInit, Component} from '@angular/core';
 import { NavbarService } from "../../../../core/services/navbar/navbar.service";
-// import {LoaderService} from "../../../../core/services/loader/loader.service";
+// import {LoaderService} from "../../../../core/myservices/loader/loader.service";
 
 @Component({
-  selector: 'studio-homepage',
+  selector: 'studio-myservices',
   templateUrl: './homepage.component.html',
   styleUrls: ['./homepage.component.scss']
 })

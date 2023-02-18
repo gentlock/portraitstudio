@@ -2,7 +2,7 @@ import {AfterViewInit, Component, ElementRef, ViewChild} from '@angular/core';
 import { fadeAnimation } from "../../../../core/helpers/route_animation";
 import { NavbarService } from "../../../../core/services/navbar/navbar.service";
 // import {RouterOutlet} from "@angular/router";
-// import {LoaderService} from "../../../../core/services/loader/loader.service";
+// import {LoaderService} from "../../../../core/myservices/loader/loader.service";
 
 @Component({
   selector: 'studio-webpage-entry-point',

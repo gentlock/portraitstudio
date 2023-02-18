@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AlbumsComponent } from './albums.component';
+import { CarouselMgrComponent } from './carousel-mgr.component';
 
-describe('AlbumsComponent', () => {
-  let component: AlbumsComponent;
-  let fixture: ComponentFixture<AlbumsComponent>;
+describe('CarouselMgrComponent', () => {
+  let component: CarouselMgrComponent;
+  let fixture: ComponentFixture<CarouselMgrComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AlbumsComponent ]
+      declarations: [ CarouselMgrComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AlbumsComponent);
+    fixture = TestBed.createComponent(CarouselMgrComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

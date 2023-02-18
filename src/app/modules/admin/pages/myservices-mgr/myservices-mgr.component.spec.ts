@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HomepageComponent } from './homepage.component';
+import { MyservicesMgrComponent } from './myservices-mgr.component';
 
-describe('HomepageComponent', () => {
-  let component: HomepageComponent;
-  let fixture: ComponentFixture<HomepageComponent>;
+describe('MyservicesMgrComponent', () => {
+  let component: MyservicesMgrComponent;
+  let fixture: ComponentFixture<MyservicesMgrComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HomepageComponent ]
+      declarations: [ MyservicesMgrComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(HomepageComponent);
+    fixture = TestBed.createComponent(MyservicesMgrComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

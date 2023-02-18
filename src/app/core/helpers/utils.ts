@@ -3,6 +3,7 @@ import * as moment from "moment";
 import {NavigationEnd, Router} from '@angular/router';
 import { Renderer2 } from '@angular/core';
 import {filter} from "rxjs";
+import {FormGroup} from "@angular/forms";
 
 export const imgPreloader = {
   _preload: (src: string) => new Promise((resolve, reject) => {
@@ -39,6 +40,10 @@ export const imgPreloader = {
 //     });
 // }
 
+export function clearFormField(e: Event, controlName: string, refForm: FormGroup) {
+  e.preventDefault();
+  refForm.get(controlName)?.setValue(null);
+}
 
 export function elapsedTime(date: Date) {
   moment.locale("pl");

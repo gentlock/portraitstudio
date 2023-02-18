@@ -2,7 +2,43 @@
   "db": {
     "host": "127.0.0.1",
     "port": "27017",
-    "database": "fotohub"
+    "database": "portraitstudio"
+  },
+  "api": {
+    "urls": {
+      "carousel": {
+        "rootPath"    : "api/carousel",
+        "getAll"      : "/",
+        "getById"     : "/fetchServiceById/:id",
+        "addNew"      : "/addNew",
+        "update"      : "/update/:id",
+        "uploadPhoto" : "/uploadPhoto/:id",
+        "remove"      : "/remove/:id"
+      },
+      "myservices": {
+        "rootPath"  : "/api/myservices",
+        "getAll"    : "/",
+        "getById"   : "/getById/:id",
+        "addNew"    : "/addNew",
+        "update"    : "/update",
+        "uploadPhotos"    : "/uploadPhotos/:id",
+        "deleteOnePhoto"  : "/deleteOnePhoto/:id/:photoName",
+        "delete"          : "/delete/:id",
+        "setCoverPhoto"   : "/setCoverPhoto/:id/:photoName"
+      },
+      "albums": {
+        "rootPath"        : "/api/albums",
+        "getAll"          : "/",
+        "getById"         : "/getById/:id",
+        "addNew"          : "/addNew",
+        "update"          : "/updateGallery/:id",
+        "uploadPhotos"    : "/uploadPhotos/:id",
+        "deleteOnePhoto"  : "/deleteOnePhoto/:id/:photoName",
+        "delete"          : "/delete/:id",
+        "setCoverPhoto"   : "/setCoverPhoto/:id/:photoName",
+        "uploadFile"      : "/uploadFile/:id"
+      }
+    }
   },
     "carousel": {
       "dir": "/assets/images/carousel/istockphoto-1157700666-1024x1024.jpg",

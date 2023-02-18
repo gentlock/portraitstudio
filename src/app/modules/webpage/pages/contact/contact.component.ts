@@ -1,6 +1,6 @@
 import {AfterViewInit, Component, ElementRef, ViewChild} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-// import {LoaderService} from "../../../../core/services/loader/loader.service";
+// import {LoaderService} from "../../../../core/myservices/loader/loader.service";
 
 @Component({
   selector: 'studio-contact',

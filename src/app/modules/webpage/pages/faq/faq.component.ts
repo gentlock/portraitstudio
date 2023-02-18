@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import {animate, state, style, transition, trigger} from "@angular/animations";
 
-// import {LoaderService} from "../../../../core/services/loader/loader.service";
+// import {LoaderService} from "../../../../core/myservices/loader/loader.service";
 //
 @Component({
   selector: 'studio-faq',

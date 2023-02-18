@@ -20,7 +20,7 @@ input[type='button'] {
   }
 }
 
-textarea, input:not([type='button']) {
+textarea[class^='myinput'], input[class^='myinput']:not([type='button']) {
   background-color: transparent;
   font-family: 'font-SourceSansPro-SemiBold', sans-serif;
   font-size: small;
