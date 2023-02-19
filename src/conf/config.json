@@ -13,7 +13,7 @@
         "addNew"      : "/addNew",
         "update"      : "/update/:id",
         "uploadPhoto" : "/uploadPhoto/:id",
-        "remove"      : "/remove/:id"
+        "delete"      : "/remove/:id"
       },
       "myservices": {
         "rootPath"  : "/api/myservices",

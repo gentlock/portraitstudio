@@ -6,7 +6,20 @@ import {AfterViewInit, Component} from '@angular/core';
 })
 export class AdminEntryPointComponent implements AfterViewInit{
   ngAfterViewInit() {
-    let margin = document.querySelector('.navbar')!.clientWidth;
-    document.querySelector('main')!.style.marginLeft = `${margin-8}px`;
+    let navbar = document.querySelector('.navbar')!
+    let navbarWidth = navbar.clientWidth;
+    let topbarHeight = document.querySelector('.topbar')!.clientHeight;
+    let main = document.querySelector('main')!
+
+    main.style.marginLeft = `${navbarWidth}px`;
+    main.style.marginTop  = `${topbarHeight}px`;
+
+    const  callback = (entries: ResizeObserverEntry[]) => {
+      for (let  entry of entries) {
+        (navbar as HTMLDivElement).style.height = `${entry.contentRect.height - topbarHeight}px`;
+      }
+    };
+
+     new ResizeObserver(callback).observe(document.body);
   }
 }

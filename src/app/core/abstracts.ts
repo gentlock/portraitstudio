@@ -1,10 +1,7 @@
-// export interface ICarouselFeed  {
-//   "feed" : [
-//     {
-//       String: {
-//         "url": string,
-//         "desc": string,
-//       }
-//     }
-//   ]
-// }
+export interface ICarouselFeed  {
+    'is-active': boolean,
+    addDate?: Date,
+    'name': String
+    'subtitle': String
+    'desc': String
+}

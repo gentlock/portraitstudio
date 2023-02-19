@@ -16,8 +16,6 @@ router.put(urls.uploadPhoto, uploadPhoto);
 router.delete(urls.remove, remove);
 
 async function getAll(req: Request, res: Response) {
-  let uniqId = req.params.id;
-
   await carouselSchema.find({})
     .then(result => res.json(result))
     .catch(error => {

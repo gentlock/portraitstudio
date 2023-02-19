@@ -21,6 +21,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatTabsModule} from '@angular/material/tabs';
 import { FilesUploadComponent } from './components/files-upload/files-upload.component';
 import { TableBarComponent } from './components/table-bar/table-bar.component';
+import { TopbarComponent } from './components/topbar/topbar.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { TableBarComponent } from './components/table-bar/table-bar.component';
     SettingsComponent,
     FilesUploadComponent,
     TableBarComponent,
+    TopbarComponent,
   ],
   imports: [
     CommonModule,

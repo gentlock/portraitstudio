@@ -1,6 +1,8 @@
 @use "../../../../../assets/styles/main" as m;
 
 .navbar {
+  height: auto;
+
   li {
     color: white;
     border-left: 4px solid m.$color-dark;

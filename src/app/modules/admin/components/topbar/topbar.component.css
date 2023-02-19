@@ -184,17 +184,8 @@ textarea[class^=myinput]:focus, input[class^=myinput]:not([type=button]):focus {
 }
 
 /* CSS */
-.navbar {
-  height: auto;
-}
-.navbar li {
-  color: white;
-  border-left: 4px solid hsl(0deg, 0%, 10%);
-}
-.navbar li.is-active {
-  color: deeppink;
-  border-left: 4px solid hsl(328deg, 100%, 54%);
-  background-color: hsl(0deg, 0%, 16%);
+.topbar {
+  height: 4em;
 }
 
-/*# sourceMappingURL=navbar.component.css.map */
+/*# sourceMappingURL=topbar.component.css.map */
