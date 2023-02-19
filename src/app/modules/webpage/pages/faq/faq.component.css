@@ -145,7 +145,7 @@ article footer {
   font-weight: normal;
   font-style: normal;
 }
-input[type=button] {
+input[class^=myinput][type=button] {
   font-size: small;
   text-transform: uppercase;
   padding: 0.3em 1.2em 0.3em 1.2em;
@@ -156,10 +156,10 @@ input[type=button] {
   box-shadow: 5px 5px 23px -11px rgb(184, 184, 184);
   cursor: pointer;
 }
-input[type=button].gray {
+input[class^=myinput][type=button].gray {
   background-color: black;
 }
-input[type=button]:active {
+input[class^=myinput][type=button]:active {
   box-shadow: none;
 }
 
@@ -225,7 +225,7 @@ ul.cell-box-sub--tabs li.tab {
 }
 ul.cell-box-sub--tabs li.tab.active {
   background-color: hsl(33deg, 100%, 96%);
-  border-bottom: 1px solid #212121;
+  border-bottom: 1px solid hsl(0deg, 0%, 13%);
 }
 ul.cell-box-sub--tabs li.tab a {
   width: 100%;

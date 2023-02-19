@@ -7,6 +7,6 @@ import {AfterViewInit, Component} from '@angular/core';
 export class AdminEntryPointComponent implements AfterViewInit{
   ngAfterViewInit() {
     let margin = document.querySelector('.navbar')!.clientWidth;
-    document.querySelector('main')!.style.marginLeft = `${margin}px`;
+    document.querySelector('main')!.style.marginLeft = `${margin-8}px`;
   }
 }

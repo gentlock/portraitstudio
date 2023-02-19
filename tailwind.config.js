@@ -30,9 +30,11 @@ module.exports = {
         'color-light4': '#FDF4F2FF',
         'color-light5': '#FFF6EBFF',
         'color-light6': '#FFEDD6FF',
+        'color-light7': '#BA5C40FF',
+        'color-light8': '#FF1492FF',
         'color-dark': '#1a1a1a',
-        'color-dark1': '#212121',
-        'color-dark2': '#2e4856'
+        'color-dark1': '#212121FF',
+        'color-dark2': '#292929FF'
       },
       fontFamily: {
         "Montserrat-VariableFont_wght": ["Montserrat-VariableFont_wght"],

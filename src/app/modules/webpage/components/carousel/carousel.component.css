@@ -145,7 +145,7 @@ article footer {
   font-weight: normal;
   font-style: normal;
 }
-input[type=button] {
+input[class^=myinput][type=button] {
   font-size: small;
   text-transform: uppercase;
   padding: 0.3em 1.2em 0.3em 1.2em;
@@ -156,10 +156,10 @@ input[type=button] {
   box-shadow: 5px 5px 23px -11px rgb(184, 184, 184);
   cursor: pointer;
 }
-input[type=button].gray {
+input[class^=myinput][type=button].gray {
   background-color: black;
 }
-input[type=button]:active {
+input[class^=myinput][type=button]:active {
   box-shadow: none;
 }
 
@@ -242,12 +242,12 @@ textarea[class^=myinput]:focus, input[class^=myinput]:not([type=button]):focus {
 }
 @media screen and (min-width: 768px) and (max-width: 1023px) {
   .carousel-slide .content {
-    background: linear-gradient(to right, #212121 50%, hsl(0deg, 0%, 10%) 50%);
+    background: linear-gradient(to right, hsl(0deg, 0%, 13%) 50%, hsl(0deg, 0%, 10%) 50%);
   }
 }
 @media screen and (min-width: 1024px) {
   .carousel-slide .content {
-    background: linear-gradient(to right, #212121 50%, hsl(0deg, 0%, 10%) 50%);
+    background: linear-gradient(to right, hsl(0deg, 0%, 13%) 50%, hsl(0deg, 0%, 10%) 50%);
   }
 }
 .carousel-slide .content .title {

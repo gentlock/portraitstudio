@@ -1,0 +1,17 @@
+@use "../../../../../assets/styles/main" as m;
+
+
+.data-grid {
+  display: inline-grid;
+  width: 100%;
+  height: 100%;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto repeat(auto-fill, 1fr);
+  align-content: start;
+
+  border-right: 1px solid m.$color-light3;
+
+  &.div:nth-child(n+2){
+    height: fit-content;
+  }
+}

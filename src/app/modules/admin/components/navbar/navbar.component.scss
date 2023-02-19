@@ -3,9 +3,12 @@
 .navbar {
   li {
     color: white;
+    border-left: 4px solid m.$color-dark;
 
     &.is-active{
       color: deeppink;
+      border-left: 4px solid m.$color-light8;
+      background-color: m.$color-dark3;
     }
   }
 

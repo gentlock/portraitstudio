@@ -1,6 +1,6 @@
 <div class="basic-grid">
-  <div class="cell-table">
-
+  <div class="cell-table overflow-y-scroll overflow-y-visible overflow-x-hidden w-full h-full">
+    <table-bar></table-bar>
   </div>
 
   <div class="cell-tabs">
@@ -72,7 +72,9 @@
       <mat-tab label="galeria" *ngIf="myFormModel.controls['action'].value==='UPDATE'">
         <files-upload></files-upload>
       </mat-tab>
-      <mat-tab label="plik RAR"></mat-tab>
+      <mat-tab label="plik RAR">
+        af
+      </mat-tab>
     </mat-tab-group>
   </div>
 </div>

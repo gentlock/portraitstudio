@@ -7,11 +7,13 @@ $color-light4: hsl(11, 73%, 97%);
 $color-light5: hsl(33, 100%, 96%);
 $color-light6: hsl(34, 100%, 92%);
 $color-light7: hsl(14, 49%, 49%);
+$color-light8: hsl(328, 100%, 54%);
 
 // dark colors
 $color-dark: hsl(0, 0%, 10%);
-$color-dark2: lighten($color-dark, 3%);
-$color-dark3: hsl(202, 30%, 26%);
+$color-dark2: hsl(0, 0%, 13%);
+$color-dark3: hsl(0, 0%, 16%);
+//$color-dark3: hsl(202, 30%, 26%);
 
 // shadows
 $shadow-dark: 9px 7px 31px -10px rgba(0, 0, 0, .6);

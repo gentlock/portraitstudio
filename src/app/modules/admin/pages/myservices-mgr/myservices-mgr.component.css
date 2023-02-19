@@ -145,7 +145,7 @@ article footer {
   font-weight: normal;
   font-style: normal;
 }
-input[type=button] {
+input[class^=myinput][type=button] {
   font-size: small;
   text-transform: uppercase;
   padding: 0.3em 1.2em 0.3em 1.2em;
@@ -156,10 +156,10 @@ input[type=button] {
   box-shadow: 5px 5px 23px -11px rgb(184, 184, 184);
   cursor: pointer;
 }
-input[type=button].gray {
+input[class^=myinput][type=button].gray {
   background-color: black;
 }
-input[type=button]:active {
+input[class^=myinput][type=button]:active {
   box-shadow: none;
 }
 
@@ -187,14 +187,19 @@ textarea[class^=myinput]:focus, input[class^=myinput]:not([type=button]):focus {
 .basic-grid {
   grid-template-columns: repeat(12, minmax(0, 1fr));
   grid-template-rows: repeat(auto-fit, minmax(0, 1fr));
+  height: 100%;
+  align-items: start;
+  padding: 0;
+  padding-right: 1em;
+  gap: 1em;
 }
 .basic-grid .cell-table {
-  grid-column: 2/13;
-  grid-row: 1/2;
+  grid-column: 1/4;
+  grid-row: 1/-1;
 }
 .basic-grid .cell-tabs {
-  grid-column: 1/-1;
-  grid-row: 2/3;
+  grid-column: 4/-1;
+  grid-row: 1/-1;
 }
 
 /*# sourceMappingURL=myservices-mgr.component.css.map */

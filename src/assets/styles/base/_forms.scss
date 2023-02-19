@@ -1,6 +1,6 @@
 @use "variables" as var;
 
-input[type='button'] {
+input[class^='myinput'][type='button'] {
   font-size: small;
   text-transform: uppercase;
   padding: .3em 1.2em .3em 1.2em;

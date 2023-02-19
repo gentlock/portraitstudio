@@ -20,6 +20,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatTableModule} from '@angular/material/table';
 import {MatTabsModule} from '@angular/material/tabs';
 import { FilesUploadComponent } from './components/files-upload/files-upload.component';
+import { TableBarComponent } from './components/table-bar/table-bar.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { FilesUploadComponent } from './components/files-upload/files-upload.com
     CarouselMgrComponent,
     SettingsComponent,
     FilesUploadComponent,
+    TableBarComponent,
   ],
   imports: [
     CommonModule,
