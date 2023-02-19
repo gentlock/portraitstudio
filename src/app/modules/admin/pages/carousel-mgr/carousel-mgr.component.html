@@ -1,7 +1,5 @@
 <div class="basic-grid">
-  <div class="cell-table overflow-y-scroll overflow-y-visible overflow-x-hidden w-full h-full">
-    <table-bar></table-bar>
-  </div>
+  <table-bar  [events]="eventsSubject.asObservable()" (resetFormRequest)="resetForm($event)" (editRequest)="populate($event)" (deleteRequest)="delete($event)" class="cell-table overflow-auto overflow-y-scroll overflow-y-visible" [useService]="serviceName"></table-bar>
 
   <div class="cell-tabs">
     <mat-tab-group animationDuration="0ms" mat-stretch-tabs="false" mat-align-tabs="start">
@@ -9,9 +7,8 @@
         <!-- formularz start -->
         <form class="flex flex-col py-2" [formGroup]="myFormModel">
           <input formControlName="id" type="hidden">
-          <input formControlName="action" type="hidden">
 
-          <mat-slide-toggle class=" py-2" formControlName="is-active">pozycja aktywne</mat-slide-toggle>
+          <mat-slide-toggle class=" py-2" formControlName="isActive">pozycja aktywne</mat-slide-toggle>
 
           <mat-form-field appearance="fill">
             <mat-label>nazwa</mat-label>
@@ -41,7 +38,7 @@
         </form>
         <!-- formularz stop -->
       </mat-tab>
-      <mat-tab label="galeria" *ngIf="myFormModel.controls['action'].value==='UPDATE'">
+      <mat-tab label="galeria" *ngIf="myFormModel.controls['id'].value">
         <files-upload></files-upload>
       </mat-tab>
     </mat-tab-group>

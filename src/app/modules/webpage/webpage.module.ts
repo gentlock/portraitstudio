@@ -12,10 +12,6 @@ import { WebpageEntryPointComponent } from "./components/webpage-entry-point/web
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { HomepageComponent} from "./pages/homepage/homepage.component";
 import { SharedModule } from "../../core/shared.module";
-import { LoaderComponent } from './components/loader/loader.component';
-// import {HTTP_INTERCEPTORS} from '@angular/common/http';
-// import {LoaderInterceptor} from "../../core/interceptors/loader.interceptor";
-import { LoaderService } from "../../core/services/loader/loader.service";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { MyservicesComponent } from './pages/myservices/myservices.component';
 
@@ -30,7 +26,6 @@ import { MyservicesComponent } from './pages/myservices/myservices.component';
     WebpageEntryPointComponent,
     CarouselComponent,
     HomepageComponent,
-    LoaderComponent,
     MyservicesComponent,
   ],
     imports: [
@@ -40,14 +35,5 @@ import { MyservicesComponent } from './pages/myservices/myservices.component';
         FormsModule,
         ReactiveFormsModule
     ],
-  providers: [
-  ]
-  // providers: [
-  //   {
-  //     provide: HTTP_INTERCEPTORS,
-  //     useClass: LoaderInterceptor,
-  //     multi: true
-  //   },
-  // ],
 })
 export class WebpageModule { }

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { SharedModule } from "../../core/shared.module";
 import { AdminRoutingModule } from './admin-routing.module';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AdminEntryPointComponent } from './pages/admin-entry-point/admin-entry-point.component';
@@ -48,7 +49,8 @@ import { TopbarComponent } from './components/topbar/topbar.component';
     MatSelectModule,
     MatProgressBarModule,
     MatTableModule,
-    MatTabsModule
+    MatTabsModule,
+    SharedModule
   ],
   exports: [
 

@@ -1,14 +1,13 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component} from '@angular/core';
 import { Subject } from 'rxjs';
-import {LoaderService} from "../../../../core/services/loader/loader.service";
+import {LoaderService} from "../../services/loader/loader.service";
 
 @Component({
-  selector: 'loader',
+  selector: 'http-loading-detector',
   templateUrl: './loader.component.html',
   styleUrls: ['./loader.component.scss']
 })
 export class LoaderComponent {
-  // @Output() loadingComplete: EventEmitter<any> = new EventEmitter();
   isLoading: Subject<boolean> = this.loaderService.isLoading;
 
   constructor(

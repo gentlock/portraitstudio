@@ -17,7 +17,7 @@ export class AlbumsMgrComponent {
       this.myFormModel = _fb.group({
         'id':[''],
         'action':[''],
-        'is-active':[''],
+        'isActive':[''],
         'name': ['', Validators.required],
         'clientName': ['', Validators.required],
         'clientEmail': ['', Validators.email],

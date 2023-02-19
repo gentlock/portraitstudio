@@ -1,7 +1,8 @@
 import mongoose from 'mongoose';
 
 const carouselS  = new mongoose.Schema ({
-  "is-active"     : {type: Boolean, default: false},
+  "isActive"     : {type: Boolean, default: false},
+  'addDate'      : {type: Date, default: Date.now},
   "name"          : String,
   "subtitle"      : String,
   "desc"          : String,
@@ -9,7 +10,7 @@ const carouselS  = new mongoose.Schema ({
 });
 
 const myservicesS  = new mongoose.Schema ({
-  "is-active"       : {type: Boolean, default: false},
+  "isActive"       : {type: Boolean, default: false},
   "addDate"         : {type: Date, default: Date.now},
   "name"            : String,
   "desc"            : String,
@@ -19,7 +20,7 @@ const myservicesS  = new mongoose.Schema ({
 });
 
 const portfolioS  = new mongoose.Schema ({
-  'is-active'       : {type: Boolean, default: false},
+  'isActive'       : {type: Boolean, default: false},
   'addDate'         : {type: Date, default: Date.now},
   'name'            : String,
   'desc'            : String,

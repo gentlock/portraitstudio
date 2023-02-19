@@ -45,7 +45,7 @@ export function clearFormField(e: Event, controlName: string, refForm: FormGroup
   refForm.get(controlName)?.setValue(null);
 }
 
-export function elapsedTime(date: Date) {
+export function elapsedTime(date: Date|undefined) {
   moment.locale("pl");
   return moment(moment(date).format('X'), 'X').subtract('minutes').fromNow();
 }

@@ -1,17 +1,20 @@
 import express, { Express, Request, Response } from 'express';
+const createError = require('http-errors');
 import path from "path";
 import mongoose from 'mongoose';
 const fileUpload = require('express-fileupload');
-const configuration = require('../../conf/config.json');
+const configuration = require('../../../../conf/config');
 
 // DOTENV
 import dotenv from 'dotenv';
+import {HttpErrorResponse} from "@angular/common/http";
+import {resolve} from "dns";
 dotenv.config();
 
-let authenticationRouter = require('./api-routes/authentication');
-let portfolioRouter     = require('./api-routes/portfolio');
-let servicesRouter      = require('./api-routes/services');
-let carouselRouter      = require('./api-routes/carousel');
+let authenticationRouter  = require('../api/api-routes/authentication');
+let albumsRouter          = require('../api/api-routes/albums');
+let servicesRouter        = require('../api/api-routes/services');
+let carouselRouter        = require('../api/api-routes/carousel');
 
 // baza danych MongoDB
 mongoose.set('strictQuery', false);
@@ -20,13 +23,13 @@ mongoose.connect("mongodb://"+configuration.db.host+":"+configuration.db.port+"/
 const app: Express = express();
 const port = process.env.PORT;
 
-app.set("configuration", configuration);
+// app.set("configuration", configuration);
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use('/authentication' , authenticationRouter);
-app.use('/portfolio'      , portfolioRouter);
-app.use('/servicesRouter' , servicesRouter);
-app.use('/carouselRouter' , carouselRouter);
+app.use(configuration.api.endpointURLS.authentication.basePath , authenticationRouter);
+app.use(configuration.api.endpointURLS.albums.basePath, albumsRouter);
+app.use(configuration.api.endpointURLS.myservices.basePath, servicesRouter);
+app.use(configuration.api.endpointURLS.carousel.basePath, carouselRouter);
 app.use(fileUpload());
 
 app.get('/', (req: Request, res: Response) => {
@@ -36,3 +39,20 @@ app.get('/', (req: Request, res: Response) => {
 app.listen(port, () => {
   console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
 });
+
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  next(createError(404));
+});
+
+app.use(function(err: HttpErrorResponse, req:Request, res:Response) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error');
+});
+
+

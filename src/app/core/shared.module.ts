@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TabmenuAnimationDirective } from './directives/tabmenu-animation.directive';
-//import { DataLoadersService } from "./myservices/utlis/data-loaders.service";
+// import { DataLoadersService} from "./services/utlis/data-loaders.service";
 // import { ErrorsHandlerService } from "./myservices/errors/errors-handler.service";
 // import { MailHandlerService } from "./myservices/mailing/mail-handler.service";
 // import { SessionHandlerService } from "./myservices/session/session-handler.service";
-// import { LoaderService } from "./myservices/loader/loader.service";
-// import { LoaderInterceptor } from "./interceptors/loader.interceptor";
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { LoaderService } from "./services/loader/loader.service";
+import { LoaderComponent } from "./components/loader/loader.component";
 
 /*imports:      [ CommonModule ],
   declarations: [ CustomerComponent, NewItemDirective, OrdersPipe ],
@@ -15,17 +16,18 @@ import { TabmenuAnimationDirective } from './directives/tabmenu-animation.direct
 
 @NgModule({
   declarations: [
-    // DataLoadersService,
-    // ErrorsHandlerService
-
+    LoaderComponent,
     TabmenuAnimationDirective
   ],
   imports: [
     CommonModule,
+    MatProgressSpinnerModule,
+    // HttpClientModule
   ],
   exports: [
-    TabmenuAnimationDirective
-  ]
+    TabmenuAnimationDirective,
+    LoaderComponent,
+  ],
 })
 export class SharedModule {
   constructor(

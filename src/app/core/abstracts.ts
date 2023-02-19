@@ -1,7 +1,13 @@
 export interface ICarouselFeed  {
-    'is-active': boolean,
+    '_id'?: string,
+    'isActive': boolean,
     addDate?: Date,
-    'name': String
-    'subtitle': String
-    'desc': String
+    'name': string
+    'subtitle': string
+    'desc': string
+}
+
+export interface IHttpResponse {
+  message: any,
+  errFlag: boolean
 }

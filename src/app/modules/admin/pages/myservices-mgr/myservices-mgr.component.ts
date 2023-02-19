@@ -18,7 +18,7 @@ export class MyservicesMgrComponent {
   this.myFormModel = _fb.group({
     'id':[''],
     'action':['action'],
-    'is-active':[''],
+    'isActive':[''],
     'name': ['', Validators.required],
     'desc': ['', Validators.required],
     'priceList': ['', Validators.required],
