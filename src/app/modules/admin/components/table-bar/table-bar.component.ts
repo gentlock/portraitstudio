@@ -1,8 +1,10 @@
 import {AfterViewInit, Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {CarouselService} from "../../../../core/services/data/carousel.service";
-import { ICarouselFeed } from "../../../../core/abstracts";
+import {IAlbumsFeed, ICarouselFeed, IMyserviceFeed} from "../../../../core/abstracts";
 import {Observable, Subscription} from "rxjs";
 import { elapsedTime } from "../../../../core/helpers/utils";
+import {MyservicesService} from "../../../../core/services/data/myservices.service";
+import {AlbumsService} from "../../../../core/services/data/albums.service";
 
 @Component({
   selector: 'table-bar',
@@ -11,7 +13,7 @@ import { elapsedTime } from "../../../../core/helpers/utils";
 })
 export class TableBarComponent implements AfterViewInit, OnInit, OnDestroy {
   @Input() useService!: string;
-  data$!: Observable<ICarouselFeed[]>;
+  data$!: Observable<any>;
   readonly elapsedTime = elapsedTime;
   @Output() editRequest: EventEmitter<any> = new EventEmitter();
   @Output() deleteRequest: EventEmitter<any> = new EventEmitter();
@@ -21,6 +23,8 @@ export class TableBarComponent implements AfterViewInit, OnInit, OnDestroy {
 
   constructor(
     private carouselService: CarouselService,
+    private myservicesService: MyservicesService,
+    private albumsService: AlbumsService,
   ) {
   }
 
@@ -42,7 +46,13 @@ export class TableBarComponent implements AfterViewInit, OnInit, OnDestroy {
     this.resetFormRequest.emit();
   }
   refreshTable() {
-    this.data$ = this.carouselService.getAll();
+    if(this.useService === 'carouselService') {
+      this.data$ = this.carouselService.getAll();
+    } else if(this.useService === 'albumsService') {
+      this.data$ = this.albumsService.getAll();
+    } else if(this.useService === 'myservicesService') {
+      this.data$ = this.myservicesService.getAll();
+    }
   }
 
   ngOnInit() {
