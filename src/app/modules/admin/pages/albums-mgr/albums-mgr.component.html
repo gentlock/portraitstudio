@@ -1,6 +1,11 @@
 <div class="basic-grid">
   <div class="cell-table overflow-y-scroll overflow-y-visible overflow-x-hidden w-full h-full">
-    <table-bar></table-bar>
+    <table-bar  [events]="eventsSubject.asObservable()"
+                (resetFormRequest)="resetForm($event)"
+                (editRequest)="populate($event)"
+                (deleteRequest)="delete($event)"
+                class="cell-table overflow-auto overflow-y-scroll overflow-y-visible"
+                [useService]="serviceName"></table-bar>
   </div>
 
   <div class="cell-tabs">
