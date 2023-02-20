@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { DatePipe } from "@angular/common";
+// import { DatePipe } from "@angular/common";
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+// import { Observable } from 'rxjs';
+// import { map } from 'rxjs/operators';
 import { ICarouselFeed } from "../../abstracts";
 import {DataLoadersService} from "../utlis/data-loaders.service";
 

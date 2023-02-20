@@ -15,7 +15,7 @@ import {Subject} from "rxjs";
 
 export class CarouselMgrComponent {
   myFormModel: FormGroup;
-  serviceName = 'CarouselService';
+  serviceName = 'carouselService';
   clearField = clearFormField;
 
   eventsSubject: Subject<void> = new Subject<void>();
@@ -47,7 +47,7 @@ export class CarouselMgrComponent {
           this.myFormModel.get('desc')?.setValue(data.desc);
           this.myFormModel.get('subtitle')?.setValue(data.subtitle);
         },
-        error: (err: HttpErrorResponse) => {}
+        error: (err: HttpErrorResponse) => { console.log(err) }
       }
     )
   }
@@ -57,7 +57,6 @@ export class CarouselMgrComponent {
   }
 
   delete = ( id: string ) => {
-    console.log(id);
 
     this.carouselService.delete(id).subscribe(
       {
