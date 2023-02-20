@@ -9,17 +9,18 @@ const carouselS  = new mongoose.Schema ({
   "photo"         : String,
 });
 
-const myservicesS  = new mongoose.Schema ({
+const myserviceS  = new mongoose.Schema ({
   "isActive"       : {type: Boolean, default: false},
-  "addDate"         : {type: Date, default: Date.now},
+  "addDate"        : {type: Date, default: Date.now},
   "name"            : String,
+  "subtitle"        : String,
   "desc"            : String,
   "priceList"       : String,
-  "galleryContent"  : [String],
+  "gallery"         : [String],
   "coverPhoto"      : String,
 });
 
-const portfolioS  = new mongoose.Schema ({
+const albumS  = new mongoose.Schema ({
   'isActive'       : {type: Boolean, default: false},
   'addDate'         : {type: Date, default: Date.now},
   'name'            : String,
@@ -31,9 +32,9 @@ const portfolioS  = new mongoose.Schema ({
   'serviceId'       : String,
   'clientInfo'      : String,
   'fileToDownload'  : String,
-  'galleryContent'  : [String],
+  'gallery'         : [String],
 });
 
-export const portfolioSchema = mongoose.model("portfolio", portfolioS);
+export const albumsSchema = mongoose.model("albums", albumS);
 export const carouselSchema  = mongoose.model("carousel", carouselS);
-export const servicesSchema  = mongoose.model("services", myservicesS);
+export const myservicesSchema  = mongoose.model("myservices", myserviceS);

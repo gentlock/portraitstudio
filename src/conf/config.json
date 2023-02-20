@@ -9,7 +9,7 @@
       "carousel": {
         "basePath"    : "/api/carousel",
         "getAll"      : "/",
-        "getById"     : "/fetchServiceById",
+        "getById"     : "/getById",
         "addNew"      : "/addNew",
         "update"      : "/update",
         "uploadPhoto" : "/uploadPhoto",
@@ -18,24 +18,24 @@
       "myservices": {
         "basePath"  : "/api/myservices",
         "getAll"    : "/",
-        "getById"   : "/getById/:id",
+        "getById"   : "/getById",
         "addNew"    : "/addNew",
         "update"    : "/update",
-        "uploadPhotos"    : "/uploadPhotos/:id",
+        "uploadPhotos"    : "/uploadPhotos",
         "deleteOnePhoto"  : "/deleteOnePhoto/:id/:photoName",
-        "remove"          : "/remove/:id",
+        "remove"          : "/remove",
         "setCoverPhoto"   : "/setCoverPhoto/:id/:photoName"
       },
       "albums": {
         "basePath"        : "/api/albums",
         "getAll"          : "/",
-        "getById"         : "/getById/:id",
+        "getById"         : "/getById",
         "addNew"          : "/addNew",
-        "update"          : "/updateGallery/:id",
+        "update"          : "/updateGallery",
         "uploadPhotos"    : "/uploadPhotos/:id",
         "deleteOnePhoto"  : "/deleteOnePhoto/:id/:photoName",
-        "remove"          : "/remove/:id",
-        "setCoverPhoto"   : "/setCoverPhoto/:id/:photoName",
+        "remove"          : "/remove",
+        "coverPhoto"   : "/setCoverPhoto/:id/:photoName",
         "uploadFile"      : "/uploadFile/:id"
       },
       "authentication": {
@@ -43,45 +43,45 @@
       }
     }
   },
-    "carousel": {
-      "dir": "/assets/images/carousel/istockphoto-1157700666-1024x1024.jpg",
-      "item": [
-        {
-          "url": "/assets/images/carousel/istockphoto-1281508668-1024x1024.jpg",
-          "title": "tytul 1",
-          "subtitle": "Lorem ipsum dolor",
-          "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing. Lorem ipsum dolor sit amet, consectetur adipisicing. Lorem ipsum dolor sit amet, consectetur adipisicing."
-        },
-        {
-          "url": "/assets/images/carousel/istockphoto-1338740162-1024x1024.jpg",
-          "title": "tytul 2",
-          "subtitle": "Lorem ipsum dolor",
-          "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing."
-        },
-        {
-          "url": "/assets/images/carousel/istockphoto-1344306219-1024x1024.jpg",
-          "title": "tytul 3",
-          "subtitle": "Lorem ipsum dolor",
-          "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing."
-        },
-        {
-          "url": "/assets/images/carousel/istockphoto-1347653184-1024x1024.jpg",
-          "title": "tytul 4",
-          "subtitle": "Lorem ipsum dolor",
-          "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing."
-        },
-        {
-          "url": "/assets/images/carousel/istockphoto-1367631464-1024x1024.jpg",
-          "title": "tytul 5",
-          "subtitle": "Lorem ipsum dolor",
-          "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing."
-        },
-        {
-          "url": "/assets/images/carousel/istockphoto-1371896666-1024x1024.jpg",
-          "title": "tytul 6",
-          "subtitle": "Lorem ipsum dolor",
-          "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing."
-        }
-      ]
-    }
+  "carousel": {
+    "dir": "/assets/images/carousel/istockphoto-1157700666-1024x1024.jpg",
+    "item": [
+      {
+        "url": "/assets/images/carousel/istockphoto-1281508668-1024x1024.jpg",
+        "title": "tytul 1",
+        "subtitle": "Lorem ipsum dolor",
+        "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing. Lorem ipsum dolor sit amet, consectetur adipisicing. Lorem ipsum dolor sit amet, consectetur adipisicing."
+      },
+      {
+        "url": "/assets/images/carousel/istockphoto-1338740162-1024x1024.jpg",
+        "title": "tytul 2",
+        "subtitle": "Lorem ipsum dolor",
+        "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing."
+      },
+      {
+        "url": "/assets/images/carousel/istockphoto-1344306219-1024x1024.jpg",
+        "title": "tytul 3",
+        "subtitle": "Lorem ipsum dolor",
+        "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing."
+      },
+      {
+        "url": "/assets/images/carousel/istockphoto-1347653184-1024x1024.jpg",
+        "title": "tytul 4",
+        "subtitle": "Lorem ipsum dolor",
+        "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing."
+      },
+      {
+        "url": "/assets/images/carousel/istockphoto-1367631464-1024x1024.jpg",
+        "title": "tytul 5",
+        "subtitle": "Lorem ipsum dolor",
+        "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing."
+      },
+      {
+        "url": "/assets/images/carousel/istockphoto-1371896666-1024x1024.jpg",
+        "title": "tytul 6",
+        "subtitle": "Lorem ipsum dolor",
+        "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing."
+      }
+    ]
+  }
 }

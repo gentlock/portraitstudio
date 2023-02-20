@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.servicesSchema = exports.carouselSchema = exports.portfolioSchema = void 0;
+exports.myservicesSchema = exports.carouselSchema = exports.albumsSchema = void 0;
 const mongoose_1 = __importDefault(require("mongoose"));
 const carouselS = new mongoose_1.default.Schema({
     "isActive": { type: Boolean, default: false },
@@ -13,16 +13,17 @@ const carouselS = new mongoose_1.default.Schema({
     "desc": String,
     "photo": String,
 });
-const myservicesS = new mongoose_1.default.Schema({
+const myserviceS = new mongoose_1.default.Schema({
     "isActive": { type: Boolean, default: false },
     "addDate": { type: Date, default: Date.now },
     "name": String,
+    "subtitle": String,
     "desc": String,
     "priceList": String,
-    "galleryContent": [String],
+    "gallery": [String],
     "coverPhoto": String,
 });
-const portfolioS = new mongoose_1.default.Schema({
+const albumS = new mongoose_1.default.Schema({
     'isActive': { type: Boolean, default: false },
     'addDate': { type: Date, default: Date.now },
     'name': String,
@@ -34,8 +35,8 @@ const portfolioS = new mongoose_1.default.Schema({
     'serviceId': String,
     'clientInfo': String,
     'fileToDownload': String,
-    'galleryContent': [String],
+    'gallery': [String],
 });
-exports.portfolioSchema = mongoose_1.default.model("portfolio", portfolioS);
+exports.albumsSchema = mongoose_1.default.model("albums", albumS);
 exports.carouselSchema = mongoose_1.default.model("carousel", carouselS);
-exports.servicesSchema = mongoose_1.default.model("services", myservicesS);
+exports.myservicesSchema = mongoose_1.default.model("myservices", myserviceS);
