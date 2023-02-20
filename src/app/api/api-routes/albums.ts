@@ -39,12 +39,14 @@ async function addNew(req: Request, res: Response) {
     {
       'isActive'        : req.body.isActive || false,
       "addDate"         : Date.now(),
+      'name'            : req.body.name,
       'clientName'      : req.body.clientName,
       'clientEmail'     : req.body.clientEmail,
       'coverPhoto'      : "",
       'accessCode'      : req.body.accessCode,
       'serviceId'       : req.body.serviceId,
       'clientInfo'      : req.body.clientInfo,
+      'desc'            : req.body.desc,
       'fileToDownload'  : "",
       'gallery'         : "",
     })
@@ -58,11 +60,13 @@ async function update(req: Request, res: Response) {
   await albumsSchema.findByIdAndUpdate(id,
     {
       'isActive'        : req.body.isActive,
+      'name'            : req.body.name,
       'clientName'      : req.body.clientName,
       'clientEmail'     : req.body.clientEmail,
       'accessCode'      : req.body.accessCode,
       'serviceId'       : req.body.serviceId,
       'clientInfo'      : req.body.clientInfo,
+      'desc'            : req.body.desc,
     })
     .then( result=>res.json(resHandler.sendRaw(result) ))
     .catch( error=> res.json( resHandler.failure(error) ));

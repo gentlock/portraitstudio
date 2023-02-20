@@ -81,7 +81,9 @@ export class MyservicesMgrComponent {
         this.myservicesService.update(id, data).subscribe(
           {
             next: (value)=>{
-              // console.log(value);
+              if(value._id) {
+                this.populate(value._id!);
+              }
               this.refreshTableSignal();
             },
             error: (err)=>{ console.log(err)}
@@ -91,7 +93,9 @@ export class MyservicesMgrComponent {
         this.myservicesService.addNew(data).subscribe(
           {
             next: (value)=>{
-              // console.log(value);
+              if(value._id) {
+                this.populate(value._id!);
+              }
               this.refreshTableSignal();
             },
             error: (err)=>{ console.log(err)}

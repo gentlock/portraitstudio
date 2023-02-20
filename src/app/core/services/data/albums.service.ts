@@ -27,10 +27,10 @@ export class AlbumsService {
   }
   addNew(data: IAlbumsFeed) {
 
-    return this.http.post<string>(this.basePath+''+this.urls.addNew, data);
+    return this.http.post<IAlbumsFeed>(this.basePath+''+this.urls.addNew, data);
   }
   update(id: string, data: IAlbumsFeed) {
-    return this.http.put<string>(this.basePath+''+this.urls.update+`/${id}`, data);
+    return this.http.put<IAlbumsFeed>(this.basePath+''+this.urls.update+`/${id}`, data);
   }
   // uploadPhoto(id: string, data: FormData) {
   //   return this.http.put<ICarouselFeed>(this.basePath+''+this.uploadPhoto+`/${id}`, data, {reportProgress: true, observe: 'events'});

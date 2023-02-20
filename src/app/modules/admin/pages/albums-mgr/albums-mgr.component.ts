@@ -1,26 +1,29 @@
-import { Component } from '@angular/core';
+import {AfterViewInit, Component} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {myPasswordGenerator, clearFormField} from "../../../../core/helpers/utils";
 import { AlbumsService } from "../../../../core/services/data/albums.service";
-import {Subject} from "rxjs";
-import {IAlbumsFeed} from "../../../../core/abstracts";
+import {Observable, Subject} from "rxjs";
+import {IAlbumsFeed, IMyserviceFeed} from "../../../../core/abstracts";
 import {HttpErrorResponse} from "@angular/common/http";
+import {MyservicesService} from "../../../../core/services/data/myservices.service";
 
 @Component({
   selector: 'studio-albums-mgr',
   templateUrl: './albums-mgr.component.html',
   styleUrls: ['./albums-mgr.component.scss']
 })
-export class AlbumsMgrComponent {
+export class AlbumsMgrComponent implements AfterViewInit {
   myFormModel: FormGroup;
   clearField = clearFormField;
   serviceName = 'albumsService';
+  servicesList$!: Observable<IMyserviceFeed[]>;
   eventsSubject: Subject<void> = new Subject<void>();
 
 
   constructor(
     private _fb: FormBuilder,
-    private albumsService: AlbumsService
+    private albumsService: AlbumsService,
+    private myservicesService: MyservicesService
   ) {
       this.myFormModel = _fb.group({
         'id':[''],
@@ -33,6 +36,10 @@ export class AlbumsMgrComponent {
         'serviceId': ['', Validators.required],
         'clientInfo'  : ['']
       });
+  }
+
+  ngAfterViewInit() {
+    this.servicesList$ = this.myservicesService.getAll();
   }
 
   sendEmail(event: Event, email: string) {
@@ -60,28 +67,35 @@ export class AlbumsMgrComponent {
 
     if(this.myFormModel.valid) {
       if( id != "" ) {
+        console.log("uaktualniam");
+
         this.albumsService.update(id, data).subscribe(
           {
             next: (value)=>{
-              // console.log(value);
+              if(value._id) {
+                this.populate(value._id!);
+              }
               this.refreshTableSignal();
             },
             error: (err)=>{ console.log(err)}
           }
         );
-      } else  {
+      } else {
+        // console.log("dodaje");
         this.albumsService.addNew(data).subscribe(
           {
-            next: (value)=>{
-              // console.log(value);
+            next: (value) => {
+              if(value._id) {
+                this.populate(value._id!);
+              }
               this.refreshTableSignal();
             },
-            error: (err)=>{ console.log(err)}
-          }
-        );
+            error: (err) => {
+              console.log(err)
+            }
+          });
       }
     }
-
   }
 
   delete = ( id: string ) => {

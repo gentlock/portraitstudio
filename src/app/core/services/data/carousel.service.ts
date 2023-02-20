@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 // import { map } from 'rxjs/operators';
 import { ICarouselFeed } from "../../abstracts";
 import {DataLoadersService} from "../utlis/data-loaders.service";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -29,10 +30,10 @@ export class CarouselService {
   }
   addNew(data: ICarouselFeed) {
 
-    return this.http.post<string>(this.basePath+''+this.urls.addNew, data);
+    return this.http.post<ICarouselFeed>(this.basePath+''+this.urls.addNew, data);
   }
   update(id: string, data: ICarouselFeed) {
-    return this.http.put<string>(this.basePath+''+this.urls.update+`/${id}`, data);
+    return this.http.put<ICarouselFeed>(this.basePath+''+this.urls.update+`/${id}`, data);
   }
   uploadPhoto(id: string, data: FormData) {
     return this.http.put<ICarouselFeed>(this.basePath+''+this.uploadPhoto+`/${id}`, data, {reportProgress: true, observe: 'events'});

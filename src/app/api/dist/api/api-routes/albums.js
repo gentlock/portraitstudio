@@ -48,12 +48,14 @@ function addNew(req, res) {
         yield schemas_1.albumsSchema.create({
             'isActive': req.body.isActive || false,
             "addDate": Date.now(),
+            'name': req.body.name,
             'clientName': req.body.clientName,
             'clientEmail': req.body.clientEmail,
             'coverPhoto': "",
             'accessCode': req.body.accessCode,
             'serviceId': req.body.serviceId,
             'clientInfo': req.body.clientInfo,
+            'desc': req.body.desc,
             'fileToDownload': "",
             'gallery': "",
         })
@@ -66,11 +68,13 @@ function update(req, res) {
         let id = req.params.id;
         yield schemas_1.albumsSchema.findByIdAndUpdate(id, {
             'isActive': req.body.isActive,
+            'name': req.body.name,
             'clientName': req.body.clientName,
             'clientEmail': req.body.clientEmail,
             'accessCode': req.body.accessCode,
             'serviceId': req.body.serviceId,
             'clientInfo': req.body.clientInfo,
+            'desc': req.body.desc,
         })
             .then(result => res.json(resHandler.sendRaw(result)))
             .catch(error => res.json(resHandler.failure(error)));
