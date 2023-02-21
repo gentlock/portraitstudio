@@ -1,5 +1,7 @@
-import {Request, Response} from "express";
+import {NextFunction, Request, Response} from "express";
 import {myservicesSchema} from "../schemas";
+const configuration = require('../../../../conf/config');
+import fs from "fs";
 
 export async function db_fetch_all(req: Request, res: Response) {
   await myservicesSchema.find({}).sort({addDate: -1})
@@ -15,7 +17,7 @@ export async function db_fetch_by_id(req: Request, res: Response) {
     .then(result => res.json( result ))
     .catch( error => res.json( {error} ))
 }
-export async function db_add_new(req: Request, res: Response) {
+export async function db_add_new(req: Request, res: Response, next: NextFunction) {
   await myservicesSchema.create(
     {
       'isActive'  : req.body.isActive || false,
@@ -27,7 +29,15 @@ export async function db_add_new(req: Request, res: Response) {
       "gallery"   : "",
       'coverPhoto': "",
     })
-    .then(result => {res.json( result )})
+    .then(result => {
+      try {
+        // next(configuration.folders.uploadDir.pathAdress);
+        fs.mkdirSync(configuration.uploadDir.pathAdress+''+result._id);
+      } catch(err) {
+        next(err);
+      }
+      res.json( result );
+    })
     .catch(error => res.json( {error} ));
 }
 export async function db_update(req: Request, res: Response) {
@@ -48,12 +58,19 @@ export async function db_update(req: Request, res: Response) {
     return res.status(500).send({ error: 'brakuje numeru ID' })
   }
 }
-export async function  db_delete(req: Request, res: Response) {
+export async function  db_delete(req: Request, res: Response, next: NextFunction) {
   let id = req.params.id;
 
   if (id) {
     await myservicesSchema.findByIdAndDelete(id)
-      .then(result => res.json(result))
+      .then(result => {
+        try {
+          fs.rmdirSync(configuration.uploadDir.pathAdress.path+''+id);
+        } catch(err) {
+          next(err);
+        }
+        res.json(result);
+      })
       .catch(error => res.json({error}));
   }
 }

@@ -1,7 +1,9 @@
 import {Component, ElementRef, Input, Renderer2, ViewChild} from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpEventType} from "@angular/common/http";
 import {FilesUploadService} from "../../../../core/services/data/files-upload.service";
+import {Observable} from "rxjs";
 // import { FormControl } from '@angular/forms';
+import {IAlbumsFeed, IMyserviceFeed, ICarouselFeed} from "../../../../core/abstracts";
 
 @Component({
   selector: 'files-upload',
@@ -10,20 +12,23 @@ import {FilesUploadService} from "../../../../core/services/data/files-upload.se
 })
 export class FilesUploadComponent {
   @ViewChild('dropBox') dropBox!: ElementRef<HTMLDivElement>;
-  progressValue: number = 0;
+  progressValue = 0;
   // id = new FormControl('');
   @Input() uniqID!: string;
+  @Input() useCollection: any;
+  @Input() useSchema!: string;
+  data$!: Observable<IAlbumsFeed|IMyserviceFeed|ICarouselFeed>;
 
   constructor(
     private _render: Renderer2,
     private http: HttpClient,
     private filesUploadService: FilesUploadService
-    /*    private _myService: MyservicesFetcherService,*/
-    // private _service: FilesDropService
   ) {
   }
 
   ngAfterViewInit() {
+    // this.data$ = this.loadPhotos();
+
     ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
       this._render.listen(this.dropBox.nativeElement, eventName, this.preventDefaults);
     });
@@ -61,23 +66,23 @@ export class FilesUploadComponent {
     this.uploadFiles(formData);
   }
 
+  loadPhotos() {
+    return this.filesUploadService.fetchGallery(this.uniqID, this.useSchema);
+  }
+
   uploadFiles = (data: FormData) => {
     if (!!this.uniqID) {
-      console.log(data);
-      this.filesUploadService.uploadData(this.uniqID, data).subscribe(
+      this.filesUploadService.uploadData(this.uniqID, this.useSchema, data).subscribe(
         {
           next: (e) => {
             if (e.type === HttpEventType.UploadProgress) {
               this.progressValue = Math.round(e.loaded / e.total! * 100);
             } else if (e.type === HttpEventType.Response) {
-              // this.actionComplete.emit(event.body!);
-              // this.loadPhotos(this.uniqId);
-              console.log('przegralem pliki');
+              // this.data$ = this.loadPhotos();
             }
           },
           error: (err: HttpErrorResponse) => {
             console.log(err);
-            // this.actionComplete.emit(err);
           }
         });
     }

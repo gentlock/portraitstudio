@@ -1,27 +1,4 @@
 "use strict";
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -32,27 +9,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.uploadData = exports.deleteData = exports.setCoverPhoto = exports.remDir = exports.createDir = void 0;
-const fs = __importStar(require("fs"));
+exports.uploadData = exports.fetchGallery = exports.deleteData = exports.setCoverPhoto = void 0;
+// import * as fs from "fs";
 const configuration = require('../../../../conf/config');
-function createDir(id, dir) {
-    try {
-        fs.mkdirSync(configuration.folders.uploadDir.path + "/" + id);
-    }
-    catch (err) {
-        return err;
-    }
-}
-exports.createDir = createDir;
-function remDir(id, dir) {
-    try {
-        fs.rmdirSync(configuration.folders.uploadDir.path + "/" + id);
-    }
-    catch (err) {
-        return err;
-    }
-}
-exports.remDir = remDir;
+const schemas_1 = require("../schemas");
+const schemas_2 = require("../schemas");
 function setCoverPhoto(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
     });
@@ -63,25 +24,44 @@ function deleteData(req, res) {
     });
 }
 exports.deleteData = deleteData;
+function fetchGallery(req, res) {
+    return __awaiter(this, void 0, void 0, function* () {
+        let id = req.params.id;
+        let useSchema = req.params.useSchema;
+        if (useSchema === 'albumsSchema') {
+            yield schemas_1.albumsSchema.findById({ id });
+        }
+        else if (useSchema === 'myservicesSchema') {
+            yield schemas_2.myservicesSchema.findById({ id });
+        }
+    });
+}
+exports.fetchGallery = fetchGallery;
 function uploadData(req, res, next) {
     return __awaiter(this, void 0, void 0, function* () {
         let id = req.params.id;
+        let useSchema = req.params.useSchema;
         let data = req.files;
-        let files = [];
+        let fileslist = [];
         if (!data || Object.keys(data).length === 0) {
             return res.status(400).send('No files were uploaded.');
         }
         else {
             Object.values(data.file).forEach(item => {
                 let file = item;
-                let uploadPath = configuration.uploadDir.path + `/${id}` + file.name;
-                file.mv(uploadPath, err => {
-                    if (!err)
-                        files.push(file.name);
-                });
+                let uploadPath = configuration.uploadDir.pathAdress + `/${id}/` + file.name;
+                file.mv(uploadPath, (err) => __awaiter(this, void 0, void 0, function* () {
+                    if (!err) {
+                        if (useSchema === 'albumsSchema') {
+                            yield schemas_1.albumsSchema.findByIdAndUpdate(id, { $push: { 'gallery': file.name } });
+                        }
+                        else if (useSchema === 'myservicesSchema') {
+                            yield schemas_2.myservicesSchema.findByIdAndUpdate(id, { $push: { 'gallery': file.name } });
+                        }
+                    }
+                }));
             });
         }
-        // next();
     });
 }
 exports.uploadData = uploadData;

@@ -14,13 +14,12 @@ import {HttpErrorResponse} from "@angular/common/http";
 export class MyservicesMgrComponent {
   myFormModel: FormGroup;
   clearField = clearFormField;
-  serviceName = 'myservicesService';
   eventsSubject: Subject<string> = new Subject<string>();
-
+  DBschema = 'myservicesSchema';
 
   constructor(
   private _fb: FormBuilder,
-  private myservicesService: MyservicesService
+  public myservicesService: MyservicesService
 
 ) {
   this.myFormModel = _fb.group({

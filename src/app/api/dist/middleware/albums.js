@@ -8,9 +8,15 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.db_delete = exports.db_update = exports.db_add_new = exports.db_fetch_by_id = exports.db_fetch_all = void 0;
 const schemas_1 = require("../schemas");
+// import {createDir} from "./utils";
+const fs_1 = __importDefault(require("fs"));
+const configuration = require('../../../../conf/config');
 function db_fetch_all(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         yield schemas_1.albumsSchema.find({}).sort({ addDate: -1 })
@@ -30,7 +36,7 @@ function db_fetch_by_id(req, res) {
     });
 }
 exports.db_fetch_by_id = db_fetch_by_id;
-function db_add_new(req, res) {
+function db_add_new(req, res, next) {
     return __awaiter(this, void 0, void 0, function* () {
         yield schemas_1.albumsSchema.create({
             'isActive': req.body.isActive || false,
@@ -46,7 +52,16 @@ function db_add_new(req, res) {
             'fileToDownload': "",
             'gallery': "",
         })
-            .then(result => { res.json(result); })
+            .then(result => {
+            try {
+                // next(configuration.folders.uploadDir.pathAdress);
+                fs_1.default.mkdirSync(configuration.uploadDir.pathAdress + '/' + result._id);
+            }
+            catch (err) {
+                next(err);
+            }
+            res.json(result);
+        })
             .catch(error => res.json({ error }));
     });
 }
@@ -74,12 +89,20 @@ function db_update(req, res) {
     });
 }
 exports.db_update = db_update;
-function db_delete(req, res) {
+function db_delete(req, res, next) {
     return __awaiter(this, void 0, void 0, function* () {
         let id = req.params.id;
         if (id) {
             yield schemas_1.albumsSchema.findByIdAndDelete(id)
-                .then(result => res.json(result))
+                .then(result => {
+                try {
+                    fs_1.default.rmdirSync(configuration.uploadDir.pathAdress.path + '/' + id);
+                }
+                catch (err) {
+                    next(err);
+                }
+                res.json(result);
+            })
                 .catch(error => res.json({ error }));
         }
     });

@@ -15,15 +15,15 @@ import {MyservicesService} from "../../../../core/services/data/myservices.servi
 export class AlbumsMgrComponent implements AfterViewInit {
   myFormModel: FormGroup;
   clearField = clearFormField;
-  serviceName = 'albumsService';
   servicesList$!: Observable<IMyserviceFeed[]>;
   eventsSubject: Subject<string> = new Subject<string>();
 
+  DBschema = 'albumsSchema';
 
   constructor(
     private _fb: FormBuilder,
-    private albumsService: AlbumsService,
-    private myservicesService: MyservicesService
+    public albumsService: AlbumsService,
+    public myservicesService: MyservicesService
   ) {
       this.myFormModel = _fb.group({
         'id':[''],

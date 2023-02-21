@@ -15,14 +15,15 @@ import {Subject} from "rxjs";
 
 export class CarouselMgrComponent {
   myFormModel: FormGroup;
-  serviceName = 'carouselService';
   clearField = clearFormField;
+
+  DBschema = 'carouselSchema';
 
   eventsSubject: Subject<string> = new Subject<string>();
 
   constructor(
     private _fb: FormBuilder,
-    private carouselService: CarouselService,
+    public carouselService: CarouselService,
   ) {
     this.myFormModel = _fb.group({
       'id':[''],

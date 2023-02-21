@@ -1,10 +1,10 @@
 import {AfterViewInit, Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {CarouselService} from "../../../../core/services/data/carousel.service";
 import {Observable, Subscription} from "rxjs";
-import { elapsedTime } from "../../../../core/helpers/utils";
+// import { elapsedTime } from "../../../../core/helpers/utils";
 import {MyservicesService} from "../../../../core/services/data/myservices.service";
 import {AlbumsService} from "../../../../core/services/data/albums.service";
-import { SharedModule } from "../../../../core/shared.module";
+// import { SharedModule } from "../../../../core/shared.module";
 
 @Component({
   selector: 'table-bar',
@@ -12,9 +12,9 @@ import { SharedModule } from "../../../../core/shared.module";
   styleUrls: ['./table-bar.component.scss']
 })
 export class TableBarComponent implements AfterViewInit, OnInit, OnDestroy {
-  @Input() useService!: string;
+  @Input() useService!: CarouselService|MyservicesService|AlbumsService;
   data$!: Observable<any>;
-  readonly elapsedTime = elapsedTime;
+  // readonly elapsedTime = elapsedTime;
   @Output() editRequest: EventEmitter<any> = new EventEmitter();
   @Output() deleteRequest: EventEmitter<any> = new EventEmitter();
   @Output() resetFormRequest: EventEmitter<any> = new EventEmitter();
@@ -57,20 +57,13 @@ export class TableBarComponent implements AfterViewInit, OnInit, OnDestroy {
     this.resetFormRequest.emit();
   }
   refreshTable() {
-    if(this.useService === 'carouselService') {
-      this.data$ = this.carouselService.getAll();
-    } else if(this.useService === 'albumsService') {
-      this.data$ = this.albumsService.getAll();
-    } else if(this.useService === 'myservicesService') {
-      this.data$ = this.myservicesService.getAll();
-    }
+    this.data$ = this.useService.getAll();
   }
 
   ngOnInit() {
     this.eventsSubscription = this.events.subscribe((id) => {
         this.currentCard = id;
         this.refreshTable();
-
     } );
   }
 

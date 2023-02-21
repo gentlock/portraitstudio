@@ -1,5 +1,8 @@
-import {Request, Response} from "express";
+import {NextFunction, Request, Response} from "express";
 import {albumsSchema} from "../schemas";
+// import {createDir} from "./utils";
+import fs from "fs";
+const configuration = require('../../../../conf/config');
 
 export async function db_fetch_all(req: Request, res: Response) {
   await albumsSchema.find({}).sort({addDate: -1})
@@ -17,7 +20,7 @@ export async function db_fetch_by_id(req: Request, res: Response) {
     .catch( error => res.json( {error} ))
 }
 
-export async function db_add_new(req: Request, res: Response) {
+export async function db_add_new(req: Request, res: Response, next: NextFunction) {
   await albumsSchema.create(
     {
       'isActive'        : req.body.isActive || false,
@@ -33,7 +36,15 @@ export async function db_add_new(req: Request, res: Response) {
       'fileToDownload'  : "",
       'gallery'         : "",
     })
-    .then(result => {res.json( result );})
+    .then(result => {
+      try {
+        // next(configuration.folders.uploadDir.pathAdress);
+        fs.mkdirSync(configuration.uploadDir.pathAdress+'/'+result._id);
+      } catch(err) {
+        next(err);
+      }
+      res.json( result );
+    })
     .catch(error => res.json( {error} ));
 }
 
@@ -59,12 +70,19 @@ export async function db_update(req: Request, res: Response) {
   }
 }
 
-export async function db_delete(req: Request, res: Response) {
+export async function db_delete(req: Request, res: Response, next: NextFunction) {
   let id = req.params.id;
 
   if (id) {
     await albumsSchema.findByIdAndDelete(id)
-      .then(result => res.json( result ))
+      .then(result => {
+        try {
+          fs.rmdirSync(configuration.uploadDir.pathAdress.path+'/'+id);
+        } catch(err) {
+          next(err);
+        }
+        res.json(result);
+      })
       .catch(error => res.json( {error} ));
   }
 }

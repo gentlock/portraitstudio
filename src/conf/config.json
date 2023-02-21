@@ -5,7 +5,7 @@
     "database": "portraitstudio"
   },
   "uploadDir": {
-    "path": "../../assets/images/uploadDir/"
+    "pathAdress": "../../assets/images/uploadDir/"
   },
   "api": {
     "endpointURLS": {
@@ -13,6 +13,7 @@
         "basePath"        : "/api/fileMgr",
         "uploadData"      : "/uploadData",
         "deleteData"      : "/deleteData",
+        "fetchGallery"    : "/fetchGallery",
         "setCoverPhoto"   : "/setCoverPhoto/:id/:photoName:/collection"
       },
       "carousel": {
