@@ -8,6 +8,7 @@ import { TabmenuAnimationDirective } from './directives/tabmenu-animation.direct
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { LoaderService } from "./services/loader/loader.service";
 import { LoaderComponent } from "./components/loader/loader.component";
+import { DatePipe } from '@angular/common';
 
 /*imports:      [ CommonModule ],
   declarations: [ CustomerComponent, NewItemDirective, OrdersPipe ],
@@ -28,6 +29,9 @@ import { LoaderComponent } from "./components/loader/loader.component";
     TabmenuAnimationDirective,
     LoaderComponent,
   ],
+  providers: [
+    DatePipe
+  ]
 })
 export class SharedModule {
   constructor(

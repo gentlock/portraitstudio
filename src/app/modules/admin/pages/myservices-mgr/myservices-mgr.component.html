@@ -5,7 +5,8 @@
                 (editRequest)="populate($event)"
                 (deleteRequest)="db_delete($event)"
                 class="cell-table overflow-auto overflow-y-scroll overflow-y-visible"
-                [useService]="serviceName"></table-bar>
+                [useService]="serviceName">
+    </table-bar>
   </div>
 
   <div class="cell-tabs">
@@ -13,9 +14,9 @@
       <mat-tab label="dane usługi">
         <!-- formularz start -->
         <form class="flex flex-col py-2" [formGroup]="myFormModel">
-          <input formControlName="id" type="hidden">
+          <input formControlName="id" name="id" type="hidden">
 
-          <mat-slide-toggle class=" py-2" formControlName="isActive">pozycja aktywne</mat-slide-toggle>
+          <mat-slide-toggle class="py-2" formControlName="isActive">pozycja aktywne</mat-slide-toggle>
 
           <mat-form-field appearance="fill">
             <mat-label>nazwa usługi</mat-label>
@@ -48,9 +49,11 @@
         </form>
         <!-- formularz stop -->
       </mat-tab>
-      <mat-tab label="galeria" *ngIf="myFormModel.controls['id'].value">
-        <files-upload></files-upload>
-      </mat-tab>
+      <ng-container *ngIf="myFormModel.controls['id'].value as ID">
+        <mat-tab label="galeria">
+          <files-upload [uniqID]="ID"></files-upload>
+        </mat-tab>
+      </ng-container>
     </mat-tab-group>
   </div>
 </div>

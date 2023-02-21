@@ -4,15 +4,23 @@
     "port": "27017",
     "database": "portraitstudio"
   },
+  "uploadDir": {
+    "path": "../../assets/images/uploadDir/"
+  },
   "api": {
     "endpointURLS": {
+      "dataMgr": {
+        "basePath"        : "/api/fileMgr",
+        "uploadData"      : "/uploadData",
+        "deleteData"      : "/deleteData",
+        "setCoverPhoto"   : "/setCoverPhoto/:id/:photoName:/collection"
+      },
       "carousel": {
         "basePath"    : "/api/carousel",
         "getAll"      : "/",
         "getById"     : "/getById",
         "addNew"      : "/addNew",
         "update"      : "/update",
-        "uploadPhoto" : "/uploadPhoto",
         "remove"      : "/remove"
       },
       "myservices": {
@@ -21,10 +29,7 @@
         "getById"   : "/getById",
         "addNew"    : "/addNew",
         "update"    : "/update",
-        "uploadPhotos"    : "/uploadPhotos",
-        "deleteOnePhoto"  : "/deleteOnePhoto/:id/:photoName",
-        "remove"          : "/remove",
-        "setCoverPhoto"   : "/setCoverPhoto/:id/:photoName"
+        "remove"    : "/remove"
       },
       "albums": {
         "basePath"        : "/api/albums",
@@ -32,11 +37,7 @@
         "getById"         : "/getById",
         "addNew"          : "/addNew",
         "update"          : "/updateGallery",
-        "uploadPhotos"    : "/uploadPhotos/:id",
-        "deleteOnePhoto"  : "/deleteOnePhoto/:id/:photoName",
-        "remove"          : "/remove",
-        "coverPhoto"   : "/setCoverPhoto/:id/:photoName",
-        "uploadFile"      : "/uploadFile/:id"
+        "remove"          : "/remove"
       },
       "authentication": {
         "basePath"        : "/api/authentication"

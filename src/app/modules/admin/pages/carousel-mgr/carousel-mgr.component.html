@@ -43,9 +43,11 @@
         </form>
         <!-- formularz stop -->
       </mat-tab>
-      <mat-tab label="galeria" *ngIf="myFormModel.controls['id'].value">
-        <files-upload></files-upload>
-      </mat-tab>
+      <ng-container *ngIf="myFormModel.controls['id'].value as ID">
+        <mat-tab label="galeria">
+          <files-upload [uniqID]="ID"></files-upload>
+        </mat-tab>
+      </ng-container>
     </mat-tab-group>
   </div>
 </div>

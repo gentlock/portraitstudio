@@ -18,7 +18,7 @@ export class CarouselMgrComponent {
   serviceName = 'carouselService';
   clearField = clearFormField;
 
-  eventsSubject: Subject<void> = new Subject<void>();
+  eventsSubject: Subject<string> = new Subject<string>();
 
   constructor(
     private _fb: FormBuilder,
@@ -33,8 +33,8 @@ export class CarouselMgrComponent {
     });
   }
 
-  refreshTableSignal() {
-    this.eventsSubject.next();
+  refreshSignal(id: string) {
+    this.eventsSubject.next(id);
   }
 
   populate = ( id: string ) => {
@@ -53,6 +53,7 @@ export class CarouselMgrComponent {
   }
 
   resetForm(e: Event) {
+    this.myFormModel.get('id')?.setValue(null);
     this.myFormModel.reset();
   }
 
@@ -60,8 +61,11 @@ export class CarouselMgrComponent {
 
     this.carouselService.db_delete(id).subscribe(
       {
-        next: (value)=>{ console.log(value)},
-        error: (err)=>{ console.log(err)}
+        next: (value)=>{
+          this.refreshSignal('');
+          // console.log(value)
+        },
+        error: (err: HttpErrorResponse)=>{ console.log(err)}
       })
   }
 
@@ -77,28 +81,24 @@ export class CarouselMgrComponent {
     }
 
     if(this.myFormModel.valid) {
-      if( id != "" ) {
+      if(!!id) {
         this.carouselService.db_update(id, data).subscribe(
           {
             next: (value)=>{
-              if(value._id) {
-                this.populate(value._id!);
-              }
-              this.refreshTableSignal();
+              this.populate(value._id!);
+              this.refreshSignal(value._id!);
             },
-            error: (err)=>{ console.log(err)}
+            error: (err: HttpErrorResponse)=>{ console.log(err)}
           }
         );
       } else  {
         this.carouselService.addNew(data).subscribe(
           {
             next: (value)=>{
-              if(value._id) {
-                this.populate(value._id!);
-              }
-              this.refreshTableSignal();
+              this.populate(value._id!);
+              this.refreshSignal(value._id!);
             },
-            error: (err)=>{ console.log(err)}
+            error: (err: HttpErrorResponse)=>{ console.log(err)}
           }
         );
       }

@@ -15,7 +15,7 @@ export class MyservicesMgrComponent {
   myFormModel: FormGroup;
   clearField = clearFormField;
   serviceName = 'myservicesService';
-  eventsSubject: Subject<void> = new Subject<void>();
+  eventsSubject: Subject<string> = new Subject<string>();
 
 
   constructor(
@@ -33,15 +33,18 @@ export class MyservicesMgrComponent {
     'priceList': ['', Validators.required],
   });
 }
-  refreshTableSignal() {
-    this.eventsSubject.next();
+  refreshSignal(id: string) {
+    this.eventsSubject.next(id);
   }
 
   db_delete = ( id: string ) => {
     this.myservicesService.db_delete(id).subscribe(
       {
-        next: (value)=>{ console.log(value)},
-        error: (err)=>{ console.log(err)}
+        next: (value)=>{
+          this.refreshSignal('');
+          // console.log(value)
+        },
+        error: (err: HttpErrorResponse)=>{ console.log(err)}
       })
   }
 
@@ -61,6 +64,7 @@ export class MyservicesMgrComponent {
   }
 
   resetForm(e: Event) {
+    this.myFormModel.get('id')?.setValue(null);
     this.myFormModel.reset();
   }
 
@@ -77,28 +81,26 @@ export class MyservicesMgrComponent {
     }
 
     if(this.myFormModel.valid) {
-      if( id != "" ) {
+      if(!!id) {
+        // console.log('uaktualniam');
         this.myservicesService.db_update(id, data).subscribe(
           {
             next: (value)=>{
-              if(value._id) {
-                this.populate(value._id!);
-              }
-              this.refreshTableSignal();
+              this.populate(value._id!);
+              this.refreshSignal(value._id!);
             },
-            error: (err)=>{ console.log(err)}
+            error: (err: HttpErrorResponse)=>{ console.log(err)}
           }
         );
       } else  {
+        // console.log('dodaje nowy');
         this.myservicesService.addNew(data).subscribe(
           {
             next: (value)=>{
-              if(value._id) {
-                this.populate(value._id!);
-              }
-              this.refreshTableSignal();
+              this.populate(value._id!);
+              this.refreshSignal(value._id!);
             },
-            error: (err)=>{ console.log(err)}
+            error: (err: HttpErrorResponse)=>{ console.log(err)}
           }
         );
       }

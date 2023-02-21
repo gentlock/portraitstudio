@@ -1,4 +1,6 @@
-<div class="flex flex-col p-4 space-y-4">
-  <span class="text-xl font-SourceSansPro-SemiBold uppercase">Files uploading progress</span>
-  <mat-progress-bar value="30"  mode="determinate"></mat-progress-bar>
-</div>
+
+  <form #dropBox class="flex flex-col p-4 space-y-4" enctype="multipart/form-data" >
+<!--    <inpu [formControl]="id" type="text" name="id"/>-->
+    <span class="text-xl font-SourceSansPro-SemiBold uppercase">Files uploading progress</span>
+    <mat-progress-bar value="progressValue"  mode="determinate"></mat-progress-bar>
+  </form>

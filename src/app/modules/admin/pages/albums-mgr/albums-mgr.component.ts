@@ -17,7 +17,7 @@ export class AlbumsMgrComponent implements AfterViewInit {
   clearField = clearFormField;
   serviceName = 'albumsService';
   servicesList$!: Observable<IMyserviceFeed[]>;
-  eventsSubject: Subject<void> = new Subject<void>();
+  eventsSubject: Subject<string> = new Subject<string>();
 
 
   constructor(
@@ -66,18 +66,16 @@ export class AlbumsMgrComponent implements AfterViewInit {
     }
 
     if(this.myFormModel.valid) {
-      if( id != "" ) {
-        console.log("uaktualniam");
+      if(!!id) {
+        // console.log("uaktualniam");
 
         this.albumsService.db_update(id, data).subscribe(
           {
             next: (value)=>{
-              if(value._id) {
-                this.populate(value._id!);
-              }
-              this.refreshTableSignal();
+              this.populate(value._id!);
+              this.refreshSignal(value._id!);
             },
-            error: (err)=>{ console.log(err)}
+            error: (err: HttpErrorResponse)=>{ console.log(err)}
           }
         );
       } else {
@@ -85,12 +83,10 @@ export class AlbumsMgrComponent implements AfterViewInit {
         this.albumsService.addNew(data).subscribe(
           {
             next: (value) => {
-              if(value._id) {
-                this.populate(value._id!);
-              }
-              this.refreshTableSignal();
+              this.populate(value._id!);
+              this.refreshSignal(value._id!);
             },
-            error: (err) => {
+            error: (err: HttpErrorResponse) => {
               console.log(err)
             }
           });
@@ -101,8 +97,11 @@ export class AlbumsMgrComponent implements AfterViewInit {
   db_delete = ( id: string ) => {
     this.albumsService.db_delete(id).subscribe(
       {
-        next: (value)=>{ console.log(value)},
-        error: (err)=>{ console.log(err)}
+        next: (value)=>{
+          this.refreshSignal('');
+          // console.log(value)
+        },
+        error: (err: HttpErrorResponse)=>{ console.log(err)}
       })
   }
 
@@ -126,11 +125,12 @@ export class AlbumsMgrComponent implements AfterViewInit {
   }
 
   resetForm(e: Event) {
+    this.myFormModel.get('id')?.setValue(null);
     this.myFormModel.reset();
   }
 
-  refreshTableSignal() {
-    this.eventsSubject.next();
+  refreshSignal(id: string) {
+    this.eventsSubject.next(id);
   }
 
   generatePassword(event: Event) {

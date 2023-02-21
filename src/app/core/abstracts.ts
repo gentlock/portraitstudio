@@ -34,8 +34,3 @@ export interface IAlbumsFeed {
   gallery?      : string[];
   coverPhoto?   : string,
 }
-
-export interface IHttpResponse {
-  message: any,
-  errFlag: boolean
-}
