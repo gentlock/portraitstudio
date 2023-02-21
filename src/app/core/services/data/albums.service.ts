@@ -29,14 +29,14 @@ export class AlbumsService {
 
     return this.http.post<IAlbumsFeed>(this.basePath+''+this.urls.addNew, data);
   }
-  update(id: string, data: IAlbumsFeed) {
+  db_update(id: string, data: IAlbumsFeed) {
     return this.http.put<IAlbumsFeed>(this.basePath+''+this.urls.update+`/${id}`, data);
   }
   // uploadPhoto(id: string, data: FormData) {
   //   return this.http.put<ICarouselFeed>(this.basePath+''+this.uploadPhoto+`/${id}`, data, {reportProgress: true, observe: 'events'});
   //
   // }
-  delete(id: string) {
+  db_delete(id: string) {
     return this.http.delete<IAlbumsFeed>(this.basePath+''+this.urls.remove+`/${id}`);
   }
 }

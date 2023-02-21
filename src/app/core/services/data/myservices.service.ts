@@ -29,14 +29,14 @@ export class MyservicesService {
 
     return this.http.post<IMyserviceFeed>(this.basePath+''+this.urls.addNew, data);
   }
-  update(id: string, data: IMyserviceFeed) {
+  db_update(id: string, data: IMyserviceFeed) {
     return this.http.put<IMyserviceFeed>(this.basePath+''+this.urls.update+`/${id}`, data);
   }
   // uploadPhoto(id: string, data: FormData) {
   //   return this.http.put<ICarouselFeed>(this.basePath+''+this.uploadPhoto+`/${id}`, data, {reportProgress: true, observe: 'events'});
   //
   // }
-  delete(id: string) {
+  db_delete(id: string) {
     return this.http.delete<IMyserviceFeed>(this.basePath+''+this.urls.remove+`/${id}`);
   }
 }

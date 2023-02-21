@@ -3,7 +3,7 @@
     <table-bar  [events]="eventsSubject.asObservable()"
                 (resetFormRequest)="resetForm($event)"
                 (editRequest)="populate($event)"
-                (deleteRequest)="delete($event)"
+                (deleteRequest)="db_delete($event)"
                 class="cell-table overflow-auto overflow-y-scroll overflow-y-visible"
                 [useService]="serviceName"></table-bar>
   </div>

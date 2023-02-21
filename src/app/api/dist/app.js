@@ -7,14 +7,14 @@ const express_1 = __importDefault(require("express"));
 const createError = require('http-errors');
 const mongoose_1 = __importDefault(require("mongoose"));
 const fileUpload = require('express-fileupload');
-const configuration = require('../../../../conf/config');
+const configuration = require('../../../conf/config');
 // DOTENV
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
-let authenticationRouter = require('../api/api-routes/authentication');
-let albumsRouter = require('../api/api-routes/albums');
-let servicesRouter = require('../api/api-routes/services');
-let carouselRouter = require('../api/api-routes/carousel');
+let authenticationRouter = require('./api-routes/authentication');
+let albumsRouter = require('./api-routes/albums');
+let servicesRouter = require('./api-routes/services');
+let carouselRouter = require('./api-routes/carousel');
 // baza danych MongoDB
 mongoose_1.default.set('strictQuery', false);
 mongoose_1.default.connect("mongodb://" + configuration.db.host + ":" + configuration.db.port + "/" + configuration.db.database);

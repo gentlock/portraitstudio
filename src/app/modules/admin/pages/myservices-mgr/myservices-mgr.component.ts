@@ -37,8 +37,8 @@ export class MyservicesMgrComponent {
     this.eventsSubject.next();
   }
 
-  delete = ( id: string ) => {
-    this.myservicesService.delete(id).subscribe(
+  db_delete = ( id: string ) => {
+    this.myservicesService.db_delete(id).subscribe(
       {
         next: (value)=>{ console.log(value)},
         error: (err)=>{ console.log(err)}
@@ -78,7 +78,7 @@ export class MyservicesMgrComponent {
 
     if(this.myFormModel.valid) {
       if( id != "" ) {
-        this.myservicesService.update(id, data).subscribe(
+        this.myservicesService.db_update(id, data).subscribe(
           {
             next: (value)=>{
               if(value._id) {

@@ -2,38 +2,36 @@
 
 import express, { Express, Request, Response } from 'express';
 import { myservicesSchema} from "../schemas";
-import { responseHandler } from "../responseHandler";
-const resHandler = new responseHandler;
 
-const configuration = require('../../../../../conf/config');
+const configuration = require('../../../../conf/config');
 
 // import dotenv from 'dotenv';
 let router = express.Router();
 let urls = configuration.api.endpointURLS.myservices;
 
-router.get(urls.getAll, getAll);
-router.get(urls.getById+'/:id', getById);
-router.post(urls.addNew, addNew);
-router.put(urls.update+'/:id', update);
+router.get(urls.getAll, db_fetch_all);
+router.get(urls.getById+'/:id', db_fetch_by_id);
+router.post(urls.addNew, db_add_new);
+router.put(urls.update+'/:id', db_update);
 router.put(urls.uploadPhoto+'/:id', uploadPhoto);
-router.delete(urls.remove+'/:id', remove);
+router.delete(urls.remove+'/:id', db_delete);
 
 
-async function getAll(req: Request, res: Response) {
+async function db_fetch_all(req: Request, res: Response) {
   await myservicesSchema.find({})
-    .then(result => res.json( resHandler.sendRaw(result) ))
+    .then(result => res.json( {result} ))
     .catch(error => {
-      res.json( resHandler.failure(error) );
+      res.json( {error} );
     })
 }
-async function getById(req: Request, res: Response) {
+async function db_fetch_by_id(req: Request, res: Response) {
   let id = req.params.id;
 
   await myservicesSchema.findById(id)
-    .then(result => res.json( resHandler.sendRaw(result) ))
-    .catch( error => res.json( resHandler.failure(error) ))
+    .then(result => res.json( {result} ))
+    .catch( error => res.json( {error} ))
 }
-async function addNew(req: Request, res: Response) {
+async function db_add_new(req: Request, res: Response) {
   await myservicesSchema.create(
     {
       'isActive'  : req.body.isActive || false,
@@ -45,10 +43,10 @@ async function addNew(req: Request, res: Response) {
       "gallery"   : "",
       'coverPhoto': "",
     })
-    .then(result => {res.json( resHandler.sendRaw(result) );})
-    .catch(error => res.json( resHandler.failure(error) ));
+    .then(result => {res.json( {result} )})
+    .catch(error => res.json( {error} ));
 }
-async function update(req: Request, res: Response) {
+async function db_update(req: Request, res: Response) {
   let id = req.params.id;
 
   await myservicesSchema.findByIdAndUpdate(id,
@@ -59,16 +57,16 @@ async function update(req: Request, res: Response) {
       'subtitle'  : req.body.subtitle,
       "priceList" : req.body.priceList,
     })
-    .then( result=>res.json(resHandler.sendRaw(result) ))
-    .catch( error=> res.json( resHandler.failure(error) ));
+    .then( result=>res.json( {result} ))
+    .catch( error=> res.json( {error} ));
 }
-async function remove(req: Request, res: Response) {
+async function  db_delete(req: Request, res: Response) {
   let id = req.params.id;
 
   if(id) {
     await myservicesSchema.findByIdAndDelete(id)
-      .then(result => res.json(resHandler.sendRaw(result)))
-      .catch(error => res.json(resHandler.failure(error)));
+      .then(result => res.json( {result} ))
+      .catch(error => res.json( {error} ));
   }
 }
 async function uploadPhoto(req: Request, res: Response) {

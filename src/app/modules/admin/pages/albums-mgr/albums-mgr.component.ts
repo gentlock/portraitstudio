@@ -69,7 +69,7 @@ export class AlbumsMgrComponent implements AfterViewInit {
       if( id != "" ) {
         console.log("uaktualniam");
 
-        this.albumsService.update(id, data).subscribe(
+        this.albumsService.db_update(id, data).subscribe(
           {
             next: (value)=>{
               if(value._id) {
@@ -98,8 +98,8 @@ export class AlbumsMgrComponent implements AfterViewInit {
     }
   }
 
-  delete = ( id: string ) => {
-    this.albumsService.delete(id).subscribe(
+  db_delete = ( id: string ) => {
+    this.albumsService.db_delete(id).subscribe(
       {
         next: (value)=>{ console.log(value)},
         error: (err)=>{ console.log(err)}

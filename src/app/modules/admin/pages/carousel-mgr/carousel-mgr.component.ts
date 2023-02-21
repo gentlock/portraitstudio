@@ -56,9 +56,9 @@ export class CarouselMgrComponent {
     this.myFormModel.reset();
   }
 
-  delete = ( id: string ) => {
+  db_delete = ( id: string ) => {
 
-    this.carouselService.delete(id).subscribe(
+    this.carouselService.db_delete(id).subscribe(
       {
         next: (value)=>{ console.log(value)},
         error: (err)=>{ console.log(err)}
@@ -78,7 +78,7 @@ export class CarouselMgrComponent {
 
     if(this.myFormModel.valid) {
       if( id != "" ) {
-        this.carouselService.update(id, data).subscribe(
+        this.carouselService.db_update(id, data).subscribe(
           {
             next: (value)=>{
               if(value._id) {

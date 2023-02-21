@@ -14,36 +14,34 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const schemas_1 = require("../schemas");
-const responseHandler_1 = require("../responseHandler");
-const resHandler = new responseHandler_1.responseHandler;
-const configuration = require('../../../../../conf/config');
+const configuration = require('../../../../conf/config');
 // import dotenv from 'dotenv';
 let router = express_1.default.Router();
 let urls = configuration.api.endpointURLS.albums;
-router.get(urls.getAll, getAll);
-router.get(urls.getById + '/:id', getById);
-router.post(urls.addNew, addNew);
-router.put(urls.update + '/:id', update);
+router.get(urls.getAll, db_fetch_all);
+router.get(urls.getById + '/:id', db_fetch_by_id);
+router.post(urls.addNew, db_add_new);
+router.put(urls.update + '/:id', db_update);
 router.put(urls.uploadPhoto + '/:id', uploadPhoto);
-router.delete(urls.remove + '/:id', remove);
-function getAll(req, res) {
+router.delete(urls.remove + '/:id', db_delete);
+function db_fetch_all(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         yield schemas_1.albumsSchema.find({})
-            .then(result => res.json(resHandler.sendRaw(result)))
+            .then(result => res.json({ result }))
             .catch(error => {
-            res.json(resHandler.failure(error));
+            res.json({ error });
         });
     });
 }
-function getById(req, res) {
+function db_fetch_by_id(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         let id = req.params.id;
         yield schemas_1.albumsSchema.findById(id)
-            .then(result => res.json(resHandler.sendRaw(result)))
-            .catch(error => res.json(resHandler.failure(error)));
+            .then(result => res.json({ result }))
+            .catch(error => res.json({ error }));
     });
 }
-function addNew(req, res) {
+function db_add_new(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         yield schemas_1.albumsSchema.create({
             'isActive': req.body.isActive || false,
@@ -59,11 +57,11 @@ function addNew(req, res) {
             'fileToDownload': "",
             'gallery': "",
         })
-            .then(result => { res.json(resHandler.sendRaw(result)); })
-            .catch(error => res.json(resHandler.failure(error)));
+            .then(result => { res.json({ result }); })
+            .catch(error => res.json({ error }));
     });
 }
-function update(req, res) {
+function db_update(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         let id = req.params.id;
         yield schemas_1.albumsSchema.findByIdAndUpdate(id, {
@@ -76,8 +74,8 @@ function update(req, res) {
             'clientInfo': req.body.clientInfo,
             'desc': req.body.desc,
         })
-            .then(result => res.json(resHandler.sendRaw(result)))
-            .catch(error => res.json(resHandler.failure(error)));
+            .then(result => res.json({ result }))
+            .catch(error => res.json({ error }));
     });
 }
 function uploadPhoto(req, res) {
@@ -85,13 +83,13 @@ function uploadPhoto(req, res) {
         let uniqId = req.params.id;
     });
 }
-function remove(req, res) {
+function db_delete(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         let id = req.params.id;
         if (id) {
             yield schemas_1.albumsSchema.findByIdAndDelete(id)
-                .then(result => res.json(resHandler.sendRaw(result)))
-                .catch(error => res.json(resHandler.failure(error)));
+                .then(result => res.json({ result }))
+                .catch(error => res.json({ error }));
         }
     });
 }

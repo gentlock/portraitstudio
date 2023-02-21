@@ -1,5 +1,10 @@
 <div class="basic-grid">
-  <table-bar  [events]="eventsSubject.asObservable()" (resetFormRequest)="resetForm($event)" (editRequest)="populate($event)" (deleteRequest)="delete($event)" class="cell-table overflow-auto overflow-y-scroll overflow-y-visible" [useService]="serviceName"></table-bar>
+  <table-bar  [events]="eventsSubject.asObservable()"
+              (resetFormRequest)="resetForm($event)"
+              (editRequest)="populate($event)"
+              (deleteRequest)="db_delete($event)"
+              class="cell-table overflow-auto overflow-y-scroll overflow-y-visible"
+              [useService]="serviceName"></table-bar>
 
   <div class="cell-tabs">
     <mat-tab-group animationDuration="0ms" mat-stretch-tabs="false" mat-align-tabs="start">

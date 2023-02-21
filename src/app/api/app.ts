@@ -3,7 +3,7 @@ const createError = require('http-errors');
 import path from "path";
 import mongoose from 'mongoose';
 const fileUpload = require('express-fileupload');
-const configuration = require('../../../../conf/config');
+const configuration = require('../../../conf/config');
 
 // DOTENV
 import dotenv from 'dotenv';
@@ -11,10 +11,10 @@ import {HttpErrorResponse} from "@angular/common/http";
 import {resolve} from "dns";
 dotenv.config();
 
-let authenticationRouter  = require('../api/api-routes/authentication');
-let albumsRouter          = require('../api/api-routes/albums');
-let servicesRouter        = require('../api/api-routes/services');
-let carouselRouter        = require('../api/api-routes/carousel');
+let authenticationRouter  = require('./api-routes/authentication');
+let albumsRouter          = require('./api-routes/albums');
+let servicesRouter        = require('./api-routes/services');
+let carouselRouter        = require('./api-routes/carousel');
 
 // baza danych MongoDB
 mongoose.set('strictQuery', false);
