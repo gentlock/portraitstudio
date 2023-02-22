@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {DataLoadersService} from "../utlis/data-loaders.service";
-import {IAlbumsFeed, ICarouselFeed, IMyserviceFeed} from "../../abstracts";
+import {IAlbumsFeed, IMyserviceFeed} from "../../abstracts";
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +9,7 @@ import {IAlbumsFeed, ICarouselFeed, IMyserviceFeed} from "../../abstracts";
 export class FilesUploadService {
   baseURL: string;
   upDataURL: string;
-  delDataURL: string;
+  delFileURL: string;
   fetchGalleryURL: string;
   setCoverPhotoURL: string;
 
@@ -19,7 +19,7 @@ export class FilesUploadService {
   ) {
     this.baseURL          = data.conf.api.endpointURLS.dataMgr.basePath;
     this.upDataURL        = data.conf.api.endpointURLS.dataMgr.uploadData;
-    this.delDataURL       = data.conf.api.endpointURLS.dataMgr.deleteData;
+    this.delFileURL       = data.conf.api.endpointURLS.dataMgr.deleteFile;
     this.setCoverPhotoURL = data.conf.api.endpointURLS.dataMgr.setCoverPhoto;
     this.fetchGalleryURL  = data.conf.api.endpointURLS.dataMgr.fetchGallery;
   }
@@ -29,18 +29,14 @@ export class FilesUploadService {
   }
 
   fetchGallery(id: string, useSchema: string) {
-    return this.http.get<IAlbumsFeed|IMyserviceFeed|ICarouselFeed>(this.baseURL+this.upDataURL+`/${id}`+`/${useSchema}`);
+    return this.http.get<IAlbumsFeed|IMyserviceFeed>(this.baseURL+this.fetchGalleryURL+`/${id}`+`/${useSchema}`);
   }
 
-  deleteFile(id: string) {
-    return this.http.delete<void>(this.delDataURL+`/${id}`);
+  deleteFile(id: string, photoName: string, collection: string) {
+    return this.http.delete<void>(this.baseURL+this.delFileURL+`/${id}/${photoName}/${collection}`);
   }
 
-  // loadCollection(id: string, myFiles: FormData) {
-  //   return this.http.delete<string[]>(this.delFileURL+`/${id}`);
-  // }
-
-  setCoverPhoto(id: string, collection: string) {
-    return this.http.get<void>(this.baseURL+this.setCoverPhotoURL+`/${id}/${collection}`);
+  setCoverPhoto(id: string, photoName: string, collection: string) {
+    return this.http.get<void>(this.baseURL+this.setCoverPhotoURL+`/${id}/${photoName}/${collection}`);
   }
 }

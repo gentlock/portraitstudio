@@ -26,7 +26,6 @@ export async function db_add_new(req: Request, res: Response, next: NextFunction
       'desc'      : req.body.desc,
       'subtitle'  : req.body.subtitle,
       "priceList" : req.body.priceList,
-      "gallery"   : "",
       'coverPhoto': "",
     })
     .then(result => {
@@ -65,7 +64,7 @@ export async function  db_delete(req: Request, res: Response, next: NextFunction
     await myservicesSchema.findByIdAndDelete(id)
       .then(result => {
         try {
-          fs.rmdirSync(configuration.uploadDir.pathAdress.path+''+id);
+          fs.rmSync(configuration.uploadDir.pathAdress+'/'+id, { recursive: true, force: true });
         } catch(err) {
           next(err);
         }

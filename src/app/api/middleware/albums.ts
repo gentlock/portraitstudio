@@ -34,7 +34,6 @@ export async function db_add_new(req: Request, res: Response, next: NextFunction
       'clientInfo'      : req.body.clientInfo,
       'desc'            : req.body.desc,
       'fileToDownload'  : "",
-      'gallery'         : "",
     })
     .then(result => {
       try {
@@ -77,7 +76,7 @@ export async function db_delete(req: Request, res: Response, next: NextFunction)
     await albumsSchema.findByIdAndDelete(id)
       .then(result => {
         try {
-          fs.rmdirSync(configuration.uploadDir.pathAdress.path+'/'+id);
+          fs.rmSync(configuration.uploadDir.pathAdress+'/'+id, { recursive: true, force: true });
         } catch(err) {
           next(err);
         }

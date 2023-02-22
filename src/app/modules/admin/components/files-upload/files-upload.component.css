@@ -4,23 +4,8 @@
   grid-template-columns: repeat(auto-fill, 250px);
 }
 .gallery-grid > div {
-  margin: 0.2em;
   width: 250px;
   height: 100%;
-}
-.gallery-grid > div figure {
-  aspect-ratio: 3/2;
-}
-.gallery-grid > div figure img {
-  object-fit: cover;
-  height: 100%;
-  width: 100%;
-}
-.gallery-grid > div figure figcaption {
-  background-color: hsla(0deg, 0%, 0%, 0.63);
-  color: white;
-  padding: 0.2em;
-  text-align: center;
 }
 
 /*# sourceMappingURL=files-upload.component.css.map */

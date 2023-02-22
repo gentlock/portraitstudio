@@ -8,7 +8,6 @@ import { AdminEntryPointComponent } from './pages/admin-entry-point/admin-entry-
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { AlbumsMgrComponent } from './pages/albums-mgr/albums-mgr.component';
 import { MyservicesMgrComponent } from './pages/myservices-mgr/myservices-mgr.component';
-import { CarouselMgrComponent } from './pages/carousel-mgr/carousel-mgr.component';
 import { SettingsComponent } from './pages/settings/settings.component';
 
 import { MatFormFieldModule} from '@angular/material/form-field';
@@ -30,7 +29,6 @@ import { TopbarComponent } from './components/topbar/topbar.component';
     AdminEntryPointComponent,
     AlbumsMgrComponent,
     MyservicesMgrComponent,
-    CarouselMgrComponent,
     SettingsComponent,
     FilesUploadComponent,
     TableBarComponent,

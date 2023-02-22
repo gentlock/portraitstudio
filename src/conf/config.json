@@ -13,16 +13,9 @@
         "basePath"        : "/api/fileMgr",
         "uploadData"      : "/uploadData",
         "deleteData"      : "/deleteData",
+        "deleteFile"      : "/deleteFile",
         "fetchGallery"    : "/fetchGallery",
         "setCoverPhoto"   : "/setCoverPhoto/:id/:photoName:/collection"
-      },
-      "carousel": {
-        "basePath"    : "/api/carousel",
-        "getAll"      : "/",
-        "getById"     : "/getById",
-        "addNew"      : "/addNew",
-        "update"      : "/update",
-        "remove"      : "/remove"
       },
       "myservices": {
         "basePath"  : "/api/myservices",

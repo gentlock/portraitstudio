@@ -50,7 +50,6 @@ function db_add_new(req, res, next) {
             'clientInfo': req.body.clientInfo,
             'desc': req.body.desc,
             'fileToDownload': "",
-            'gallery': "",
         })
             .then(result => {
             try {
@@ -96,7 +95,7 @@ function db_delete(req, res, next) {
             yield schemas_1.albumsSchema.findByIdAndDelete(id)
                 .then(result => {
                 try {
-                    fs_1.default.rmdirSync(configuration.uploadDir.pathAdress.path + '/' + id);
+                    fs_1.default.rmSync(configuration.uploadDir.pathAdress + '/' + id, { recursive: true, force: true });
                 }
                 catch (err) {
                     next(err);

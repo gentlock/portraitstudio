@@ -1,5 +1,4 @@
 import {AfterViewInit, Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
-import {CarouselService} from "../../../../core/services/data/carousel.service";
 import {Observable, Subscription} from "rxjs";
 // import { elapsedTime } from "../../../../core/helpers/utils";
 import {MyservicesService} from "../../../../core/services/data/myservices.service";
@@ -12,7 +11,7 @@ import {AlbumsService} from "../../../../core/services/data/albums.service";
   styleUrls: ['./table-bar.component.scss']
 })
 export class TableBarComponent implements AfterViewInit, OnInit, OnDestroy {
-  @Input() useService!: CarouselService|MyservicesService|AlbumsService;
+  @Input() useService!: MyservicesService|AlbumsService;
   data$!: Observable<any>;
   // readonly elapsedTime = elapsedTime;
   @Output() editRequest: EventEmitter<any> = new EventEmitter();
@@ -23,7 +22,6 @@ export class TableBarComponent implements AfterViewInit, OnInit, OnDestroy {
   currentCard: string = "";
 
   constructor(
-    private carouselService: CarouselService,
     private myservicesService: MyservicesService,
     private albumsService: AlbumsService,
   ) {

@@ -9,7 +9,9 @@ export class AdminEntryPointComponent implements AfterViewInit{
     let navbar = document.querySelector('.navbar')!
     let navbarWidth = navbar.clientWidth;
     let topbarHeight = document.querySelector('.topbar')!.clientHeight;
-    let main = document.querySelector('main')!
+    let main = document.querySelector('main')!;
+
+    (navbar as HTMLDivElement).style.height = `${document.body.clientHeight - topbarHeight}px`;
 
     main.style.marginLeft = `${navbarWidth}px`;
     main.style.marginTop  = `${topbarHeight}px`;

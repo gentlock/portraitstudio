@@ -14,7 +14,6 @@ dotenv.config();
 let authenticationRouter  = require('./api-routes/authentication');
 let albumsRouter          = require('./api-routes/albums');
 let servicesRouter        = require('./api-routes/services');
-let carouselRouter        = require('./api-routes/carousel');
 let dataMgrRouter         = require('./api-routes/dataMgr');
 
 // baza danych MongoDB
@@ -31,7 +30,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(configuration.api.endpointURLS.authentication.basePath , authenticationRouter);
 app.use(configuration.api.endpointURLS.albums.basePath, albumsRouter);
 app.use(configuration.api.endpointURLS.myservices.basePath, servicesRouter);
-app.use(configuration.api.endpointURLS.carousel.basePath, carouselRouter);
 app.use(configuration.api.endpointURLS.dataMgr.basePath, dataMgrRouter);
 
 app.get('/', (req: Request, res: Response) => {

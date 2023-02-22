@@ -1,23 +1,24 @@
-import {Component, ElementRef, Input, Renderer2, ViewChild} from '@angular/core';
+import {Component, ElementRef, Input, OnChanges, Renderer2, ViewChild} from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpEventType} from "@angular/common/http";
 import {FilesUploadService} from "../../../../core/services/data/files-upload.service";
 import {Observable} from "rxjs";
 // import { FormControl } from '@angular/forms';
-import {IAlbumsFeed, IMyserviceFeed, ICarouselFeed} from "../../../../core/abstracts";
+import {IAlbumsFeed, IMyserviceFeed} from "../../../../core/abstracts";
+import {json} from "express";
 
 @Component({
   selector: 'files-upload',
   templateUrl: './files-upload.component.html',
   styleUrls: ['./files-upload.component.scss']
 })
-export class FilesUploadComponent {
+export class FilesUploadComponent implements OnChanges {
   @ViewChild('dropBox') dropBox!: ElementRef<HTMLDivElement>;
   progressValue = 0;
   // id = new FormControl('');
   @Input() uniqID!: string;
   @Input() useCollection: any;
   @Input() useSchema!: string;
-  data$!: Observable<IAlbumsFeed|IMyserviceFeed|ICarouselFeed>;
+  data$!: Observable<IAlbumsFeed|IMyserviceFeed>;
 
   constructor(
     private _render: Renderer2,
@@ -27,7 +28,7 @@ export class FilesUploadComponent {
   }
 
   ngAfterViewInit() {
-    // this.data$ = this.loadPhotos();
+    this.loadPhotos();
 
     ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
       this._render.listen(this.dropBox.nativeElement, eventName, this.preventDefaults);
@@ -66,8 +67,49 @@ export class FilesUploadComponent {
     this.uploadFiles(formData);
   }
 
+  setCoverPhoto(e: Event, id: string, photoName: string) {
+    let allFigcaptions = this.dropBox.nativeElement.querySelectorAll("figcaption");
+    allFigcaptions.forEach(item=>{
+      item.classList.remove("!bg-color-light8");
+    });
+
+    let clicked = (e.target as HTMLElement).closest('div.card')?.querySelector('figcaption')!;
+    clicked.classList.add("!bg-color-light8");
+
+    this.filesUploadService.setCoverPhoto(id, photoName, this.useSchema).subscribe(
+        {
+          next: (result) => {
+            // console.log(result);
+          },
+          error:(err) => {
+            console.log(err);
+          }
+        }
+    )
+  }
+
+  deletePhoto(e: Event, id: string, photoName: string) {
+    let rmv = (e.target as HTMLElement).closest('div.card')!;
+    rmv.classList.add("hidden");
+
+    this.filesUploadService.deleteFile(id, photoName, this.useSchema).subscribe(
+      {
+        next: () => {},
+        error:(err) => {
+          console.log(err);
+        }
+      }
+    )
+  }
+
+  ngOnChanges() {
+    this.loadPhotos();
+  }
+
   loadPhotos() {
-    return this.filesUploadService.fetchGallery(this.uniqID, this.useSchema);
+    if(!!this.uniqID && !!this.useSchema) {
+      this.data$ = this.filesUploadService.fetchGallery(this.uniqID, this.useSchema);
+    }
   }
 
   uploadFiles = (data: FormData) => {
@@ -77,8 +119,9 @@ export class FilesUploadComponent {
           next: (e) => {
             if (e.type === HttpEventType.UploadProgress) {
               this.progressValue = Math.round(e.loaded / e.total! * 100);
-            } else if (e.type === HttpEventType.Response) {
-              // this.data$ = this.loadPhotos();
+            } else if (e.type === HttpEventType.Sent) {
+              this.loadPhotos();
+              this.progressValue = 0;
             }
           },
           error: (err: HttpErrorResponse) => {

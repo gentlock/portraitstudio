@@ -9,6 +9,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { LoaderService } from "./services/loader/loader.service";
 import { LoaderComponent } from "./components/loader/loader.component";
 import { DatePipe } from '@angular/common';
+import { PopupDirective } from "./directives/popup.directive";
 
 /*imports:      [ CommonModule ],
   declarations: [ CustomerComponent, NewItemDirective, OrdersPipe ],
@@ -18,7 +19,8 @@ import { DatePipe } from '@angular/common';
 @NgModule({
   declarations: [
     LoaderComponent,
-    TabmenuAnimationDirective
+    TabmenuAnimationDirective,
+    PopupDirective
   ],
   imports: [
     CommonModule,
@@ -28,9 +30,11 @@ import { DatePipe } from '@angular/common';
   exports: [
     TabmenuAnimationDirective,
     LoaderComponent,
+    PopupDirective
   ],
   providers: [
-    DatePipe
+    DatePipe,
+    PopupDirective
   ]
 })
 export class SharedModule {
