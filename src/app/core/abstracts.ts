@@ -13,7 +13,7 @@ export interface IMyserviceFeed {
 export interface IAlbumsFeed {
   _id?            : string,
   isActive        : boolean,
-  fileToDownload? : string,
+  downloadable? : {'filename': string, 'filesize': number},
   addDate?       : Date,
   name          : string,
   clientName    : string,

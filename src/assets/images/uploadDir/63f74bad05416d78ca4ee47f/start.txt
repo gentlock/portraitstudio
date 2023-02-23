@@ -1,0 +1,10 @@
+cd C:\Users\adBlu\WebstormProjects\portraitstudio\src\app\api
+npm run dev
+
+
+cd C:\Users\adBlu\WebstormProjects\portraitstudio\src
+ng serve
+
+
+npm cache clean --force  
+ng cache clean

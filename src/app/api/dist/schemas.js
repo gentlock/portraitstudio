@@ -34,7 +34,7 @@ const albumS = new mongoose_1.default.Schema({
     'accessCode': String,
     'serviceId': String,
     'clientInfo': String,
-    'fileToDownload': String,
+    'downloadable': { 'filename': String, 'filesize': Number },
     'gallery': [String],
 });
 exports.albumsSchema = mongoose_1.default.model("albums", albumS);

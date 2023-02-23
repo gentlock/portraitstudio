@@ -78,9 +78,19 @@
           <files-upload [uniqID]="ID" [useSchema]="this.DBschema"></files-upload>
         </mat-tab>
         <mat-tab label="paczka ze zdjeciami">
-          <mat-progress-bar [value]="progressValue"  mode="determinate"></mat-progress-bar>
-          <form class="mt-10 text-center" enctype="multipart/form-data">
-            <input (change)="handleUpload($event)" type="file" name="plik" value=""/>
+          <form  [formGroup]="myFormFile" class="flex flex-col gap-4 mt-4" enctype="multipart/form-data">
+            <mat-progress-bar [value]="progressValue"  mode="determinate"></mat-progress-bar>
+            <input formControlName="plik"  (change)="handleUpload($event)" type="file" name="plik" value=""/>
+            <table class="w-fit">
+              <tr>
+                <td class="font-SourceSansPro-SemiBold text-sm p-1">nazwa pliku:</td>
+                <td class="font-SourceSansPro-Italic">{{ filename }}</td>
+              </tr>
+              <tr>
+                <td class="font-SourceSansPro-SemiBold text-sm p-1">wielkość pliku:</td>
+                <td class="font-SourceSansPro-Italic">{{ filesize }}</td>
+              </tr>
+            </table>
           </form>
         </mat-tab>
       </ng-container>

@@ -31,7 +31,7 @@ const albumS  = new mongoose.Schema ({
   'accessCode'      : String,
   'serviceId'       : String,
   'clientInfo'      : String,
-  'fileToDownload'  : String,
+  'downloadable'    : {'filename': String, 'filesize': Number},
   'gallery'         : [String],
 });
 

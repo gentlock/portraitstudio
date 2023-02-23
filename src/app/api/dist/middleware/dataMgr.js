@@ -94,7 +94,7 @@ function uploadSingle(req, res) {
         let uploadPath = configuration.uploadDir.pathAdress + `/${id}/` + file.name;
         yield file.mv(uploadPath, (err) => __awaiter(this, void 0, void 0, function* () {
             if (!err) {
-                yield schemas_1.albumsSchema.findByIdAndUpdate(id, { 'fileToDownload': file.name });
+                yield schemas_1.albumsSchema.findByIdAndUpdate(id, { 'downloadable': { 'filename': file.name, 'filesize': file.size } });
             }
             else {
                 console.log(err);

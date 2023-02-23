@@ -46,8 +46,8 @@ export class FilesUploadComponent implements OnChanges {
   }
 
   preventDefaults = (e: Event) => {
-    e.preventDefault()
-    e.stopPropagation()
+    e.preventDefault();
+    e.stopPropagation();
   }
 
   highlight = (e: Event) => {
@@ -89,17 +89,16 @@ export class FilesUploadComponent implements OnChanges {
   }
 
   deletePhoto(e: Event, id: string, photoName: string) {
-    let rmv = (e.target as HTMLElement).closest('div.card')!;
-    rmv.classList.add("hidden");
+    if(confirm('powierdz usuniecie')) {
+      let rmv = (e.target as HTMLElement).closest('div.card')!;
+      rmv.classList.add("hidden");
 
-    this.filesUploadService.deleteFile(id, photoName, this.useSchema).subscribe(
-      {
-        next: () => {},
-        error:(err) => {
-          console.log(err);
-        }
-      }
-    )
+      this.filesUploadService.deleteFile(id, photoName, this.useSchema).subscribe(
+        {
+          next: () => {},
+          error: (err) => {console.log(err);}
+        });
+    }
   }
 
   ngOnChanges() {

@@ -79,7 +79,7 @@ export async function uploadSingle(req: Request, res: Response) {
 
   await file.mv(uploadPath, async (err) => {
     if(!err) {
-      await albumsSchema.findByIdAndUpdate(id, { 'fileToDownload': file.name });
+      await albumsSchema.findByIdAndUpdate(id, { 'downloadable': {'filename': file.name, 'filesize': file.size} });
     } else {
       console.log(err);
       res.json({err} );

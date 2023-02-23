@@ -56,6 +56,7 @@ export class MyservicesMgrComponent {
           this.myFormModel.get('name')?.setValue(data.name);
           this.myFormModel.get('desc')?.setValue(data.desc);
           this.myFormModel.get('subtitle')?.setValue(data.subtitle);
+          this.myFormModel.get('priceList')?.setValue(data.priceList);
         },
         error: (err: HttpErrorResponse) => { console.log(err) }
       }

@@ -7,6 +7,7 @@ import {IAlbumsFeed, IMyserviceFeed} from "../../../../core/abstracts";
 import {HttpErrorResponse, HttpEventType} from "@angular/common/http";
 import {MyservicesService} from "../../../../core/services/data/myservices.service";
 import { FilesUploadService } from "../../../../core/services/data/files-upload.service";
+import {Parser} from "@angular/compiler";
 
 @Component({
   selector: 'studio-albums-mgr',
@@ -15,11 +16,14 @@ import { FilesUploadService } from "../../../../core/services/data/files-upload.
 })
 export class AlbumsMgrComponent implements AfterViewInit {
   myFormModel: FormGroup;
+  myFormFile: FormGroup;
   clearField = clearFormField;
   servicesList$!: Observable<IMyserviceFeed[]>;
   eventsSubject: Subject<string> = new Subject<string>();
   progressValue = 0;
   DBschema = 'albumsSchema';
+  filename!: string;
+  filesize!: number;
 
   constructor(
     private _fb: FormBuilder,
@@ -38,12 +42,15 @@ export class AlbumsMgrComponent implements AfterViewInit {
         'serviceId': ['', Validators.required],
         'clientInfo'  : ['']
       });
+
+      this.myFormFile = _fb.group({
+        'plik':[''],
+      })
   }
 
   ngAfterViewInit() {
     this.servicesList$ = this.myservicesService.getAll();
   }
-
   sendEmail(event: Event, email: string) {
     event.preventDefault();
 
@@ -108,6 +115,9 @@ export class AlbumsMgrComponent implements AfterViewInit {
   }
 
   populate = ( id: string ) => {
+    this.myFormFile.reset();
+    this.progressValue = 0;
+
     this.albumsService.getById( id ).subscribe(
       {
         next: (data) => {
@@ -120,6 +130,9 @@ export class AlbumsMgrComponent implements AfterViewInit {
           this.myFormModel.get('desc')?.setValue(data.desc);
           this.myFormModel.get('serviceId')?.setValue(data.serviceId);
           this.myFormModel.get('clientInfo')?.setValue(data.clientInfo);
+
+          this.filename = data.downloadable?.filename!;
+          this.filesize = parseInt(data.downloadable?.filesize.toString()!);
         },
         error: (err: HttpErrorResponse) => { console.log(err) }
       }
@@ -135,18 +148,23 @@ export class AlbumsMgrComponent implements AfterViewInit {
     let id = this.myFormModel.get('id')?.value;
 
     if( !!fileslist && !!id ) {
-      formData.append('file', fileslist[0]);
+      if(confirm('napewno przegrac plik?')) {
+        formData.append('file', fileslist[0]);
 
-      this.filesUploadService.uploadSingle(id, formData).subscribe(
-        {
-          next: (event) => {
-            if (event.type === HttpEventType.UploadProgress) {
-              this.progressValue = Math.round(event.loaded / event.total! * 100);
-            } else if (event.type === HttpEventType.Response) {
+        this.filename = fileslist[0].name;
+        this.filesize = parseInt(fileslist[0].size.toString());
+
+        this.filesUploadService.uploadSingle(id, formData).subscribe(
+          {
+            next: (event) => {
+              if (event.type === HttpEventType.UploadProgress) {
+                this.progressValue = Math.round(event.loaded / event.total! * 100);
+              } else if (event.type === HttpEventType.Response) {}
+            },
+            error: (err) => {
             }
-          },
-          error: (err) => {}
-        })
+          })
+      }
     }
   }
 
