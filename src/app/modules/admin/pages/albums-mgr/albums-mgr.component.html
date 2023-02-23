@@ -77,8 +77,11 @@
         <mat-tab label="galeria">
           <files-upload [uniqID]="ID" [useSchema]="this.DBschema"></files-upload>
         </mat-tab>
-        <mat-tab label="plik RAR">
-          <files-upload [uniqID]="ID"></files-upload>
+        <mat-tab label="paczka ze zdjeciami">
+          <mat-progress-bar [value]="progressValue"  mode="determinate"></mat-progress-bar>
+          <form class="mt-10 text-center" enctype="multipart/form-data">
+            <input (change)="handleUpload($event)" type="file" name="plik" value=""/>
+          </form>
         </mat-tab>
       </ng-container>
     </mat-tab-group>

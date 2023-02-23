@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.uploadData = exports.fetchGallery = exports.deleteFile = exports.setCoverPhoto = void 0;
+exports.uploadData = exports.uploadSingle = exports.fetchGallery = exports.deleteFile = exports.setCoverPhoto = void 0;
 // import * as fs from "fs";
 const configuration = require('../../../../conf/config');
 const schemas_1 = require("../schemas");
@@ -87,7 +87,24 @@ function fetchGallery(req, res) {
     });
 }
 exports.fetchGallery = fetchGallery;
-function uploadData(req, res, next) {
+function uploadSingle(req, res) {
+    return __awaiter(this, void 0, void 0, function* () {
+        let id = req.params.id;
+        let file = req.files.file;
+        let uploadPath = configuration.uploadDir.pathAdress + `/${id}/` + file.name;
+        yield file.mv(uploadPath, (err) => __awaiter(this, void 0, void 0, function* () {
+            if (!err) {
+                yield schemas_1.albumsSchema.findByIdAndUpdate(id, { 'fileToDownload': file.name });
+            }
+            else {
+                console.log(err);
+                res.json({ err });
+            }
+        }));
+    });
+}
+exports.uploadSingle = uploadSingle;
+function uploadData(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         let id = req.params.id;
         let useSchema = req.params.useSchema;
@@ -127,15 +144,6 @@ function uploadData(req, res, next) {
                     }
                 }));
             }
-            // file.mv(uploadPath,  async err => {
-            //   if(!err) {
-            //     if( useSchema==='albumsSchema' ) {
-            //       await albumsSchema.findByIdAndUpdate(id, {$push: {'gallery': file.name}});
-            //     } else if( useSchema === 'myservicesSchema' ) {
-            //       await myservicesSchema.findByIdAndUpdate(id, {$push: {'gallery': file.name}});
-            //     }
-            //   }
-            // });
         });
     });
 }

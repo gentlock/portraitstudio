@@ -15,7 +15,8 @@
         "deleteData"      : "/deleteData",
         "deleteFile"      : "/deleteFile",
         "fetchGallery"    : "/fetchGallery",
-        "setCoverPhoto"   : "/setCoverPhoto/:id/:photoName:/collection"
+        "setCoverPhoto"   : "/setCoverPhoto/:id/:photoName:/collection",
+        "uploadSingle"    : "/uploadSingle"
       },
       "myservices": {
         "basePath"  : "/api/myservices",

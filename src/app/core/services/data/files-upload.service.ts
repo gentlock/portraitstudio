@@ -12,6 +12,7 @@ export class FilesUploadService {
   delFileURL: string;
   fetchGalleryURL: string;
   setCoverPhotoURL: string;
+  uploadSingleURL: string;
 
   constructor(
     private http: HttpClient,
@@ -22,10 +23,15 @@ export class FilesUploadService {
     this.delFileURL       = data.conf.api.endpointURLS.dataMgr.deleteFile;
     this.setCoverPhotoURL = data.conf.api.endpointURLS.dataMgr.setCoverPhoto;
     this.fetchGalleryURL  = data.conf.api.endpointURLS.dataMgr.fetchGallery;
+    this.uploadSingleURL  = data.conf.api.endpointURLS.dataMgr.uploadSingle;
   }
 
   uploadData(id: string, useSchema: string, myFiles: FormData) {
     return this.http.put<void>(this.baseURL+this.upDataURL+`/${id}`+`/${useSchema}`, myFiles, {reportProgress: true, observe: 'events'});
+  }
+
+  uploadSingle(id: string, myFiles: FormData) {
+    return this.http.put<void>(this.baseURL+this.uploadSingleURL+`/${id}`, myFiles, {reportProgress: true, observe: 'events'});
   }
 
   fetchGallery(id: string, useSchema: string) {

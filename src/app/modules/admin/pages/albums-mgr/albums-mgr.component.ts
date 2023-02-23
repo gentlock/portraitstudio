@@ -4,8 +4,9 @@ import {myPasswordGenerator, clearFormField} from "../../../../core/helpers/util
 import { AlbumsService } from "../../../../core/services/data/albums.service";
 import {Observable, Subject} from "rxjs";
 import {IAlbumsFeed, IMyserviceFeed} from "../../../../core/abstracts";
-import {HttpErrorResponse} from "@angular/common/http";
+import {HttpErrorResponse, HttpEventType} from "@angular/common/http";
 import {MyservicesService} from "../../../../core/services/data/myservices.service";
+import { FilesUploadService } from "../../../../core/services/data/files-upload.service";
 
 @Component({
   selector: 'studio-albums-mgr',
@@ -17,13 +18,14 @@ export class AlbumsMgrComponent implements AfterViewInit {
   clearField = clearFormField;
   servicesList$!: Observable<IMyserviceFeed[]>;
   eventsSubject: Subject<string> = new Subject<string>();
-
+  progressValue = 0;
   DBschema = 'albumsSchema';
 
   constructor(
     private _fb: FormBuilder,
     public albumsService: AlbumsService,
-    public myservicesService: MyservicesService
+    public myservicesService: MyservicesService,
+    private filesUploadService: FilesUploadService
   ) {
       this.myFormModel = _fb.group({
         'id':[''],
@@ -122,6 +124,30 @@ export class AlbumsMgrComponent implements AfterViewInit {
         error: (err: HttpErrorResponse) => { console.log(err) }
       }
     )
+  }
+
+  handleUpload(event: Event) {
+    event.preventDefault();
+
+    let formData    = new FormData();
+    let element     = event.currentTarget as HTMLInputElement;
+    let fileslist   = element.files;
+    let id = this.myFormModel.get('id')?.value;
+
+    if( !!fileslist && !!id ) {
+      formData.append('file', fileslist[0]);
+
+      this.filesUploadService.uploadSingle(id, formData).subscribe(
+        {
+          next: (event) => {
+            if (event.type === HttpEventType.UploadProgress) {
+              this.progressValue = Math.round(event.loaded / event.total! * 100);
+            } else if (event.type === HttpEventType.Response) {
+            }
+          },
+          error: (err) => {}
+        })
+    }
   }
 
   resetForm(e: Event) {

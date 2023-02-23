@@ -13,4 +13,5 @@ router.put(urls.uploadData + '/:id/:useSchema', dataMgr_1.uploadData);
 router.delete(urls.deleteFile + '/:id/:photoName/:useSchema', dataMgr_1.deleteFile);
 router.get(urls.setCoverPhoto + '/:id/:photoName/:useSchema', dataMgr_1.setCoverPhoto);
 router.get(urls.fetchGallery + '/:id/:useSchema', dataMgr_1.fetchGallery);
+router.put(urls.uploadSingle + '/:id', dataMgr_1.uploadSingle);
 module.exports = router;

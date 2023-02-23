@@ -71,7 +71,24 @@ export async function fetchGallery(req: Request, res: Response) {
   }
 }
 
-export async function uploadData(req: Request, res: Response, next: NextFunction) {
+export async function uploadSingle(req: Request, res: Response) {
+  let id    = req.params.id;
+  let file = (req.files!.file as UploadedFile);
+
+  let uploadPath = configuration.uploadDir.pathAdress + `/${id}/` + file.name;
+
+  await file.mv(uploadPath, async (err) => {
+    if(!err) {
+      await albumsSchema.findByIdAndUpdate(id, { 'fileToDownload': file.name });
+    } else {
+      console.log(err);
+      res.json({err} );
+    }
+  });
+
+}
+
+export async function uploadData(req: Request, res: Response) {
   let id              = req.params.id;
   let useSchema       = req.params.useSchema;
   let data            = req.files;
@@ -111,15 +128,5 @@ export async function uploadData(req: Request, res: Response, next: NextFunction
             }
           });
         }
-
-          // file.mv(uploadPath,  async err => {
-          //   if(!err) {
-          //     if( useSchema==='albumsSchema' ) {
-          //       await albumsSchema.findByIdAndUpdate(id, {$push: {'gallery': file.name}});
-          //     } else if( useSchema === 'myservicesSchema' ) {
-          //       await myservicesSchema.findByIdAndUpdate(id, {$push: {'gallery': file.name}});
-          //     }
-          //   }
-          // });
       })
 }
