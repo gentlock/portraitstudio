@@ -1,5 +1,44 @@
+<ng-template #tplShowDetails>
+  <ng-container *ngIf="(details$ | async) as details">
+  <div class="cell-tabs">
+    <mat-tab-group mat-stretch-tabs="false"  animationDuration="0ms" mat-align-tabs="start">
+      <mat-tab label="informacje">
+        <div class="pt-6 text-color-light3 text-sm">{{ details.desc }}</div>
+      </mat-tab>
+      <mat-tab label="galeria">
+        <div class="gallery-grid pt-6">
+          <div *ngFor="let file of details.gallery">
+            <img src="./assets/images/uploadDir/{{ details._id }}/{{ file }}" alt=""/>
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab class="text-color-light3" label="cennik">
+          <div class="pt-6 text-color-light3 text-sm">{{ details.priceList }}</div>
+        </mat-tab>
+    </mat-tab-group>
+  </div>
+  </ng-container>
+</ng-template>
+
+
 <div class="basic-grid">
   <div class="cell-header text-center">
     <span class="text-color-light2 text-4xl">Moje usługi</span>
   </div>
+  <ng-container *ngIf="!showDetails && !id; else tplShowDetails">
+  <ng-container *ngIf="(data$ | async) as data">
+    <a (click)="switchView($event, file._id!)" href="javascript:void(0)" *ngFor="let file of data; index as i"  class="bg-color-light8 cell-card block w-full h-full">
+      <figure class="w-fit h-full relative">
+        <img src="./assets/images/uploadDir/{{ file._id }}/{{ file.coverPhoto }}" alt=""/>
+        <figcaption class="p-6 absolute top-0 left-0 flex items-start">
+          <div class="overlay flex flex-col space-y-4">
+            <span class="p-1 stroke text-7xl font-PlayfairDisplay-VariableFont_wght font-bold uppercase">0{{ i+1 }}</span>
+            <span class="text-xl text-white font-PlayfairDisplay-VariableFont_wght capitalize">{{ file.name }}</span>
+            <span class="text-md text-color-light3 font-SourceSansPro-Regular leading-6">{{ (file.desc.length>6)? (file.desc | slice:0:180)+'...':(file.desc) }} </span>
+          </div>
+        </figcaption>
+      </figure>
+    </a>
+  </ng-container>
+  </ng-container>
 </div>

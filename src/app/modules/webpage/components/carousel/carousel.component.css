@@ -277,15 +277,14 @@ textarea[class^=myinput]:focus, input[class^=myinput]:not([type=button]):focus {
   transform: translateY(-50%);
   padding: 0.8em;
   cursor: pointer;
-  border: 1px solid hsl(4deg, 32%, 46%);
-  background-color: rgba(155, 85, 80, 0.1);
+  border: 1px solid #58302d;
+  background-color: hsl(4deg, 32%, 46%);
 }
 .carousel-prev svg, .carousel-next svg {
-  color: hsl(4deg, 32%, 46%);
+  color: white;
   fill: currentColor;
   width: 1.6em;
   height: auto;
-  filter: opacity(50%);
   transition: transform 450ms;
 }
 .carousel-prev {

@@ -1,15 +1,21 @@
 <div class="data-grid w-full h-full">
-  <div class="flex gap-2 justify-center items-center pr-2 h-20 border border-solid border-r-color-dark3">
-    <button  (click)="resetForm()" class="bg-color-light8 w-10 h-10 flex justify-center items-center rounded-full shadow-gray-500 shadow active:shadow-none">
-      <svg class="w-8 h-auto" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 7V17M7 12H17" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </button>
+  <div class="flex justify-between items-center pr-2 h-20 border border-solid border-r-color-dark3">
+    <section class="flex gap-2">
+      <button  (click)="resetForm()" class="bg-color-light8 w-10 h-10 flex justify-center items-center rounded-full shadow-gray-500 shadow active:shadow-none">
+        <svg class="w-8 h-auto" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 7V17M7 12H17" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
 
-    <button (click)="refreshTable()" class="bg-color-light8 w-10 h-10 flex justify-center items-center rounded-full shadow-gray-500 shadow active:shadow-none">
-      <svg class="w-6 h-auto"  viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2.181a.75.75 0 0 1 1.177-.616l4.432 3.068a.75.75 0 0 1 0 1.234l-4.432 3.068A.75.75 0 0 1 12 8.32V6a7 7 0 1 0 7 7 1 1 0 1 1 2 0 9 9 0 1 1-9-9V2.181z" fill="#fff"/></svg>
-    </button>
+      <button (click)="refreshTable()" class="bg-color-light8 w-10 h-10 flex justify-center items-center rounded-full shadow-gray-500 shadow active:shadow-none">
+        <svg class="w-6 h-auto"  viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2.181a.75.75 0 0 1 1.177-.616l4.432 3.068a.75.75 0 0 1 0 1.234l-4.432 3.068A.75.75 0 0 1 12 8.32V6a7 7 0 1 0 7 7 1 1 0 1 1 2 0 9 9 0 1 1-9-9V2.181z" fill="#fff"/></svg>
+      </button>
+    </section>
 
+    <select *ngIf="selectableService" class="p-1 font-SourceSansPro-Regular text-sm">
+      <option class="font-SourceSansPro-Regular text-sm" value="all">wszystkie</option>
+      <option class="font-SourceSansPro-Regular text-sm"  *ngFor="let service of services$ | async" value="{{ service._id }}">{{ service.name }}</option>
+    </select>
   </div>
 
   <!-- one cell -->

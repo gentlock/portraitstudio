@@ -100,16 +100,16 @@
     padding: .8em;
     cursor: pointer;
     //background-color: transparent;
-    border: 1px solid m.$color-light2;
-    background-color: rgba(m.$color-light2, 0.1);
+    border: 1px solid darken(m.$color-light2, 20%);
+    background-color: m.$color-light2;
 
 
     svg {
-      color: m.$color-light2;
+      color: white;
       fill: currentColor;
       width: 1.6em;
       height: auto;
-      filter: opacity(50%);
+      //filter: opacity(50%);
       transition: transform 450ms;
     }
   }

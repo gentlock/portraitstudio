@@ -88,6 +88,10 @@ export class FilesUploadComponent implements OnChanges {
     )
   }
 
+  refreshGrid(e: Event) {
+    this.loadPhotos();
+  }
+
   deletePhoto(e: Event, id: string, photoName: string) {
     if(confirm('powierdz usuniecie')) {
       let rmv = (e.target as HTMLElement).closest('div.card')!;

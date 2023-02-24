@@ -14,6 +14,7 @@ import { HomepageComponent} from "./pages/homepage/homepage.component";
 import { SharedModule } from "../../core/shared.module";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { MyservicesComponent } from './pages/myservices/myservices.component';
+import {MatTabsModule} from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { MyservicesComponent } from './pages/myservices/myservices.component';
         WebpageRoutingModule,
         SharedModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        MatTabsModule
     ],
 })
 export class WebpageModule { }

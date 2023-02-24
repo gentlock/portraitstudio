@@ -3,6 +3,7 @@ import {Observable, Subscription} from "rxjs";
 // import { elapsedTime } from "../../../../core/helpers/utils";
 import {MyservicesService} from "../../../../core/services/data/myservices.service";
 import {AlbumsService} from "../../../../core/services/data/albums.service";
+import {IMyserviceFeed} from "../../../../core/abstracts";
 // import { SharedModule } from "../../../../core/shared.module";
 
 @Component({
@@ -13,18 +14,20 @@ import {AlbumsService} from "../../../../core/services/data/albums.service";
 export class TableBarComponent implements AfterViewInit, OnInit, OnDestroy {
   @Input() useService!: MyservicesService|AlbumsService;
   data$!: Observable<any>;
-  // readonly elapsedTime = elapsedTime;
+  services$!: Observable<IMyserviceFeed[]>;
   @Output() editRequest: EventEmitter<any> = new EventEmitter();
   @Output() deleteRequest: EventEmitter<any> = new EventEmitter();
   @Output() resetFormRequest: EventEmitter<any> = new EventEmitter();
   @Input() events!: Observable<string>;
+  @Input() selectableService!: boolean;
   eventsSubscription!: Subscription;
   currentCard: string = "";
 
   constructor(
     private myservicesService: MyservicesService,
-    private albumsService: AlbumsService,
+    // private albumsService: AlbumsService,
   ) {
+    this.services$ = myservicesService.getAll();
   }
 
   resetActiveCards() {
