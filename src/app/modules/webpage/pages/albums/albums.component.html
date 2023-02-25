@@ -1,5 +1,39 @@
+<ng-template #tplShowDetails>
+  <ng-container *ngIf="(details$ | async) as details">
+          <div class="gallery-grid pt-6">
+            <div class="gallery-grid--header">
+naglowek
+            </div>
+            <div *ngFor="let file of details.gallery">
+              <img src="./assets/images/uploadDir/{{ details._id }}/{{ file }}" alt=""/>
+            </div>
+          </div>
+  </ng-container>
+</ng-template>
+
 <div class="basic-grid">
-  <div class="cell-header text-center">
-    <span class="text-color-light2 text-4xl">Albumy zdjęć</span>
-  </div>
+  <div class="cell-header flex flex-col space-y-1">
+      <hr class="w-full"/>
+      <ul #smallNav *ngIf="(data$ | async) as data">
+        <li><a (click)="switchTab($event)" href="#" class="underline hover:underline font-SourceSansPro-Regular uppercase text-sm text-color-light3">pokaż wszystko</a></li>
+        <li *ngFor="let myservice of data">
+          <a (click)="switchTab($event)" href="{{ myservice._id }}" class="hover:underline font-SourceSansPro-Regular uppercase text-sm text-color-light3">{{ myservice.name }}</a>
+        </li>
+      </ul>
+    </div>
+  <ng-container *ngIf="!showDetails && !id; else tplShowDetails">
+    <ng-container *ngIf="(albums$ | async) as data">
+      <a (click)="switchView($event, file._id!)" href="javascript:void(0)" *ngFor="let file of data; let i = index"  class="cell-card block w-full h-full">
+        <figure class="w-fit h-full relative">
+          <img src="./assets/images/uploadDir/{{ file._id }}/{{ file.coverPhoto }}" alt=""/>
+          <figcaption class="p-6 absolute top-0 left-0 flex w-full h-full place-content-center items-end">
+            <div class="overlay flex flex-col space-y-2">
+<!--              <span class="self-center text-lg text-white font-PlayfairDisplay-VariableFont_wght ">0{{ i }}</span>-->
+              <span class="text-lg text-white font-PlayfairDisplay-VariableFont_wght ">{{ file.name }}</span>
+            </div>
+          </figcaption>
+        </figure>
+      </a>
+    </ng-container>
+  </ng-container>
 </div>

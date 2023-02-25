@@ -1,10 +1,129 @@
 @use "../../../../../assets/styles/main" as m;
 
 .basic-grid {
-  --cards-padding: 1.2em;
+  grid-template-rows: auto;
+  grid-auto-rows: auto;
+  grid-auto-flow: row dense;
+  gap: 1em;
+  row-gap: 1em;
 
   .cell-header {
-    grid-column: 1 / -1;
+    grid-column: 2 / 12;
     grid-row: 1 / 2;
+
+    ul {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: .3em;
+    }
+  }
+
+  .gallery-grid {
+    grid-column: 1 / -1;
+    grid-row: 2 / -1;
+
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-template-rows: var(--photo-height);
+    grid-auto-flow: row dense;
+    gap: .3em;
+    place-content: center;
+
+    div {
+      overflow: hidden;
+      height: var(--photo-height);
+      width: 100%;
+
+      img {
+        object-fit: cover;
+        object-position: center;
+        display: block;
+        aspect-ratio: 16 / 9;
+        width: 100%;
+        height: auto;
+        min-width: 100%;
+        min-height: 100%;
+
+      }
+    }
+
+    .gallery-grid--header {
+      grid-row: 1 / 2;
+      grid-column: 1 / -1;
+    }
+
+    @include m.gallery-grid(1, var(--photo-height));
   }
 }
+  a:hover {
+    img {
+      transform: scale(1.1);
+      filter: brightness(.5);
+    }
+  }
+
+  figure {
+    //aspect-ratio: 9 / 16;
+    height: 360px;
+    width: 100%;
+    overflow: hidden;
+
+    img {
+      object-fit: cover;
+      object-position: center;
+      height: 100%;
+      width: 100%;
+      transition: all 550ms;
+      transform: scale(1);
+      filter: brightness(1);
+    }
+  }
+
+  @include m.media-query-screen--small {
+    .cell-header {
+      grid-column: 1 / -1;
+    }
+
+    a.cell-card {
+      grid-column: 1 / -1;
+      grid-row: span 1;
+    }
+  }
+
+  @include m.media-query-screen--middle {
+    .cell-header {
+      grid-column: 2 / 8;
+    }
+
+    a.cell-card:nth-child(2n+2) {
+      grid-column: 1 / 5;
+      grid-row: span 1;
+    }
+    a.cell-card:nth-child(2n+3) {
+      grid-column: 5 / -1;
+      grid-row: span 1;
+    }
+  }
+
+  @include m.media-query-screen--big {
+    .cell-header {
+      grid-column: 2 / 12;
+    }
+
+    a.cell-card:nth-child(3n+2) {
+      grid-column: 1 / 4;
+      grid-row: span 1;
+    }
+    a.cell-card:nth-child(3n+3) {
+      grid-column: 4 / 7;
+      grid-row: span 1;
+    }
+    a.cell-card:nth-child(3n+4) {
+      grid-column: 7 / 10;
+      grid-row: span 1;
+    }
+    a.cell-card:nth-child(3n+5) {
+      grid-column: 10 / -1;
+      grid-row: span 1;
+    }
+  }
